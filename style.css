@@ -1,3 +1,7 @@
+```css
+/* =========================================
+   RESET
+========================================= */
 
 * {
     margin: 0;
@@ -11,272 +15,61 @@ html {
 
 body {
     font-family: Georgia, "Times New Roman", serif;
-
     background:
-        radial-gradient(
-            circle at top,
-            #351526 0%,
-            #170b13 45%,
-            #090609 100%
-        );
-
-    color: white;
-    min-height: 100vh;
+        radial-gradient(circle at 50% 0%, #54202f 0%, #210d16 38%, #0d080b 100%);
+    color: #f9e9e9;
     overflow-x: hidden;
+    line-height: 1.7;
 }
 
 
-/* ==========================================
-   PANTALLA DE CONTRASEÑA
-========================================== */
+/* =========================================
+   FONDO
+========================================= */
 
-.login-screen {
+body::before {
+    content: "";
     position: fixed;
     inset: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 25px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255, 55, 110, 0.22),
-            transparent 45%
-        ),
-        radial-gradient(
-            circle at top,
-            #351526,
-            #090609 70%
-        );
-
-    z-index: 9999;
-}
-
-.login-card {
-    width: min(100%, 430px);
-
-    padding: 45px 30px;
-
-    text-align: center;
-
-    border-radius: 30px;
-
-    background: rgba(255, 255, 255, 0.07);
-
-    border: 1px solid rgba(255, 150, 180, 0.25);
-
-    backdrop-filter: blur(18px);
-
-    box-shadow:
-        0 30px 100px rgba(0, 0, 0, 0.6),
-        0 0 60px rgba(255, 50, 110, 0.12);
-
-    animation: entrada 1s ease;
-}
-
-.lock {
-    font-size: 55px;
-
-    margin-bottom: 20px;
-
-    animation: flotar 2.5s ease-in-out infinite;
-}
-
-.login-card h1 {
-    font-size: 34px;
-
-    font-weight: normal;
-
-    margin: 12px 0 18px;
-
-    text-shadow:
-        0 0 20px rgba(255, 80, 130, 0.5);
-}
-
-.login-card > p {
-    color: #dfcbd3;
-
-    line-height: 1.8;
-
-    font-size: 15px;
-}
-
-.question {
-    margin-top: 15px;
-
-    color: #ff91ae !important;
-
-    font-style: italic;
-}
-
-.password-box {
-    margin-top: 25px;
-}
-
-.password-box input {
-    width: 100%;
-
-    padding: 15px 18px;
-
-    border-radius: 50px;
-
-    border: 1px solid rgba(255, 150, 180, 0.25);
-
-    outline: none;
-
-    background: rgba(0, 0, 0, 0.25);
-
-    color: white;
-
-    text-align: center;
-
-    font-family: inherit;
-
-    font-size: 16px;
-
-    transition: 0.3s;
-}
-
-.password-box input::placeholder {
-    color: #a98f98;
-}
-
-.password-box input:focus {
-    border-color: #ff719b;
-
-    box-shadow:
-        0 0 20px rgba(255, 60, 110, 0.2);
-}
-
-.password-box button {
-    width: 100%;
-
-    margin-top: 15px;
-
-    border: none;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff477e,
-            #b91f55
-        );
-
-    color: white;
-
-    padding: 15px;
-
-    border-radius: 50px;
-
-    font-family: inherit;
-
-    font-size: 15px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 10px 35px rgba(255, 40, 100, 0.25);
-
-    transition: 0.3s;
-}
-
-.password-box button:hover {
-    transform: translateY(-3px) scale(1.02);
-}
-
-.error-message {
-    min-height: 25px;
-
-    margin-top: 15px;
-
-    color: #ff789f !important;
-
-    font-size: 13px !important;
-}
-
-.tiny-heart {
-    margin-top: 20px;
-
-    color: #ff628f;
-
-    font-size: 30px;
-
-    animation: latido 1.3s infinite;
-}
-
-
-/* ==========================================
-   CONTENIDO
-========================================== */
-
-.hidden {
-    display: none !important;
-}
-
-#mainContent {
-    animation: aparecer 1.2s ease;
-}
-
-main {
-    position: relative;
-
-    z-index: 1;
-}
-
-section {
-    min-height: 100vh;
-
-    padding: 70px 24px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-}
-
-
-/* ==========================================
-   CORAZONES
-========================================== */
-
-.hearts {
-    position: fixed;
-
-    inset: 0;
-
     pointer-events: none;
+    z-index: -1;
 
+    background:
+        radial-gradient(circle at 15% 25%, rgba(255, 100, 150, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 70%, rgba(255, 180, 200, 0.06), transparent 25%);
+}
+
+
+/* =========================================
+   CORAZONES FLOTANTES
+========================================= */
+
+#hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
     overflow: hidden;
-
-    z-index: 0;
+    z-index: 5;
 }
 
-.heart {
+.floating-heart {
     position: absolute;
+    bottom: -40px;
+    color: #ff718f;
+    text-shadow:
+        0 0 10px rgba(255, 70, 110, 0.8),
+        0 0 25px rgba(255, 70, 110, 0.4);
 
-    bottom: -30px;
-
-    color: rgba(255, 105, 150, 0.5);
-
-    font-size: 18px;
-
-    animation: subir linear forwards;
+    animation: floatingHeart linear forwards;
 }
 
-@keyframes subir {
+@keyframes floatingHeart {
 
     0% {
         transform:
             translateY(0)
-            rotate(0deg);
+            rotate(0deg)
+            scale(0.7);
 
         opacity: 0;
     }
@@ -285,459 +78,752 @@ section {
         opacity: 1;
     }
 
+    50% {
+        transform:
+            translateY(-50vh)
+            rotate(20deg)
+            scale(1);
+    }
+
     100% {
         transform:
-            translateY(-110vh)
-            rotate(360deg);
+            translateY(-115vh)
+            rotate(-20deg)
+            scale(1.3);
 
         opacity: 0;
     }
 }
 
 
-/* ==========================================
+/* =========================================
    HERO
-========================================== */
+========================================= */
 
 .hero {
-    background:
-        radial-gradient(
-            circle,
-            rgba(255, 72, 125, 0.18),
-            transparent 55%
-        );
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 40px 20px;
+
+    position: relative;
 }
 
-.mini {
-    color: #ff8eae;
+.hero::before {
+    content: "";
+    position: absolute;
 
-    font-size: 11px;
+    width: 420px;
+    height: 420px;
 
-    letter-spacing: 4px;
+    background: rgba(170, 35, 75, 0.15);
 
-    margin-bottom: 20px;
-}
-
-.hero h1 {
-    font-size: clamp(70px, 22vw, 120px);
-
-    font-weight: normal;
-
-    font-style: italic;
-
-    margin-bottom: 15px;
-
-    text-shadow:
-        0 0 15px rgba(255, 70, 120, 0.7),
-        0 0 45px rgba(255, 50, 100, 0.3);
-}
-
-.hero h1 span {
-    color: #ff5d8f;
-}
-
-.subtitle {
-    max-width: 350px;
-
-    color: #e7ccd6;
-
-    font-size: 17px;
-
-    line-height: 1.8;
-}
-
-button {
-    margin-top: 35px;
-
-    border: 1px solid rgba(255, 150, 180, 0.5);
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff477e,
-            #b91f55
-        );
-
-    color: white;
-
-    padding: 16px 27px;
-
-    border-radius: 50px;
-
-    font-family: inherit;
-
-    font-size: 15px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 10px 35px rgba(255, 40, 100, 0.25);
-
-    transition: 0.3s;
-}
-
-button:hover {
-    transform:
-        translateY(-3px)
-        scale(1.03);
-}
-
-
-/* ==========================================
-   CARTA
-========================================== */
-
-.card {
-    width: min(100%, 520px);
-
-    min-height: auto;
-
-    margin: 0 auto;
-
-    padding: 35px 27px;
-
-    border-radius: 25px;
-
-    background:
-        rgba(255, 255, 255, 0.07);
-
-    border:
-        1px solid rgba(255, 160, 190, 0.2);
-
-    backdrop-filter: blur(10px);
-
-    box-shadow:
-        0 20px 70px rgba(0, 0, 0, 0.3);
-
-    animation: aparecer 0.8s ease;
-}
-
-.heart-icon {
-    width: 55px;
-
-    height: 55px;
-
-    display: grid;
-
-    place-items: center;
-
+    filter: blur(80px);
     border-radius: 50%;
 
-    background:
-        rgba(255, 70, 120, 0.15);
-
-    color: #ff5b8c;
-
-    font-size: 27px;
-
-    margin-bottom: 20px;
+    animation: pulseGlow 5s ease-in-out infinite;
 }
 
-.card h2,
-.poem h2,
-.promise h2,
-.counter-section h2 {
-    font-size: 29px;
+@keyframes pulseGlow {
 
-    font-weight: normal;
+    0%,
+    100% {
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
 
-    margin-bottom: 25px;
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
 }
 
-.card p {
-    color: #e8d4dc;
+.hero-content {
+    position: relative;
+    z-index: 2;
 
-    line-height: 1.9;
+    max-width: 850px;
 
-    margin-bottom: 18px;
-
-    font-size: 15px;
+    animation: heroAppear 1.5s ease forwards;
 }
 
-.firma {
-    color: #ff86a8 !important;
+@keyframes heroAppear {
 
-    font-style: italic;
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 
-    font-size: 18px !important;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
-/* ==========================================
-   CONTADOR
-========================================== */
+/* =========================================
+   TEXTOS PEQUEÑOS
+========================================= */
 
-.counter-section {
-    min-height: 70vh;
-}
-
-.counter-date {
-    color: #aa919a;
-
-    font-size: 13px;
-
-    margin-top: -15px;
-
-    margin-bottom: 25px;
-}
-
-.counter {
-    display: flex;
-
-    gap: 10px;
-
-    width: 100%;
-
-    max-width: 500px;
-}
-
-.counter div {
-    flex: 1;
-
-    padding: 20px 5px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(255, 255, 255, 0.06);
-
-    border:
-        1px solid rgba(255, 255, 255, 0.08);
-
-    transition: 0.3s;
-}
-
-.counter div:hover {
-    transform: translateY(-5px);
-
-    border-color:
-        rgba(255, 100, 145, 0.25);
-}
-
-.counter strong {
+.eyebrow {
     display: block;
 
-    color: #ff769d;
-
-    font-size: 28px;
-}
-
-.counter span {
-    display: block;
-
-    margin-top: 5px;
-
-    color: #cdbbc3;
-
+    font-family: Arial, sans-serif;
     font-size: 11px;
-
+    letter-spacing: 5px;
     text-transform: uppercase;
 
-    letter-spacing: 1px;
+    color: #dca2b1;
+
+    margin-bottom: 25px;
 }
 
 
-/* ==========================================
-   POEMA
-========================================== */
+/* =========================================
+   CORAZÓN PRINCIPAL
+========================================= */
 
-.poem {
-    background:
-        rgba(255, 255, 255, 0.025);
-}
+.small-heart {
+    font-size: 35px;
+    color: #ff557a;
 
-.quote {
-    color: #ff618e;
-
-    font-size: 80px;
-
-    height: 50px;
-}
-
-.poem p {
-    color: #ddc6cf;
-
-    line-height: 2;
-
-    font-size: 16px;
-
-    margin: 10px 0;
-}
-
-.poem h3 {
-    margin-top: 25px;
-
-    color: #ff91af;
-
-    font-size: 23px;
-
-    font-style: italic;
-
-    font-weight: normal;
-}
-
-
-/* ==========================================
-   PROMESA
-========================================== */
-
-.promise {
-    min-height: 80vh;
-}
-
-.promise p {
-    max-width: 340px;
-
-    color: #dbc5ce;
-
-    line-height: 1.9;
-
-    margin: 10px 0;
-}
-
-.infinity {
-    color: #ff618f;
-
-    font-size: 80px;
-
-    margin: 15px 0;
+    margin-bottom: 12px;
 
     text-shadow:
-        0 0 30px rgba(255, 70, 120, 0.6);
+        0 0 10px rgba(255, 80, 120, 0.8),
+        0 0 30px rgba(255, 80, 120, 0.5);
 
-    animation: flotar 3s ease-in-out infinite;
+    animation: heartbeat 1.6s infinite;
 }
 
-.small {
-    font-style: italic;
-}
-
-
-/* ==========================================
-   FINAL
-========================================== */
-
-.final {
-    min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255, 55, 110, 0.18),
-            transparent 60%
-        );
-}
-
-.big-heart {
-    color: #ff4f83;
-
-    font-size: 100px;
-
-    animation: latido 1.3s infinite;
-
-    text-shadow:
-        0 0 35px rgba(255, 50, 100, 0.7);
-}
-
-.final h1 {
-    font-size: 34px;
-
-    font-weight: normal;
-
-    margin: 20px 0;
-}
-
-.final > p {
-    color: #ddc7cf;
-
-    margin: 6px;
-}
-
-.final-message {
-    margin-top: 35px;
-
-    padding: 25px;
-
-    max-width: 380px;
-
-    border-radius: 20px;
-
-    background:
-        rgba(255, 70, 120, 0.09);
-
-    border:
-        1px solid rgba(255, 120, 160, 0.2);
-
-    animation: aparecer 0.8s ease;
-}
-
-.final-message h2 {
-    color: #ff739b;
-
-    font-size: 32px;
-
-    margin-bottom: 15px;
-}
-
-.final-message p {
-    color: #ead8df;
-
-    line-height: 1.8;
-
-    margin-bottom: 15px;
-}
-
-.final-message span {
-    color: #ff9db7;
-
-    font-size: 14px;
-}
-
-
-/* ==========================================
-   ANIMACIONES
-========================================== */
-
-@keyframes latido {
+@keyframes heartbeat {
 
     0%,
     100% {
         transform: scale(1);
     }
 
-    50% {
-        transform: scale(1.15);
+    15% {
+        transform: scale(1.18);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.12);
     }
 }
 
-@keyframes aparecer {
 
-    from {
-        opacity: 0;
+/* =========================================
+   TITULO HERO
+========================================= */
 
-        transform:
-            translateY(20px);
-    }
+.hero h1 {
+    font-size: clamp(75px, 15vw, 170px);
+    font-weight: normal;
 
-    to {
-        opacity: 1;
+    letter-spacing: -5px;
 
-        transform:
-            translateY(0);
-    }
+    color: #fff4f6;
+
+    line-height: 0.9;
+
+    text-shadow:
+        0 0 25px rgba(255, 170, 190, 0.15);
 }
 
-@keyframes entrada {
+.line {
+    width: 70px;
+    height: 1px;
+
+    background: #c87991;
+
+    margin: 35px auto;
+}
+
+.hero-title {
+    font-size: clamp(24px, 4vw, 38px);
+
+    color: #f3ccd6;
+
+    margin-bottom: 18px;
+}
+
+.hero-text {
+    max-width: 560px;
+
+    margin: 0 auto 35px;
+
+    color: #c9aeb7;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+button {
+    border: none;
+    cursor: pointer;
+
+    font-family: Arial, sans-serif;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+#startButton,
+#surpriseButton {
+
+    padding: 15px 30px;
+
+    border-radius: 50px;
+
+    background: transparent;
+
+    border: 1px solid rgba(232, 137, 160, 0.6);
+
+    color: #f5cbd5;
+
+    letter-spacing: 1px;
+
+    font-size: 13px;
+
+    box-shadow:
+        0 0 20px rgba(180, 50, 90, 0.08);
+}
+
+#startButton:hover,
+#surpriseButton:hover {
+
+    transform: translateY(-4px);
+
+    background: rgba(190, 55, 90, 0.18);
+
+    box-shadow:
+        0 10px 35px rgba(190, 50, 90, 0.25);
+}
+
+
+/* =========================================
+   SECCIONES
+========================================= */
+
+.section {
+
+    width: min(1100px, 90%);
+
+    margin: 0 auto;
+
+    padding: 140px 20px;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(35px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.section.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   NUMERO DE SECCION
+========================================= */
+
+.section-number {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: #a66b7c;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   TITULOS
+========================================= */
+
+.section h2 {
+
+    font-weight: normal;
+
+    font-size: clamp(32px, 5vw, 55px);
+
+    line-height: 1.2;
+
+    color: #f7e6ea;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   CARTA
+========================================= */
+
+.letter-card {
+
+    position: relative;
+
+    max-width: 720px;
+
+    margin: 40px auto 0;
+
+    padding: 65px 70px;
+
+    text-align: left;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 240, 245, 0.06),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    border: 1px solid rgba(255, 180, 200, 0.12);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35);
+
+    backdrop-filter: blur(10px);
+}
+
+.card-heart {
+
+    position: absolute;
+
+    top: 28px;
+    right: 35px;
+
+    color: #e75b7b;
+
+    font-size: 20px;
+
+    opacity: 0.8;
+}
+
+.letter-card p {
+
+    color: #cdb7bd;
+
+    font-size: 17px;
+
+    margin-bottom: 22px;
+}
+
+.letter-card p:first-of-type {
+
+    color: #f0c4ce;
+
+    font-size: 23px;
+}
+
+.letter-card .highlight {
+
+    color: #f2c4cf;
+
+    font-size: 20px;
+
+    padding: 25px 0;
+
+    border-top: 1px solid rgba(255, 170, 190, 0.1);
+
+    border-bottom: 1px solid rgba(255, 170, 190, 0.1);
+}
+
+.signature {
+
+    text-align: right;
+
+    color: #e89aac !important;
+
+    font-style: italic;
+
+    font-size: 21px !important;
+
+    margin-top: 35px;
+}
+
+
+/* =========================================
+   CONTADOR
+========================================= */
+
+.counter-section {
+
+    max-width: 1000px;
+}
+
+.since {
+
+    color: #9e7e88;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    margin-top: -20px;
+
+    margin-bottom: 50px;
+}
+
+.counter {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    max-width: 850px;
+
+    margin: auto;
+}
+
+.counter-item {
+
+    padding: 35px 15px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border:
+        1px solid rgba(255, 180, 200, 0.09);
+
+    border-radius: 6px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.counter-item:hover {
+
+    transform: translateY(-7px);
+
+    background:
+        rgba(190, 50, 90, 0.08);
+}
+
+.counter-item strong {
+
+    display: block;
+
+    font-size: clamp(35px, 5vw, 60px);
+
+    font-weight: normal;
+
+    color: #f0c5cf;
+
+    line-height: 1;
+}
+
+.counter-item span {
+
+    display: block;
+
+    margin-top: 12px;
+
+    color: #8e737c;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+}
+
+.counter-footer {
+
+    margin-top: 35px;
+
+    color: #a98c95;
+
+    font-style: italic;
+}
+
+
+/* =========================================
+   POEMA
+========================================= */
+
+.poem {
+
+    max-width: 850px;
+}
+
+.quote {
+
+    font-size: 100px;
+
+    line-height: 0.5;
+
+    color: #a84f68;
+
+    opacity: 0.6;
+
+    margin-bottom: 35px;
+}
+
+.poem-text {
+
+    max-width: 650px;
+
+    margin: auto;
+}
+
+.poem-text p {
+
+    color: #c6aeb5;
+
+    font-size: 18px;
+
+    margin-bottom: 35px;
+}
+
+.poem-text h3 {
+
+    margin-top: 45px;
+
+    font-size: 25px;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    color: #edb8c5;
+}
+
+
+/* =========================================
+   PROMESA
+========================================= */
+
+.promise {
+
+    max-width: 900px;
+}
+
+.promise > p {
+
+    color: #a98c95;
+
+    font-style: italic;
+
+    margin-bottom: 40px;
+}
+
+.promise-list {
+
+    max-width: 600px;
+
+    margin: auto;
+
+    text-align: left;
+}
+
+.promise-list div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 20px 0;
+
+    border-bottom:
+        1px solid rgba(255, 180, 200, 0.09);
+
+    color: #d2b9c0;
+
+    font-size: 17px;
+
+    transition:
+        padding-left 0.3s ease;
+}
+
+.promise-list div:hover {
+
+    padding-left: 10px;
+
+    color: #f0c4cf;
+}
+
+.promise-list span {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #a85d73;
+
+    min-width: 25px;
+}
+
+.infinity {
+
+    margin-top: 60px;
+
+    font-size: 90px;
+
+    line-height: 1;
+
+    color: #a9546d;
+
+    text-shadow:
+        0 0 30px rgba(190, 60, 100, 0.25);
+}
+
+.promise-final {
+
+    margin-top: 30px;
+
+    font-size: 20px;
+
+    color: #d8bbc3 !important;
+
+    font-style: italic;
+}
+
+
+/* =========================================
+   FINAL
+========================================= */
+
+.final {
+
+    min-height: 80vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.final-heart {
+
+    font-size: 65px;
+
+    color: #ff557c;
+
+    margin-bottom: 25px;
+
+    animation: heartbeat 1.8s infinite;
+
+    text-shadow:
+        0 0 20px rgba(255, 70, 110, 0.5);
+}
+
+.final h2 {
+
+    font-size: clamp(45px, 8vw, 85px);
+
+    margin-bottom: 30px;
+}
+
+.final > p {
+
+    color: #b99ba4;
+
+    margin-bottom: 5px;
+
+    font-size: 17px;
+}
+
+.final #surpriseButton {
+
+    margin-top: 35px;
+}
+
+
+/* =========================================
+   MENSAJE FINAL
+========================================= */
+
+.final-message {
+
+    width: min(650px, 90%);
+
+    margin-top: 50px;
+
+    padding: 50px 35px;
+
+    border:
+
+        1px solid rgba(255, 150, 180, 0.16);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(170, 45, 80, 0.12),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    border-radius: 10px;
+
+    animation:
+        messageAppear 0.8s ease forwards;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.hidden {
+
+    display: none !important;
+}
+
+@keyframes messageAppear {
 
     from {
+
         opacity: 0;
 
         transform:
             translateY(30px)
-            scale(0.95);
+            scale(0.96);
     }
 
     to {
+
         opacity: 1;
 
         transform:
@@ -746,86 +832,293 @@ button:hover {
     }
 }
 
-@keyframes flotar {
+.final-star {
 
-    0%,
-    100% {
-        transform: translateY(0);
-    }
+    color: #e99aaa;
 
-    50% {
-        transform: translateY(-10px);
-    }
+    font-size: 28px;
+
+    margin-bottom: 15px;
+}
+
+.final-message h3 {
+
+    font-size: 40px;
+
+    font-weight: normal;
+
+    color: #f1c0cb;
+
+    margin-bottom: 20px;
+}
+
+.final-message p {
+
+    color: #bda2aa;
+
+    margin-bottom: 5px;
+}
+
+.final-message strong {
+
+    display: block;
+
+    font-size: 22px;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    color: #e9bdc7;
+
+    margin: 25px 0;
+}
+
+.final-message span {
+
+    display: block;
+
+    color: #9f7d88;
+
+    font-size: 14px;
 }
 
 
-/* ==========================================
+/* =========================================
    FOOTER
-========================================== */
+========================================= */
 
 footer {
-    position: relative;
 
-    z-index: 2;
+    padding: 70px 20px 40px;
 
     text-align: center;
 
-    padding: 25px;
+    color: #725660;
 
-    color: #9f858e;
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+footer div {
+
+    color: #a84f68;
+
+    font-size: 18px;
+
+    margin-bottom: 15px;
+}
+
+footer small {
+
+    display: block;
+
+    margin-top: 12px;
+
+    color: #543b43;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================
+   SEPARADORES
+========================================= */
+
+.letter::after,
+.counter-section::after,
+.poem::after,
+.promise::after {
+
+    content: "♥";
+
+    display: block;
+
+    margin: 120px auto 0;
+
+    color: #713747;
 
     font-size: 12px;
 }
 
 
-/* ==========================================
-   CELULAR
-========================================== */
+/* =========================================
+   SELECCIÓN DE TEXTO
+========================================= */
 
-@media (max-width: 500px) {
+::selection {
 
-    section {
-        padding: 55px 18px;
-    }
+    background: #8f3d57;
 
-    .login-card {
-        padding: 35px 22px;
-    }
+    color: white;
+}
 
-    .login-card h1 {
-        font-size: 28px;
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+
+    background: #0d080b;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: #713447;
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: #a74f69;
+}
+
+
+/* =========================================
+   RESPONSIVE CELULAR
+========================================= */
+
+@media (max-width: 700px) {
+
+    .hero {
+
+        min-height: 100svh;
+
+        padding: 30px 18px;
     }
 
     .hero h1 {
-        font-size: 70px;
+
+        font-size: 80px;
+
+        letter-spacing: -3px;
     }
 
-    .card {
-        padding: 30px 20px;
+    .hero-title {
+
+        font-size: 25px;
+    }
+
+    .hero-text {
+
+        font-size: 14px;
+
+        padding: 0 10px;
+    }
+
+    .section {
+
+        width: 94%;
+
+        padding: 100px 10px;
+    }
+
+    .section h2 {
+
+        font-size: 34px;
+    }
+
+    .letter-card {
+
+        padding: 45px 25px;
+    }
+
+    .letter-card p {
+
+        font-size: 15px;
+    }
+
+    .letter-card .highlight {
+
+        font-size: 17px;
     }
 
     .counter {
-        gap: 6px;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
     }
 
-    .counter div {
-        padding: 16px 3px;
+    .counter-item {
+
+        padding: 28px 10px;
     }
 
-    .counter strong {
-        font-size: 21px;
+    .counter-item strong {
+
+        font-size: 40px;
     }
 
-    .counter span {
-        font-size: 9px;
+    .poem-text p {
+
+        font-size: 16px;
     }
 
-    .final h1 {
-        font-size: 29px;
+    .promise-list div {
+
+        font-size: 15px;
+
+        gap: 15px;
     }
 
-    .big-heart {
-        font-size: 85px;
+    .final {
+
+        min-height: 90vh;
+    }
+
+    .final h2 {
+
+        font-size: 50px;
+    }
+
+    .final-message {
+
+        padding: 40px 22px;
     }
 }
 
+
+/* =========================================
+   CELULARES MUY PEQUEÑOS
+========================================= */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+
+        font-size: 65px;
+    }
+
+    .section h2 {
+
+        font-size: 29px;
+    }
+
+    .counter-item strong {
+
+        font-size: 32px;
+    }
+
+    .counter-item span {
+
+        font-size: 9px;
+    }
+
+    .final h2 {
+
+        font-size: 42px;
+    }
+}
+```
