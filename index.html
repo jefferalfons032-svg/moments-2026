@@ -4,23 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="description" content="Un pequeño rincón hecho con amor ❤️">
+
     <title>Un lugar especial ❤️</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- PANTALLA DE CONTRASEÑA -->
+    <!-- ==========================================
+         PANTALLA DE CONTRASEÑA
+    =========================================== -->
+
     <div id="loginScreen" class="login-screen">
 
         <div class="login-card">
 
             <div class="lock">🔐</div>
 
-            <span class="mini">UN PEQUEÑO SECRETO</span>
+            <span class="mini">
+                UN PEQUEÑO SECRETO
+            </span>
 
-            <h1>Para alguien especial ❤️</h1>
+            <h1>
+                Para alguien especial ❤️
+            </h1>
 
             <p>
                 Preparé algo que solamente tú puedes descubrir.
@@ -39,34 +49,50 @@
                     autocomplete="off"
                 >
 
-                <button id="enterButton" onclick="entrar()">
+                <button id="enterButton">
                     Entrar ❤️
                 </button>
 
             </div>
 
-            <p id="errorMessage" class="error-message"></p>
+            <p
+                id="errorMessage"
+                class="error-message"
+            ></p>
 
-            <div class="tiny-heart">♡</div>
+            <div class="tiny-heart">
+                ♡
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <div id="mainContent" class="hidden">
+    <!-- ==========================================
+         CONTENIDO PRINCIPAL
+    =========================================== -->
+
+    <div
+        id="mainContent"
+        class="hidden"
+    >
 
         <div class="hearts"></div>
 
         <main>
 
             <!-- INICIO -->
+
             <section class="hero">
 
-                <span class="mini">PARA EL AMOR DE MI VIDA</span>
+                <span class="mini">
+                    PARA EL AMOR DE MI VIDA
+                </span>
 
-                <h1>Dany <span>♡</span></h1>
+                <h1>
+                    Dany <span>♡</span>
+                </h1>
 
                 <p class="subtitle">
                     Tres años contigo...
@@ -74,7 +100,7 @@
                     y todavía siento que fue ayer cuando empezó todo.
                 </p>
 
-                <button onclick="mostrarCarta()">
+                <button id="letterButton">
                     Abrir mi corazón 💌
                 </button>
 
@@ -82,11 +108,19 @@
 
 
             <!-- CARTA -->
-            <section id="carta" class="card hidden">
 
-                <div class="heart-icon">♥</div>
+            <section
+                id="carta"
+                class="card hidden"
+            >
 
-                <h2>Para ti, Dany</h2>
+                <div class="heart-icon">
+                    ♥
+                </div>
+
+                <h2>
+                    Para ti, Dany
+                </h2>
 
                 <p>
                     No sé exactamente en qué momento te convertiste
@@ -122,11 +156,16 @@
 
 
             <!-- CONTADOR -->
+
             <section class="counter-section">
 
-                <span class="mini">NUESTRA HISTORIA</span>
+                <span class="mini">
+                    NUESTRA HISTORIA
+                </span>
 
-                <h2>3 años contigo ❤️</h2>
+                <h2>
+                    3 años contigo ❤️
+                </h2>
 
                 <p class="counter-date">
                     Desde el 01 de septiembre de 2023
@@ -160,30 +199,40 @@
 
 
             <!-- POEMA -->
+
             <section class="poem">
 
-                <div class="quote">“</div>
+                <div class="quote">
+                    “
+                </div>
 
-                <h2>Si pudiera escribirte un poema...</h2>
+                <h2>
+                    Si pudiera escribirte un poema...
+                </h2>
 
                 <p>
-                    Te escribiría en cada estrella,<br>
+                    Te escribiría en cada estrella,
+                    <br>
                     para que el cielo supiera tu nombre.
                 </p>
 
                 <p>
-                    Te escribiría en cada amanecer,<br>
+                    Te escribiría en cada amanecer,
+                    <br>
                     porque haces bonito hasta comenzar de nuevo.
                 </p>
 
                 <p>
-                    Te escribiría en cada canción,<br>
-                    porque algunas melodías simplemente<br>
+                    Te escribiría en cada canción,
+                    <br>
+                    porque algunas melodías simplemente
+                    <br>
                     suenan como tú.
                 </p>
 
                 <p>
-                    Y si me quedaran pocas palabras,<br>
+                    Y si me quedaran pocas palabras,
+                    <br>
                     solamente diría:
                 </p>
 
@@ -195,11 +244,16 @@
 
 
             <!-- PROMESA -->
+
             <section class="promise">
 
-                <span class="mini">UNA PROMESA</span>
+                <span class="mini">
+                    UNA PROMESA
+                </span>
 
-                <h2>No prometo una vida perfecta...</h2>
+                <h2>
+                    No prometo una vida perfecta...
+                </h2>
 
                 <p>
                     Pero sí prometo seguir eligiéndote,
@@ -212,7 +266,9 @@
                     y construir muchos más contigo.
                 </p>
 
-                <div class="infinity">∞</div>
+                <div class="infinity">
+                    ∞
+                </div>
 
                 <p class="small">
                     Porque tres años son solo el comienzo.
@@ -222,11 +278,16 @@
 
 
             <!-- FINAL -->
+
             <section class="final">
 
-                <div class="big-heart">♥</div>
+                <div class="big-heart">
+                    ♥
+                </div>
 
-                <h1>Feliz aniversario, Dany</h1>
+                <h1>
+                    Feliz aniversario, Dany
+                </h1>
 
                 <p>
                     Gracias por estos 3 años.
@@ -236,13 +297,18 @@
                     Gracias por ser tú.
                 </p>
 
-                <button onclick="sorpresa()">
+                <button id="surpriseButton">
                     Tengo algo más que decirte... ❤️
                 </button>
 
-                <div id="mensajeFinal" class="hidden final-message">
+                <div
+                    id="mensajeFinal"
+                    class="hidden final-message"
+                >
 
-                    <h2>Te amo. ❤️</h2>
+                    <h2>
+                        Te amo. ❤️
+                    </h2>
 
                     <p>
                         Y si pudiera volver al día en que te conocí,
@@ -259,6 +325,7 @@
 
         </main>
 
+
         <footer>
             Hecho con amor, solamente para Dany ❤️
         </footer>
@@ -266,7 +333,262 @@
     </div>
 
 
-    <script src="script.js"></script>
+    <!-- ==========================================
+         JAVASCRIPT DIRECTAMENTE EN EL HTML
+    =========================================== -->
+
+    <script>
+
+        const PASSWORD = "01092023";
+
+        const fechaInicio =
+            new Date(2023, 8, 1, 0, 0, 0);
+
+
+        const loginScreen =
+            document.getElementById("loginScreen");
+
+        const mainContent =
+            document.getElementById("mainContent");
+
+        const passwordInput =
+            document.getElementById("passwordInput");
+
+        const enterButton =
+            document.getElementById("enterButton");
+
+        const errorMessage =
+            document.getElementById("errorMessage");
+
+
+        // ==========================================
+        // CONTRASEÑA
+        // ==========================================
+
+        function entrar() {
+
+            const clave =
+                passwordInput.value.trim();
+
+            if (clave === PASSWORD) {
+
+                loginScreen.style.display = "none";
+
+                mainContent.classList.remove("hidden");
+
+                errorMessage.textContent = "";
+
+                actualizarContador();
+
+                iniciarCorazones();
+
+            } else {
+
+                errorMessage.textContent =
+                    "Código incorrecto ❤️";
+
+                passwordInput.value = "";
+
+                passwordInput.focus();
+
+            }
+
+        }
+
+
+        enterButton.addEventListener(
+            "click",
+            entrar
+        );
+
+
+        passwordInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+                    entrar();
+                }
+
+            }
+        );
+
+
+        // ==========================================
+        // CARTA
+        // ==========================================
+
+        const letterButton =
+            document.getElementById("letterButton");
+
+        const carta =
+            document.getElementById("carta");
+
+
+        letterButton.addEventListener(
+            "click",
+            function() {
+
+                carta.classList.remove("hidden");
+
+                carta.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }
+        );
+
+
+        // ==========================================
+        // SORPRESA
+        // ==========================================
+
+        const surpriseButton =
+            document.getElementById("surpriseButton");
+
+        const mensajeFinal =
+            document.getElementById("mensajeFinal");
+
+
+        surpriseButton.addEventListener(
+            "click",
+            function() {
+
+                mensajeFinal.classList.remove("hidden");
+
+                mensajeFinal.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }
+        );
+
+
+        // ==========================================
+        // CONTADOR
+        // ==========================================
+
+        function actualizarContador() {
+
+            const ahora =
+                new Date();
+
+            const diferencia =
+                Math.max(
+                    0,
+                    ahora - fechaInicio
+                );
+
+            const totalSegundos =
+                Math.floor(
+                    diferencia / 1000
+                );
+
+
+            const dias =
+                Math.floor(
+                    totalSegundos / 86400
+                );
+
+            const horas =
+                Math.floor(
+                    (totalSegundos % 86400) / 3600
+                );
+
+            const minutos =
+                Math.floor(
+                    (totalSegundos % 3600) / 60
+                );
+
+            const segundos =
+                totalSegundos % 60;
+
+
+            document.getElementById("days")
+                .textContent = dias;
+
+            document.getElementById("hours")
+                .textContent = horas;
+
+            document.getElementById("minutes")
+                .textContent = minutos;
+
+            document.getElementById("seconds")
+                .textContent = segundos;
+
+        }
+
+
+        setInterval(
+            actualizarContador,
+            1000
+        );
+
+
+        // ==========================================
+        // CORAZONES
+        // ==========================================
+
+        let corazonesActivos = false;
+
+
+        function iniciarCorazones() {
+
+            if (corazonesActivos) {
+                return;
+            }
+
+            corazonesActivos = true;
+
+
+            setInterval(
+                function() {
+
+                    const contenedor =
+                        document.querySelector(".hearts");
+
+                    const corazon =
+                        document.createElement("div");
+
+                    corazon.className =
+                        "heart";
+
+                    corazon.textContent =
+                        "♥";
+
+                    corazon.style.left =
+                        Math.random() * 100 + "vw";
+
+                    corazon.style.fontSize =
+                        (12 + Math.random() * 20) + "px";
+
+                    corazon.style.animationDuration =
+                        (4 + Math.random() * 4) + "s";
+
+
+                    contenedor.appendChild(
+                        corazon
+                    );
+
+
+                    setTimeout(
+                        function() {
+
+                            corazon.remove();
+
+                        },
+                        8000
+                    );
+
+                },
+                900
+            );
+
+        }
+
+    </script>
 
 </body>
 </html>
