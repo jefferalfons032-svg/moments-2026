@@ -1,12 +1,6 @@
-```javascript
 /* =========================================
    ❤️ DANY + JEFFERSON
    01/09/2023 → HOY
-========================================= */
-
-
-/* =========================================
-   FECHA DE INICIO
 ========================================= */
 
 const fechaInicio = new Date(
@@ -20,93 +14,74 @@ const fechaInicio = new Date(
 
 
 /* =========================================
-   CONTADOR EN TIEMPO REAL
+   ❤️ CONTADOR
 ========================================= */
 
 function actualizarContador() {
 
     const ahora = new Date();
 
-
-    /* AÑOS */
-
     let años =
         ahora.getFullYear() -
         fechaInicio.getFullYear();
 
-
-    let aniversario =
+    let fechaAniversario =
         new Date(fechaInicio);
 
-    aniversario.setFullYear(
+    fechaAniversario.setFullYear(
         fechaInicio.getFullYear() + años
     );
 
 
-    if (aniversario > ahora) {
+    if (fechaAniversario > ahora) {
 
         años--;
 
-        aniversario =
+        fechaAniversario =
             new Date(fechaInicio);
 
-        aniversario.setFullYear(
+        fechaAniversario.setFullYear(
             fechaInicio.getFullYear() + años
         );
     }
 
 
-    /* MESES */
-
     let meses =
         ahora.getMonth() -
-        aniversario.getMonth();
+        fechaAniversario.getMonth();
 
 
     if (
         ahora.getDate() <
-        aniversario.getDate()
+        fechaAniversario.getDate()
     ) {
-
         meses--;
-
     }
 
 
     if (meses < 0) {
-
         meses += 12;
-
     }
 
 
-    /* FECHA DESPUÉS DE AÑOS + MESES */
-
     const fechaMes =
-        new Date(aniversario);
+        new Date(fechaAniversario);
 
     fechaMes.setMonth(
         fechaMes.getMonth() + meses
     );
 
 
-    /* DIFERENCIA */
-
     const diferencia =
         ahora.getTime() -
         fechaMes.getTime();
 
 
-    /* DÍAS */
-
     const dias =
         Math.floor(
-            diferencia /
-            86400000
+            diferencia / 86400000
         );
 
-
-    /* HORAS */
 
     const horas =
         Math.floor(
@@ -115,8 +90,6 @@ function actualizarContador() {
         );
 
 
-    /* MINUTOS */
-
     const minutos =
         Math.floor(
             (diferencia % 3600000) /
@@ -124,18 +97,12 @@ function actualizarContador() {
         );
 
 
-    /* SEGUNDOS */
-
     const segundos =
         Math.floor(
             (diferencia % 60000) /
             1000
         );
 
-
-    /* =====================================
-       MOSTRAR
-    ====================================== */
 
     const years =
         document.getElementById("years");
@@ -157,59 +124,41 @@ function actualizarContador() {
 
 
     if (years) {
-
-        years.textContent =
-            años;
-
+        years.textContent = años;
     }
 
 
     if (months) {
-
-        months.textContent =
-            meses;
-
+        months.textContent = meses;
     }
 
 
     if (days) {
-
-        days.textContent =
-            dias;
-
+        days.textContent = dias;
     }
 
 
     if (hours) {
-
         hours.textContent =
-            String(horas)
-                .padStart(2, "0");
-
+            String(horas).padStart(2, "0");
     }
 
 
     if (minutes) {
-
         minutes.textContent =
-            String(minutos)
-                .padStart(2, "0");
-
+            String(minutos).padStart(2, "0");
     }
 
 
     if (seconds) {
-
         seconds.textContent =
-            String(segundos)
-                .padStart(2, "0");
-
+            String(segundos).padStart(2, "0");
     }
 }
 
 
 /* =========================================
-   BOTÓN NUESTRA HISTORIA
+   💕 NUESTRA HISTORIA
 ========================================= */
 
 const historyButton =
@@ -241,84 +190,12 @@ if (historyButton) {
 
         }
     );
+
 }
 
 
 /* =========================================
-   🎁 BOTÓN DE SORPRESA
-========================================= */
-
-const surpriseButton =
-    document.getElementById(
-        "surpriseButton"
-    );
-
-const finalMessage =
-    document.getElementById(
-        "finalMessage"
-    );
-
-
-/*
-   COMPROBAMOS QUE LOS DOS EXISTAN.
-*/
-
-if (
-    surpriseButton &&
-    finalMessage
-) {
-
-    surpriseButton.addEventListener(
-        "click",
-        function () {
-
-            /*
-               MOSTRAR SORPRESA
-            */
-
-            finalMessage.classList.add(
-                "open"
-            );
-
-
-            /*
-               OCULTAR BOTÓN
-            */
-
-            surpriseButton.style.display =
-                "none";
-
-
-            /*
-               LLUVIA DE CORAZONES
-            */
-
-            lluviaDeCorazones();
-
-
-            /*
-               DESPLAZAMIENTO SUAVE
-            */
-
-            setTimeout(
-                function () {
-
-                    finalMessage.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
-
-                },
-                300
-            );
-
-        }
-    );
-}
-
-
-/* =========================================
-   ❤️ CORAZONES
+   ❤️ CORAZONES FLOTANDO
 ========================================= */
 
 const hearts =
@@ -330,9 +207,7 @@ const hearts =
 function crearCorazon() {
 
     if (!hearts) {
-
         return;
-
     }
 
 
@@ -347,7 +222,7 @@ function crearCorazon() {
 
 
     corazon.textContent =
-        Math.random() > .5
+        Math.random() > 0.5
             ? "♥"
             : "♡";
 
@@ -390,34 +265,24 @@ function crearCorazon() {
 
 
 /* =========================================
-   🌧️ LLUVIA DE CORAZONES
+   ❤️ LLUVIA DE CORAZONES
 ========================================= */
 
 function lluviaDeCorazones() {
 
     for (
         let i = 0;
-        i < 70;
+        i < 35;
         i++
     ) {
 
         setTimeout(
             crearCorazon,
-            i * 55
+            i * 80
         );
 
     }
 }
-
-
-/* =========================================
-   CORAZONES SUAVES
-========================================= */
-
-setInterval(
-    crearCorazon,
-    2200
-);
 
 
 /* =========================================
@@ -427,14 +292,21 @@ setInterval(
 actualizarContador();
 
 
-/*
-   Actualización cada segundo.
-
-   El contador nunca queda congelado.
-*/
-
 setInterval(
     actualizarContador,
     1000
 );
-```
+
+
+setInterval(
+    crearCorazon,
+    2200
+);
+
+
+/* Corazones iniciales */
+
+setTimeout(
+    lluviaDeCorazones,
+    1000
+);
