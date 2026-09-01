@@ -3,31 +3,48 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#17070d"
+    >
 
     <title>Para Dany ❤️</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
 
 <body>
 
+    <!-- CORAZONES -->
     <div id="hearts"></div>
 
-    <!-- PORTADA -->
+
+    <!-- =====================================
+         PORTADA
+    ====================================== -->
+
     <section class="hero">
 
-        <div class="hero-card">
+        <div class="hero-content">
 
             <div class="date">
                 01 · 09 · 2026
             </div>
 
-            <div class="heart">
+            <div class="main-heart">
                 ♥
             </div>
 
-            <p class="overline">
+            <p class="eyebrow">
                 PARA EL AMOR DE MI VIDA
             </p>
 
@@ -35,116 +52,141 @@
                 Dany
             </h1>
 
-            <div class="line"></div>
+            <div class="divider"></div>
 
             <h2>
                 Feliz
                 <span>tercer aniversario</span>
             </h2>
 
-            <p class="intro">
-                Hoy celebramos tres años de una historia
-                que comenzó el 1 de septiembre de 2023.
+            <p class="hero-text">
+                Tres años desde aquel
+                1 de septiembre de 2023.
+                <br>
+                Tres años de nuestra historia.
             </p>
 
-            <button id="startButton">
+            <button
+                id="historyButton"
+                class="primary-button"
+                type="button"
+            >
                 Nuestra historia
                 <span>↓</span>
             </button>
 
         </div>
 
+        <div class="scroll-hint">
+            DESLIZA
+            <span>↓</span>
+        </div>
+
     </section>
 
 
-    <!-- CONTADOR -->
-    <section class="section counter-section">
+    <!-- =====================================
+         CONTADOR
+    ====================================== -->
 
-        <p class="section-number">
-            01 · EL TIEMPO
+    <section
+        id="contador"
+        class="section counter-section"
+    >
+
+        <p class="section-label">
+            01 · NUESTRO TIEMPO
         </p>
 
-        <h2>
+        <h2 class="section-title">
             Desde aquel
             <span>1 de septiembre.</span>
         </h2>
 
-        <p class="subtitle">
-            El tiempo pasa, pero lo nuestro sigue creciendo.
+        <p class="section-description">
+            Y mientras lees esto, nuestro tiempo
+            sigue avanzando.
         </p>
 
         <div class="start-date">
-            ♥ Desde el 01 de septiembre de 2023
+            ♥ Juntos desde el 01 · 09 · 2023
         </div>
 
+
+        <!-- RELOJ -->
 
         <div class="counter">
 
-            <div class="counter-box">
-                <strong id="years">3</strong>
-                <small>AÑOS</small>
+            <div class="counter-card">
+                <strong id="years">0</strong>
+                <span>AÑOS</span>
             </div>
 
-            <div class="counter-box">
+            <div class="counter-card">
                 <strong id="months">0</strong>
-                <small>MESES</small>
+                <span>MESES</span>
             </div>
 
-            <div class="counter-box">
+            <div class="counter-card">
                 <strong id="days">0</strong>
-                <small>DÍAS</small>
+                <span>DÍAS</span>
             </div>
 
-            <div class="counter-box">
-                <strong id="hours">0</strong>
-                <small>HORAS</small>
+            <div class="counter-card">
+                <strong id="hours">00</strong>
+                <span>HORAS</span>
             </div>
 
-            <div class="counter-box">
-                <strong id="minutes">0</strong>
-                <small>MINUTOS</small>
+            <div class="counter-card">
+                <strong id="minutes">00</strong>
+                <span>MINUTOS</span>
             </div>
 
-            <div class="counter-box">
-                <strong id="seconds">0</strong>
-                <small>SEGUNDOS</small>
+            <div class="counter-card seconds-card">
+                <strong id="seconds">00</strong>
+                <span>SEGUNDOS</span>
             </div>
 
         </div>
 
+
+        <div class="live-indicator">
+            <span></span>
+            CONTADOR EN TIEMPO REAL
+        </div>
+
+
         <div class="time-message">
-            <span>♡</span>
+            <div>♡</div>
+
             <p id="timePhrase">
-                Tres años después, sigues siendo mi lugar favorito.
+                Cada segundo contigo es un segundo
+                que quiero guardar para siempre.
             </p>
         </div>
 
     </section>
 
 
-    <!-- CARTA -->
+    <!-- =====================================
+         CARTA
+    ====================================== -->
+
     <section class="section letter-section">
 
-        <p class="section-number">
+        <p class="section-label">
             02 · PARA TI
         </p>
 
-        <div class="letter-title">
-
-            <p>
-                Una carta para
-            </p>
-
-            <h2>
-                Mi Dany
-            </h2>
-
-        </div>
+        <h2 class="section-title">
+            Una carta para
+            <span>mi Dany.</span>
+        </h2>
 
 
         <div class="letter">
 
-            <div class="letter-header">
+            <div class="letter-top">
                 <span>PARA: DANY</span>
                 <span>01.09.2026</span>
             </div>
@@ -158,38 +200,44 @@
             </h3>
 
             <p>
-                Hoy miro hacia atrás y me cuesta creer
-                que ya hayan pasado tres años desde aquel
-                1 de septiembre de 2023.
+                Hoy miro hacia atrás y me cuesta
+                creer que ya hayan pasado tres años
+                desde aquel 1 de septiembre de 2023.
             </p>
 
             <p>
-                Tres años pueden parecer solamente una fecha,
-                pero para mí significan muchísimo más.
+                Tres años pueden parecer solamente
+                una fecha, pero para mí significan
+                muchísimo más.
             </p>
 
             <p>
-                Significan risas, conversaciones, abrazos,
-                momentos difíciles, momentos increíbles,
-                pequeñas locuras y recuerdos que poco a poco
-                se fueron convirtiendo en nuestra historia.
+                Significan risas, conversaciones,
+                abrazos, momentos difíciles,
+                momentos increíbles, pequeñas
+                locuras y recuerdos que poco a poco
+                se fueron convirtiendo en nuestra
+                historia.
             </p>
 
             <p>
-                No todo ha sido perfecto, y precisamente
-                por eso valoro todavía más que sigamos aquí,
-                aprendiendo, creciendo y eligiéndonos.
+                No todo ha sido perfecto, y
+                precisamente por eso valoro todavía
+                más que sigamos aquí, aprendiendo,
+                creciendo y eligiéndonos.
             </p>
 
             <blockquote>
-                “De todas las casualidades bonitas que pudo
-                regalarme la vida, encontrarte fue mi favorita.”
+                “De todas las casualidades bonitas
+                que pudo regalarme la vida,
+                encontrarte fue mi favorita.”
             </blockquote>
 
             <p>
                 Gracias por cada sonrisa.
                 Gracias por cada momento.
-                Gracias simplemente por estar a mi lado.
+                Gracias simplemente por estar
+                a mi lado.
             </p>
 
             <p>
@@ -198,8 +246,9 @@
                 volvería a escogerte.
             </p>
 
-            <p class="love">
-                Feliz tercer aniversario, mi niña. ❤️
+            <p class="letter-love">
+                Feliz tercer aniversario,
+                mi niña. ❤️
             </p>
 
             <div class="signature">
@@ -212,10 +261,13 @@
     </section>
 
 
-    <!-- FRASE -->
-    <section class="quote">
+    <!-- =====================================
+         FRASE
+    ====================================== -->
 
-        <div class="big-heart">
+    <section class="quote-section">
+
+        <div class="quote-heart">
             ♥
         </div>
 
@@ -232,14 +284,17 @@
     </section>
 
 
-    <!-- RECUERDOS -->
-    <section class="section memories">
+    <!-- =====================================
+         RECUERDOS
+    ====================================== -->
 
-        <p class="section-number">
+    <section class="section memories-section">
+
+        <p class="section-label">
             03 · NUESTRA HISTORIA
         </p>
 
-        <h2>
+        <h2 class="section-title">
             Tres años.
             <span>Incontables recuerdos.</span>
         </h2>
@@ -247,46 +302,85 @@
 
         <div class="memory-grid">
 
-            <div class="memory first">
-                <div>
-                    <small>EL COMIENZO</small>
+            <article class="memory memory-large">
+
+                <div class="memory-number">
+                    01
+                </div>
+
+                <div class="memory-content">
+
+                    <small>
+                        EL COMIENZO
+                    </small>
+
                     <h3>
-                        Todo empezó
+                        Todo comenzó
                         con nosotros.
                     </h3>
+
                     <p>
                         01 · 09 · 2023
                     </p>
-                </div>
-            </div>
 
-            <div class="memory">
-                <div>
-                    <small>MOMENTOS</small>
+                </div>
+
+            </article>
+
+
+            <article class="memory">
+
+                <div class="memory-number">
+                    02
+                </div>
+
+                <div class="memory-content">
+
+                    <small>
+                        CADA MOMENTO
+                    </small>
+
                     <h3>
                         Cada instante
                         cuenta.
                     </h3>
-                </div>
-            </div>
 
-            <div class="memory">
-                <div>
-                    <small>HOY</small>
+                </div>
+
+            </article>
+
+
+            <article class="memory">
+
+                <div class="memory-number">
+                    03
+                </div>
+
+                <div class="memory-content">
+
+                    <small>
+                        HOY
+                    </small>
+
                     <h3>
                         Seguimos
                         escribiendo.
                     </h3>
+
                 </div>
-            </div>
+
+            </article>
 
         </div>
 
     </section>
 
 
-    <!-- POEMA -->
-    <section class="poem">
+    <!-- =====================================
+         POEMA
+    ====================================== -->
+
+    <section class="poem-section">
 
         <p>
             Para ti
@@ -296,7 +390,7 @@
             Un pequeño poema
         </h2>
 
-        <div class="poem-text">
+        <div class="poem">
 
             <p>
                 Si pudiera escribirte
@@ -304,8 +398,7 @@
             </p>
 
             <p>
-                el cielo tendría
-                tu nombre.
+                el cielo tendría tu nombre.
             </p>
 
             <p>
@@ -319,8 +412,8 @@
             </p>
 
             <p>
-                Y si pudiera pedirle
-                algo al tiempo,
+                Y si pudiera pedirle algo
+                al tiempo...
             </p>
 
             <strong>
@@ -336,45 +429,48 @@
     </section>
 
 
-    <!-- PROMESA -->
-    <section class="section promise">
+    <!-- =====================================
+         PROMESA
+    ====================================== -->
 
-        <p class="section-number">
+    <section class="section promise-section">
+
+        <p class="section-label">
             04 · UNA PROMESA
         </p>
 
-        <h2>
-            No prometo que todo
-            será perfecto.
+        <h2 class="section-title">
+            No prometo que
+            <span>todo será perfecto.</span>
         </h2>
 
-        <p class="subtitle">
-            Pero sí puedo prometerte
-            que seguiré poniendo de mi parte.
+        <p class="section-description">
+            Pero sí puedo prometerte que seguiré
+            poniendo de mi parte.
         </p>
 
 
-        <div class="promise-list">
+        <div class="promises">
 
-            <div>
+            <div class="promise">
                 <span>01</span>
                 <p>Seguir eligiéndote.</p>
                 <b>♡</b>
             </div>
 
-            <div>
+            <div class="promise">
                 <span>02</span>
                 <p>Cuidar lo que tenemos.</p>
                 <b>♡</b>
             </div>
 
-            <div>
+            <div class="promise">
                 <span>03</span>
                 <p>Estar en los días buenos y malos.</p>
                 <b>♡</b>
             </div>
 
-            <div>
+            <div class="promise">
                 <span>04</span>
                 <p>Seguir creando recuerdos contigo.</p>
                 <b>♡</b>
@@ -382,184 +478,160 @@
 
         </div>
 
+
         <div class="infinity">
             ∞
         </div>
 
-        <p>
-            Porque tres años son apenas el comienzo.
+        <p class="forever">
+            Porque tres años son apenas
+            el comienzo.
         </p>
 
     </section>
 
 
-   ```html
-<!-- FINAL · LA SORPRESA -->
-<section class="final">
+    <!-- =====================================
+         FINAL
+    ====================================== -->
 
-    <div class="final-decoration">
-        <span>♡</span>
-        <span>♥</span>
-        <span>♡</span>
-    </div>
+    <section class="final-section">
 
-    <div class="final-heart">♥</div>
+        <div class="final-decoration">
+            ✦　♡　✦
+        </div>
 
-    <p class="final-small">
-        Y después de todo lo que has visto...
-    </p>
-
-    <h2>
-        Todavía tengo
-        <span>algo para ti.</span>
-    </h2>
-
-    <p class="final-text">
-        Porque tres años merecen terminar con algo
-        que salga directamente de mi corazón.
-    </p>
-
-    <button id="surpriseButton" type="button">
-        <span>♥</span>
-        Tengo una sorpresa para ti
-        <span>♥</span>
-    </button>
-
-
- ```html
-<!-- =========================================
-     ❤️ FINAL Y SORPRESA
-========================================= -->
-
-<section class="final">
-
-    <div class="final-stars">
-        <span>✦</span>
-        <span>♡</span>
-        <span>✦</span>
-    </div>
-
-    <div class="final-heart">♥</div>
-
-    <p class="final-small">
-        Y si pensabas que esto terminaba aquí...
-    </p>
-
-    <h2>
-        Tengo algo
-        <span>más para ti.</span>
-    </h2>
-
-    <p class="final-text">
-        Porque nuestra historia merece una última
-        sorpresa antes de terminar este pequeño viaje.
-    </p>
-
-    <!-- ESTE BOTÓN ES EL IMPORTANTE -->
-    <button
-        id="surpriseButton"
-        type="button"
-        onclick="abrirSorpresa()"
-    >
-        <span>♥</span>
-        Tengo una sorpresa para ti
-        <span>♥</span>
-    </button>
-
-
-    <!-- =========================================
-         💌 SORPRESA
-    ========================================= -->
-
-    <div
-        id="finalMessage"
-        class="surprise-card"
-        style="display: none;"
-    >
-
-        <div class="surprise-heart">
+        <div class="final-heart">
             ♥
         </div>
 
-        <p class="surprise-label">
-            UNA ÚLTIMA COSA PARA TI
+        <p class="final-small">
+            Y si pensabas que esto terminaba aquí...
         </p>
 
-        <h3>
-            Dany...
-        </h3>
+        <h2>
+            Todavía tengo
+            <span>algo para ti.</span>
+        </h2>
 
-        <div class="surprise-line"></div>
-
-        <p>
-            Si estás leyendo esto, significa que
-            llegaste hasta el final.
+        <p class="final-description">
+            Porque tres años merecen terminar
+            con algo que salga directamente
+            de mi corazón.
         </p>
 
-        <p>
-            Y quiero aprovechar este pequeño espacio
-            para decirte algo que quizás nunca pueda
-            explicar completamente con palabras.
-        </p>
 
-        <p>
-            Desde aquel
-            <strong>1 de septiembre de 2023</strong>,
-            mi vida tiene recuerdos que llevan
-            tu nombre.
-        </p>
+        <!-- BOTÓN -->
 
-        <p>
-            Tres años de risas, conversaciones,
-            abrazos, momentos difíciles, momentos
-            hermosos y muchísimas historias que
-            solamente nosotros conocemos.
-        </p>
+        <button
+            id="surpriseButton"
+            type="button"
+            class="surprise-button"
+        >
+            <span>♥</span>
+            Tengo una sorpresa para ti
+            <span>♥</span>
+        </button>
 
-        <blockquote>
-            “De todas las personas que pudo cruzar
-            mi camino, qué bonito que fueras tú.”
-        </blockquote>
 
-        <div class="surprise-love">
-            ♥
-            <span>Te amo, Dany.</span>
-            ♥
+        <!-- =================================
+             SORPRESA OCULTA
+        ================================== -->
+
+        <div
+            id="finalMessage"
+            class="surprise"
+        >
+
+            <div class="surprise-heart">
+                ♥
+            </div>
+
+            <p class="surprise-label">
+                PARA LA NIÑA QUE AMO
+            </p>
+
+            <h3>
+                Dany...
+            </h3>
+
+            <div class="surprise-line"></div>
+
+            <p>
+                Si llegaste hasta aquí, quiero
+                que sepas que hice todo esto
+                pensando en ti.
+            </p>
+
+            <p>
+                Desde aquel
+                <strong>1 de septiembre de 2023</strong>,
+                mi vida tiene recuerdos que llevan
+                tu nombre.
+            </p>
+
+            <p>
+                Tres años de risas, conversaciones,
+                abrazos, momentos difíciles,
+                momentos hermosos y muchísimas
+                historias que solamente nosotros
+                conocemos.
+            </p>
+
+            <blockquote>
+                “De todas las personas que pudo
+                cruzar mi camino, qué bonito
+                que fueras tú.”
+            </blockquote>
+
+            <div class="surprise-love">
+                ♥
+                <span>
+                    Te amo, Dany.
+                </span>
+                ♥
+            </div>
+
+            <p>
+                Gracias por estos tres años.
+                Gracias por cada momento.
+                Gracias por seguir aquí.
+            </p>
+
+            <p class="future-text">
+                Y si estos tres años fueron
+                solamente el comienzo...
+            </p>
+
+            <div class="final-infinity">
+                ∞
+            </div>
+
+            <strong class="future-love">
+                quiero vivir muchos más contigo.
+            </strong>
+
+            <p class="final-signature">
+                Con todo mi amor,<br>
+                <strong>
+                    Jefferson ❤️
+                </strong>
+            </p>
+
         </div>
 
-        <p>
-            Gracias por estos tres años.
-            Gracias por cada momento.
-            Gracias por seguir aquí.
-        </p>
+    </section>
 
-        <p class="future">
-            Y si estos tres años fueron solamente
-            el comienzo...
-        </p>
 
-        <div class="infinity">
-            ∞
-        </div>
-
-        <strong class="future-love">
-            quiero vivir muchos más contigo.
-        </strong>
-
-        <p class="signature">
-            Con todo mi amor,<br>
-            <strong>Jefferson ❤️</strong>
-        </p>
-
-    </div>
-
-</section>
-```
-
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
 
     <footer>
 
-        <div>♥</div>
+        <div>
+            ♥
+        </div>
 
         <p>
             Hecho especialmente para Dany.
@@ -572,6 +644,8 @@
     </footer>
 
 
+    <!-- IMPORTANTE:
+         EL SCRIPT VA AL FINAL -->
     <script src="script.js"></script>
 
 </body>
