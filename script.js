@@ -1,253 +1,194 @@
 ```javascript
-// ==========================================
-// CONFIGURACIÓN
-// ==========================================
+document.addEventListener("DOMContentLoaded", function () {
 
-const PASSWORD = "01092023";
+    const PASSWORD = "01092023";
 
-const fechaInicio = new Date(2023, 8, 1, 0, 0, 0);
+    const fechaInicio = new Date(2023, 8, 1, 0, 0, 0);
 
+    const loginScreen = document.getElementById("loginScreen");
+    const mainContent = document.getElementById("mainContent");
+    const passwordInput = document.getElementById("passwordInput");
+    const errorMessage = document.getElementById("errorMessage");
+    const enterButton = document.getElementById("enterButton");
 
-// ==========================================
-// ELEMENTOS
-// ==========================================
+    // ==========================================
+    // CONTRASEÑA
+    // ==========================================
 
-const loginScreen = document.getElementById("loginScreen");
-const mainContent = document.getElementById("mainContent");
-const passwordInput = document.getElementById("passwordInput");
-const errorMessage = document.getElementById("errorMessage");
+    function entrar() {
 
+        const clave = passwordInput.value.trim();
 
-// ==========================================
-// ENTRAR
-// ==========================================
+        if (clave === PASSWORD) {
 
-function entrar() {
+            loginScreen.style.display = "none";
+            mainContent.classList.remove("hidden");
 
-    const clave = passwordInput.value.trim();
+            errorMessage.textContent = "";
 
-    console.log("Clave ingresada:", clave);
-    console.log("Clave correcta:", PASSWORD);
+            actualizarContador();
+            iniciarCorazones();
 
-    if (clave === PASSWORD) {
+        } else {
 
-        console.log("CONTRASEÑA CORRECTA ❤️");
+            errorMessage.textContent =
+                "Código incorrecto ❤️ Intenta nuevamente.";
 
-        loginScreen.classList.add("hidden");
-        mainContent.classList.remove("hidden");
+            passwordInput.value = "";
 
-        errorMessage.textContent = "";
+            passwordInput.focus();
 
-        actualizarContador();
-        iniciarCorazones();
+        }
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    } else {
-
-        console.log("CONTRASEÑA INCORRECTA ❌");
-
-        errorMessage.textContent =
-            "Código incorrecto ❤️ Intenta nuevamente.";
-
-        passwordInput.value = "";
-
-        passwordInput.focus();
-
-        passwordInput.classList.remove("shake");
-
-        setTimeout(() => {
-            passwordInput.classList.add("shake");
-        }, 10);
-
-        setTimeout(() => {
-            passwordInput.classList.remove("shake");
-        }, 500);
-    }
-}
-
-
-// ==========================================
-// ENTER DEL TECLADO
-// ==========================================
-
-passwordInput.addEventListener("keydown", function(event) {
-
-    if (event.key === "Enter") {
-        entrar();
     }
 
-});
+    // Botón
+    enterButton.addEventListener("click", entrar);
+
+    // Tecla Enter
+    passwordInput.addEventListener("keydown", function (event) {
+
+        if (event.key === "Enter") {
+            entrar();
+        }
+
+    });
 
 
-// ==========================================
-// MOSTRAR CARTA
-// ==========================================
+    // ==========================================
+    // CARTA
+    // ==========================================
 
-function mostrarCarta() {
+    const botonCarta =
+        document.querySelector(".hero button");
 
-    const carta = document.getElementById("carta");
+    const carta =
+        document.getElementById("carta");
 
-    carta.classList.remove("hidden");
+    botonCarta.addEventListener("click", function () {
 
-    setTimeout(() => {
+        carta.classList.remove("hidden");
 
         carta.scrollIntoView({
             behavior: "smooth",
             block: "center"
         });
 
-    }, 100);
-
-}
+    });
 
 
-// ==========================================
-// SORPRESA FINAL
-// ==========================================
+    // ==========================================
+    // SORPRESA
+    // ==========================================
 
-function sorpresa() {
+    const botonSorpresa =
+        document.querySelector(".final button");
 
-    const mensaje = document.getElementById("mensajeFinal");
+    const mensajeFinal =
+        document.getElementById("mensajeFinal");
 
-    mensaje.classList.remove("hidden");
+    botonSorpresa.addEventListener("click", function () {
 
-    setTimeout(() => {
+        mensajeFinal.classList.remove("hidden");
 
-        mensaje.scrollIntoView({
+        mensajeFinal.scrollIntoView({
             behavior: "smooth",
             block: "center"
         });
 
-    }, 100);
-
-}
+    });
 
 
-// ==========================================
-// CONTADOR
-// ==========================================
+    // ==========================================
+    // CONTADOR
+    // ==========================================
 
-function actualizarContador() {
+    function actualizarContador() {
 
-    const ahora = new Date();
+        const ahora = new Date();
 
-    let diferencia = ahora - fechaInicio;
+        const diferencia =
+            Math.max(0, ahora - fechaInicio);
 
-    if (diferencia < 0) {
-        diferencia = 0;
-    }
+        const totalSegundos =
+            Math.floor(diferencia / 1000);
 
-    const segundosTotales =
-        Math.floor(diferencia / 1000);
+        const dias =
+            Math.floor(totalSegundos / 86400);
 
-    const dias =
-        Math.floor(segundosTotales / 86400);
+        const horas =
+            Math.floor(
+                (totalSegundos % 86400) / 3600
+            );
 
-    const horas =
-        Math.floor(
-            (segundosTotales % 86400) / 3600
-        );
+        const minutos =
+            Math.floor(
+                (totalSegundos % 3600) / 60
+            );
 
-    const minutos =
-        Math.floor(
-            (segundosTotales % 3600) / 60
-        );
-
-    const segundos =
-        segundosTotales % 60;
+        const segundos =
+            totalSegundos % 60;
 
 
-    // IDs CORRECTOS DEL HTML
+        document.getElementById("days").textContent =
+            dias;
 
-    const diasElemento =
-        document.getElementById("days");
+        document.getElementById("hours").textContent =
+            horas;
 
-    const horasElemento =
-        document.getElementById("hours");
+        document.getElementById("minutes").textContent =
+            minutos;
 
-    const minutosElemento =
-        document.getElementById("minutes");
-
-    const segundosElemento =
-        document.getElementById("seconds");
-
-
-    if (diasElemento) {
-        diasElemento.textContent = dias;
-    }
-
-    if (horasElemento) {
-        horasElemento.textContent = horas;
-    }
-
-    if (minutosElemento) {
-        minutosElemento.textContent = minutos;
-    }
-
-    if (segundosElemento) {
-        segundosElemento.textContent = segundos;
-    }
-
-}
-
-setInterval(actualizarContador, 1000);
-
-
-// ==========================================
-// CORAZONES
-// ==========================================
-
-let corazonesIniciados = false;
-
-
-function iniciarCorazones() {
-
-    if (corazonesIniciados) {
-        return;
-    }
-
-    corazonesIniciados = true;
-
-    setInterval(crearCorazon, 900);
-
-}
-
-
-function crearCorazon() {
-
-    const corazon =
-        document.createElement("div");
-
-    corazon.className = "heart";
-
-    corazon.innerHTML = "♥";
-
-    corazon.style.left =
-        Math.random() * 100 + "vw";
-
-    corazon.style.animationDuration =
-        (4 + Math.random() * 4) + "s";
-
-    corazon.style.fontSize =
-        (12 + Math.random() * 20) + "px";
-
-
-    const heartsContainer =
-        document.querySelector(".hearts");
-
-    if (heartsContainer) {
-
-        heartsContainer.appendChild(corazon);
-
-        setTimeout(() => {
-            corazon.remove();
-        }, 8000);
+        document.getElementById("seconds").textContent =
+            segundos;
 
     }
 
-}
+    setInterval(actualizarContador, 1000);
+
+
+    // ==========================================
+    // CORAZONES
+    // ==========================================
+
+    let corazonesActivos = false;
+
+    function iniciarCorazones() {
+
+        if (corazonesActivos) return;
+
+        corazonesActivos = true;
+
+        setInterval(function () {
+
+            const contenedor =
+                document.querySelector(".hearts");
+
+            const corazon =
+                document.createElement("div");
+
+            corazon.className = "heart";
+
+            corazon.textContent = "♥";
+
+            corazon.style.left =
+                Math.random() * 100 + "vw";
+
+            corazon.style.fontSize =
+                (12 + Math.random() * 20) + "px";
+
+            corazon.style.animationDuration =
+                (4 + Math.random() * 4) + "s";
+
+            contenedor.appendChild(corazon);
+
+            setTimeout(function () {
+                corazon.remove();
+            }, 8000);
+
+        }, 900);
+
+    }
+
+});
 ```
