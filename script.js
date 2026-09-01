@@ -1,6 +1,12 @@
+```javascript
 /* =========================================
    ❤️ DANY + JEFFERSON
    01/09/2023 → HOY
+========================================= */
+
+
+/* =========================================
+   FECHA DE INICIO
 ========================================= */
 
 const fechaInicio = new Date(
@@ -14,7 +20,7 @@ const fechaInicio = new Date(
 
 
 /* =========================================
-   ❤️ CONTADOR
+   CONTADOR REAL
 ========================================= */
 
 function actualizarContador() {
@@ -25,22 +31,23 @@ function actualizarContador() {
         ahora.getFullYear() -
         fechaInicio.getFullYear();
 
-    let fechaAniversario =
+
+    let aniversario =
         new Date(fechaInicio);
 
-    fechaAniversario.setFullYear(
+    aniversario.setFullYear(
         fechaInicio.getFullYear() + años
     );
 
 
-    if (fechaAniversario > ahora) {
+    if (aniversario > ahora) {
 
         años--;
 
-        fechaAniversario =
+        aniversario =
             new Date(fechaInicio);
 
-        fechaAniversario.setFullYear(
+        aniversario.setFullYear(
             fechaInicio.getFullYear() + años
         );
     }
@@ -48,24 +55,29 @@ function actualizarContador() {
 
     let meses =
         ahora.getMonth() -
-        fechaAniversario.getMonth();
+        aniversario.getMonth();
 
 
     if (
         ahora.getDate() <
-        fechaAniversario.getDate()
+        aniversario.getDate()
     ) {
+
         meses--;
+
     }
 
 
     if (meses < 0) {
+
         meses += 12;
+
     }
 
 
     const fechaMes =
-        new Date(fechaAniversario);
+        new Date(aniversario);
+
 
     fechaMes.setMonth(
         fechaMes.getMonth() + meses
@@ -105,97 +117,96 @@ function actualizarContador() {
 
 
     const years =
-        document.getElementById("years");
+        document.getElementById(
+            "years"
+        );
+
 
     const months =
-        document.getElementById("months");
+        document.getElementById(
+            "months"
+        );
+
 
     const days =
-        document.getElementById("days");
+        document.getElementById(
+            "days"
+        );
+
 
     const hours =
-        document.getElementById("hours");
+        document.getElementById(
+            "hours"
+        );
+
 
     const minutes =
-        document.getElementById("minutes");
+        document.getElementById(
+            "minutes"
+        );
+
 
     const seconds =
-        document.getElementById("seconds");
+        document.getElementById(
+            "seconds"
+        );
 
 
     if (years) {
-        years.textContent = años;
+
+        years.textContent =
+            años;
+
     }
 
 
     if (months) {
-        months.textContent = meses;
+
+        months.textContent =
+            meses;
+
     }
 
 
     if (days) {
-        days.textContent = dias;
+
+        days.textContent =
+            dias;
+
     }
 
 
     if (hours) {
+
         hours.textContent =
-            String(horas).padStart(2, "0");
+            String(horas)
+                .padStart(2, "0");
+
     }
 
 
     if (minutes) {
+
         minutes.textContent =
-            String(minutos).padStart(2, "0");
+            String(minutos)
+                .padStart(2, "0");
+
     }
 
 
     if (seconds) {
+
         seconds.textContent =
-            String(segundos).padStart(2, "0");
+            String(segundos)
+                .padStart(2, "0");
+
     }
-}
-
-
-/* =========================================
-   💕 NUESTRA HISTORIA
-========================================= */
-
-const historyButton =
-    document.getElementById(
-        "historyButton"
-    );
-
-
-if (historyButton) {
-
-    historyButton.addEventListener(
-        "click",
-        function () {
-
-            const contador =
-                document.getElementById(
-                    "contador"
-                );
-
-
-            if (contador) {
-
-                contador.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
-
-        }
-    );
 
 }
 
 
 /* =========================================
-   ❤️ CORAZONES FLOTANDO
+   CORAZONES
 ========================================= */
 
 const hearts =
@@ -211,85 +222,88 @@ function crearCorazon() {
     }
 
 
-    const corazon =
+    const heart =
         document.createElement(
             "span"
         );
 
 
-    corazon.className =
+    heart.className =
         "floating-heart";
 
 
-    corazon.textContent =
+    heart.textContent =
         Math.random() > 0.5
             ? "♥"
             : "♡";
 
 
-    corazon.style.left =
+    heart.style.left =
         Math.random() * 100 +
         "vw";
 
 
-    corazon.style.fontSize =
+    heart.style.fontSize =
         (
             10 +
-            Math.random() * 18
+            Math.random() * 20
         ) +
         "px";
 
 
-    corazon.style.animationDuration =
+    heart.style.animationDuration =
         (
-            5 +
-            Math.random() * 6
+            6 +
+            Math.random() * 7
         ) +
         "s";
 
 
     hearts.appendChild(
-        corazon
+        heart
     );
 
 
     setTimeout(
-        function () {
+        () => {
 
-            corazon.remove();
+            heart.remove();
 
         },
-        13000
+        15000
     );
 }
 
 
 /* =========================================
-   ❤️ LLUVIA DE CORAZONES
+   LLUVIA INICIAL
 ========================================= */
 
-function lluviaDeCorazones() {
+function lluviaInicial() {
 
     for (
         let i = 0;
-        i < 35;
+        i < 18;
         i++
     ) {
 
         setTimeout(
             crearCorazon,
-            i * 80
+            i * 250
         );
 
     }
+
 }
 
 
 /* =========================================
-   🚀 INICIAR
+   INICIAR
 ========================================= */
 
 actualizarContador();
+
+lluviaInicial();
 
 
 setInterval(
@@ -300,13 +314,6 @@ setInterval(
 
 setInterval(
     crearCorazon,
-    2200
+    2400
 );
-
-
-/* Corazones iniciales */
-
-setTimeout(
-    lluviaDeCorazones,
-    1000
-);
+```
