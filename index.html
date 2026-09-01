@@ -1,595 +1,421 @@
 ```html
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Un pequeño rincón hecho con amor ❤️">
+    <meta name="description" content="Un pequeño rincón hecho con amor para Dany ❤️">
 
-    <title>Un lugar especial ❤️</title>
+    <title>Para Dany ❤️</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ==========================================
-         PANTALLA DE CONTRASEÑA
-    =========================================== -->
+    <!-- CORAZONES -->
+    <div id="hearts"></div>
 
-    <div id="loginScreen" class="login-screen">
 
-        <div class="login-card">
+    <!-- HERO -->
 
-            <div class="lock">🔐</div>
+    <header class="hero">
 
-            <span class="mini">
-                UN PEQUEÑO SECRETO
+        <div class="hero-content">
+
+            <span class="eyebrow">
+                01 · 09 · 2026
             </span>
 
+            <div class="small-heart">
+                ♥
+            </div>
+
             <h1>
-                Para alguien especial ❤️
+                Dany
             </h1>
 
+            <div class="line"></div>
+
+            <p class="hero-title">
+                Tres años de nosotros.
+            </p>
+
+            <p class="hero-text">
+                Tres años de risas, abrazos,
+                momentos difíciles, sueños
+                y recuerdos que quiero guardar
+                para siempre.
+            </p>
+
+            <button id="startButton">
+                Nuestra historia ↓
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- CARTA -->
+
+    <section class="letter section">
+
+        <div class="section-number">
+            01
+        </div>
+
+        <span class="eyebrow">
+            UNA CARTA PARA TI
+        </span>
+
+        <h2>
+            Para la persona<br>
+            que hace mis días más bonitos.
+        </h2>
+
+        <div class="letter-card">
+
+            <div class="card-heart">
+                ♥
+            </div>
+
             <p>
-                Preparé algo que solamente tú puedes descubrir.
+                Dany,
             </p>
 
-            <p class="question">
-                ¿Recuerdas nuestro día? 🥹
+            <p>
+                No sé en qué momento exactamente
+                te convertiste en una de las personas
+                más importantes de mi vida.
             </p>
 
-            <div class="password-box">
+            <p>
+                Solo sé que desde que llegaste,
+                muchas cosas cambiaron.
+            </p>
 
-                <input
-                    type="password"
-                    id="passwordInput"
-                    placeholder="Código secreto"
-                    autocomplete="off"
-                >
+            <p>
+                Mis días tienen más sonrisas,
+                mis recuerdos tienen tu nombre
+                y mis planes siempre terminan
+                imaginando un futuro contigo.
+            </p>
 
-                <button id="enterButton">
-                    Entrar ❤️
-                </button>
+            <p>
+                Hoy cumplimos tres años.
+                Y aunque parezcan solamente tres números,
+                para mí son miles de momentos.
+            </p>
+
+            <p>
+                Cada abrazo.
+                Cada risa.
+                Cada conversación.
+                Cada discusión que logramos superar.
+                Cada instante en el que simplemente
+                estuvimos juntos.
+            </p>
+
+            <p class="highlight">
+                Y si pudiera volver al 1 de septiembre
+                de 2023, volvería a elegirte.
+            </p>
+
+            <p class="signature">
+                Siempre tú. ❤️
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTADOR -->
+
+    <section class="counter-section section">
+
+        <div class="section-number">
+            02
+        </div>
+
+        <span class="eyebrow">
+            NUESTRA HISTORIA
+        </span>
+
+        <h2>
+            El tiempo que llevamos<br>
+            escribiendo nuestra historia.
+        </h2>
+
+        <p class="since">
+            Desde el 01 de septiembre de 2023
+        </p>
+
+        <div class="counter">
+
+            <div class="counter-item">
+
+                <strong id="days">
+                    0
+                </strong>
+
+                <span>
+                    días
+                </span>
 
             </div>
 
-            <p
-                id="errorMessage"
-                class="error-message"
-            ></p>
 
-            <div class="tiny-heart">
-                ♡
+            <div class="counter-item">
+
+                <strong id="hours">
+                    0
+                </strong>
+
+                <span>
+                    horas
+                </span>
+
+            </div>
+
+
+            <div class="counter-item">
+
+                <strong id="minutes">
+                    0
+                </strong>
+
+                <span>
+                    minutos
+                </span>
+
+            </div>
+
+
+            <div class="counter-item">
+
+                <strong id="seconds">
+                    0
+                </strong>
+
+                <span>
+                    segundos
+                </span>
+
             </div>
 
         </div>
 
-    </div>
+        <p class="counter-footer">
+            Y cada segundo contigo ha valido la pena. ❤️
+        </p>
 
+    </section>
 
-    <!-- ==========================================
-         CONTENIDO PRINCIPAL
-    =========================================== -->
 
-    <div
-        id="mainContent"
-        class="hidden"
-    >
+    <!-- POEMA -->
 
-        <div class="hearts"></div>
+    <section class="poem section">
 
-        <main>
+        <div class="section-number">
+            03
+        </div>
 
-            <!-- INICIO -->
+        <span class="eyebrow">
+            UN PEQUEÑO POEMA
+        </span>
 
-            <section class="hero">
+        <div class="quote">
+            “
+        </div>
 
-                <span class="mini">
-                    PARA EL AMOR DE MI VIDA
-                </span>
+        <h2>
+            Si pudiera escribirte
+            <br>
+            un poema...
+        </h2>
 
-                <h1>
-                    Dany <span>♡</span>
-                </h1>
+        <div class="poem-text">
 
-                <p class="subtitle">
-                    Tres años contigo...
-                    <br>
-                    y todavía siento que fue ayer cuando empezó todo.
-                </p>
+            <p>
+                Te escribiría en cada estrella,
+                <br>
+                para que el cielo aprendiera tu nombre.
+            </p>
 
-                <button id="letterButton">
-                    Abrir mi corazón 💌
-                </button>
+            <p>
+                Te escribiría en cada amanecer,
+                <br>
+                porque contigo hasta comenzar
+                de nuevo se siente bonito.
+            </p>
 
-            </section>
+            <p>
+                Te escribiría en cada canción,
+                <br>
+                porque algunas melodías
+                simplemente suenan como tú.
+            </p>
 
+            <p>
+                Y si algún día me quedaran
+                solamente unas pocas palabras...
+            </p>
 
-            <!-- CARTA -->
+            <h3>
+                “Qué bonito fue encontrarte.”
+            </h3>
 
-            <section
-                id="carta"
-                class="card hidden"
-            >
+        </div>
 
-                <div class="heart-icon">
-                    ♥
-                </div>
+    </section>
 
-                <h2>
-                    Para ti, Dany
-                </h2>
 
-                <p>
-                    No sé exactamente en qué momento te convertiste
-                    en una parte tan importante de mi vida.
-                </p>
+    <!-- PROMESA -->
 
-                <p>
-                    Solo sé que desde que llegaste,
-                    mis días tienen algo diferente.
-                    Hay sonrisas que llevan tu nombre
-                    y recuerdos que siempre quisiera repetir.
-                </p>
+    <section class="promise section">
 
-                <p>
-                    Hoy celebramos tres años,
-                    pero yo no quiero celebrar solamente
-                    el tiempo que llevamos juntos.
-                </p>
+        <div class="section-number">
+            04
+        </div>
 
-                <p>
-                    Quiero celebrar cada risa,
-                    cada abrazo, cada conversación,
-                    cada momento difícil que superamos
-                    y cada pequeño instante que hizo
-                    que me enamorara un poquito más de ti.
-                </p>
+        <span class="eyebrow">
+            UNA PROMESA
+        </span>
 
-                <p class="firma">
-                    Te elegiría una y mil veces. ❤️
-                </p>
+        <h2>
+            No prometo una vida perfecta.
+        </h2>
 
-            </section>
+        <p>
+            Prometo algo mejor:
+        </p>
 
+        <div class="promise-list">
 
-            <!-- CONTADOR -->
+            <div>
+                <span>01</span>
+                Seguir eligiéndote.
+            </div>
 
-            <section class="counter-section">
+            <div>
+                <span>02</span>
+                Cuidar nuestros recuerdos.
+            </div>
 
-                <span class="mini">
-                    NUESTRA HISTORIA
-                </span>
+            <div>
+                <span>03</span>
+                Estar contigo en los días difíciles.
+            </div>
 
-                <h2>
-                    3 años contigo ❤️
-                </h2>
+            <div>
+                <span>04</span>
+                Crear muchos recuerdos nuevos.
+            </div>
 
-                <p class="counter-date">
-                    Desde el 01 de septiembre de 2023
-                </p>
+        </div>
 
-                <div class="counter">
+        <div class="infinity">
+            ∞
+        </div>
 
-                    <div>
-                        <strong id="days">0</strong>
-                        <span>Días</span>
-                    </div>
+        <p class="promise-final">
+            Porque tres años son solamente
+            el comienzo de nuestra historia.
+        </p>
 
-                    <div>
-                        <strong id="hours">0</strong>
-                        <span>Horas</span>
-                    </div>
+    </section>
 
-                    <div>
-                        <strong id="minutes">0</strong>
-                        <span>Minutos</span>
-                    </div>
 
-                    <div>
-                        <strong id="seconds">0</strong>
-                        <span>Segundos</span>
-                    </div>
+    <!-- FINAL -->
 
-                </div>
+    <section class="final section">
 
-            </section>
+        <div class="final-heart">
+            ♥
+        </div>
 
+        <span class="eyebrow">
+            3 AÑOS
+        </span>
 
-            <!-- POEMA -->
+        <h2>
+            Feliz aniversario,
+            <br>
+            Dany.
+        </h2>
 
-            <section class="poem">
+        <p>
+            Gracias por estos tres años.
+        </p>
 
-                <div class="quote">
-                    “
-                </div>
+        <p>
+            Gracias por cada momento.
+        </p>
 
-                <h2>
-                    Si pudiera escribirte un poema...
-                </h2>
+        <p>
+            Gracias simplemente por ser tú.
+        </p>
 
-                <p>
-                    Te escribiría en cada estrella,
-                    <br>
-                    para que el cielo supiera tu nombre.
-                </p>
+        <button id="surpriseButton">
+            Hay algo más... ❤️
+        </button>
 
-                <p>
-                    Te escribiría en cada amanecer,
-                    <br>
-                    porque haces bonito hasta comenzar de nuevo.
-                </p>
 
-                <p>
-                    Te escribiría en cada canción,
-                    <br>
-                    porque algunas melodías simplemente
-                    <br>
-                    suenan como tú.
-                </p>
+        <div
+            id="finalMessage"
+            class="final-message hidden"
+        >
 
-                <p>
-                    Y si me quedaran pocas palabras,
-                    <br>
-                    solamente diría:
-                </p>
+            <div class="final-star">
+                ✦
+            </div>
 
-                <h3>
-                    “Qué bonito coincidir contigo.”
-                </h3>
+            <h3>
+                Te amo.
+            </h3>
 
-            </section>
+            <p>
+                Y si pudiera volver al día
+                en que comenzó todo...
+            </p>
 
+            <strong>
+                volvería a escogerte
+                sin pensarlo.
+            </strong>
 
-            <!-- PROMESA -->
+            <span>
+                Por estos 3 años,
+                y por todos los que vienen. ❤️
+            </span>
 
-            <section class="promise">
+        </div>
 
-                <span class="mini">
-                    UNA PROMESA
-                </span>
+    </section>
 
-                <h2>
-                    No prometo una vida perfecta...
-                </h2>
 
-                <p>
-                    Pero sí prometo seguir eligiéndote,
-                    incluso en los días difíciles.
-                </p>
+    <footer>
 
-                <p>
-                    Prometo seguir buscando tu sonrisa,
-                    cuidar nuestros recuerdos
-                    y construir muchos más contigo.
-                </p>
+        <div>
+            ♥
+        </div>
 
-                <div class="infinity">
-                    ∞
-                </div>
+        Hecho con amor para Dany.
 
-                <p class="small">
-                    Porque tres años son solo el comienzo.
-                </p>
+        <small>
+            01.09.2023 — ∞
+        </small>
 
-            </section>
+    </footer>
 
 
-            <!-- FINAL -->
-
-            <section class="final">
-
-                <div class="big-heart">
-                    ♥
-                </div>
-
-                <h1>
-                    Feliz aniversario, Dany
-                </h1>
-
-                <p>
-                    Gracias por estos 3 años.
-                </p>
-
-                <p>
-                    Gracias por ser tú.
-                </p>
-
-                <button id="surpriseButton">
-                    Tengo algo más que decirte... ❤️
-                </button>
-
-                <div
-                    id="mensajeFinal"
-                    class="hidden final-message"
-                >
-
-                    <h2>
-                        Te amo. ❤️
-                    </h2>
-
-                    <p>
-                        Y si pudiera volver al día en que te conocí,
-                        volvería a escogerte sin pensarlo.
-                    </p>
-
-                    <span>
-                        Por estos 3 años y por todos los que vienen. 🥹❤️
-                    </span>
-
-                </div>
-
-            </section>
-
-        </main>
-
-
-        <footer>
-            Hecho con amor, solamente para Dany ❤️
-        </footer>
-
-    </div>
-
-
-    <!-- ==========================================
-         JAVASCRIPT DIRECTAMENTE EN EL HTML
-    =========================================== -->
-
-    <script>
-
-        const PASSWORD = "01092023";
-
-        const fechaInicio =
-            new Date(2023, 8, 1, 0, 0, 0);
-
-
-        const loginScreen =
-            document.getElementById("loginScreen");
-
-        const mainContent =
-            document.getElementById("mainContent");
-
-        const passwordInput =
-            document.getElementById("passwordInput");
-
-        const enterButton =
-            document.getElementById("enterButton");
-
-        const errorMessage =
-            document.getElementById("errorMessage");
-
-
-        // ==========================================
-        // CONTRASEÑA
-        // ==========================================
-
-        function entrar() {
-
-            const clave =
-                passwordInput.value.trim();
-
-            if (clave === PASSWORD) {
-
-                loginScreen.style.display = "none";
-
-                mainContent.classList.remove("hidden");
-
-                errorMessage.textContent = "";
-
-                actualizarContador();
-
-                iniciarCorazones();
-
-            } else {
-
-                errorMessage.textContent =
-                    "Código incorrecto ❤️";
-
-                passwordInput.value = "";
-
-                passwordInput.focus();
-
-            }
-
-        }
-
-
-        enterButton.addEventListener(
-            "click",
-            entrar
-        );
-
-
-        passwordInput.addEventListener(
-            "keydown",
-            function(event) {
-
-                if (event.key === "Enter") {
-                    entrar();
-                }
-
-            }
-        );
-
-
-        // ==========================================
-        // CARTA
-        // ==========================================
-
-        const letterButton =
-            document.getElementById("letterButton");
-
-        const carta =
-            document.getElementById("carta");
-
-
-        letterButton.addEventListener(
-            "click",
-            function() {
-
-                carta.classList.remove("hidden");
-
-                carta.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-            }
-        );
-
-
-        // ==========================================
-        // SORPRESA
-        // ==========================================
-
-        const surpriseButton =
-            document.getElementById("surpriseButton");
-
-        const mensajeFinal =
-            document.getElementById("mensajeFinal");
-
-
-        surpriseButton.addEventListener(
-            "click",
-            function() {
-
-                mensajeFinal.classList.remove("hidden");
-
-                mensajeFinal.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-            }
-        );
-
-
-        // ==========================================
-        // CONTADOR
-        // ==========================================
-
-        function actualizarContador() {
-
-            const ahora =
-                new Date();
-
-            const diferencia =
-                Math.max(
-                    0,
-                    ahora - fechaInicio
-                );
-
-            const totalSegundos =
-                Math.floor(
-                    diferencia / 1000
-                );
-
-
-            const dias =
-                Math.floor(
-                    totalSegundos / 86400
-                );
-
-            const horas =
-                Math.floor(
-                    (totalSegundos % 86400) / 3600
-                );
-
-            const minutos =
-                Math.floor(
-                    (totalSegundos % 3600) / 60
-                );
-
-            const segundos =
-                totalSegundos % 60;
-
-
-            document.getElementById("days")
-                .textContent = dias;
-
-            document.getElementById("hours")
-                .textContent = horas;
-
-            document.getElementById("minutes")
-                .textContent = minutos;
-
-            document.getElementById("seconds")
-                .textContent = segundos;
-
-        }
-
-
-        setInterval(
-            actualizarContador,
-            1000
-        );
-
-
-        // ==========================================
-        // CORAZONES
-        // ==========================================
-
-        let corazonesActivos = false;
-
-
-        function iniciarCorazones() {
-
-            if (corazonesActivos) {
-                return;
-            }
-
-            corazonesActivos = true;
-
-
-            setInterval(
-                function() {
-
-                    const contenedor =
-                        document.querySelector(".hearts");
-
-                    const corazon =
-                        document.createElement("div");
-
-                    corazon.className =
-                        "heart";
-
-                    corazon.textContent =
-                        "♥";
-
-                    corazon.style.left =
-                        Math.random() * 100 + "vw";
-
-                    corazon.style.fontSize =
-                        (12 + Math.random() * 20) + "px";
-
-                    corazon.style.animationDuration =
-                        (4 + Math.random() * 4) + "s";
-
-
-                    contenedor.appendChild(
-                        corazon
-                    );
-
-
-                    setTimeout(
-                        function() {
-
-                            corazon.remove();
-
-                        },
-                        8000
-                    );
-
-                },
-                900
-            );
-
-        }
-
-    </script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
 ```
