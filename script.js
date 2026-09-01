@@ -1,6 +1,7 @@
 ```javascript
 /* =====================================================
    FECHA DE INICIO
+   01 DE SEPTIEMBRE DE 2023
 ===================================================== */
 
 const fechaInicio = new Date(
@@ -61,7 +62,7 @@ const finalMessage =
 
 
 /* =====================================================
-   BOTÓN PORTADA
+   BOTÓN "VER NUESTRA HISTORIA"
 ===================================================== */
 
 if (startButton) {
@@ -76,7 +77,8 @@ if (startButton) {
             if (timeSection) {
 
                 timeSection.scrollIntoView({
-                    behavior: "smooth"
+                    behavior: "smooth",
+                    block: "start"
                 });
 
             }
@@ -88,7 +90,7 @@ if (startButton) {
 
 
 /* =====================================================
-   CALCULAR TIEMPO EXACTO
+   CONTADOR
 ===================================================== */
 
 function calcularTiempo() {
@@ -103,8 +105,10 @@ function calcularTiempo() {
         ahora.getMonth() -
         fechaInicio.getMonth();
 
+
     let fechaTemporal =
         new Date(fechaInicio);
+
 
     fechaTemporal.setFullYear(
         fechaInicio.getFullYear() + años
@@ -197,31 +201,58 @@ function actualizarContador() {
         calcularTiempo();
 
 
-    yearsElement.textContent =
-        tiempo.años;
+    if (yearsElement) {
 
-    monthsElement.textContent =
-        tiempo.meses;
+        yearsElement.textContent =
+            tiempo.años;
 
-    daysElement.textContent =
-        tiempo.dias;
-
-    hoursElement.textContent =
-        String(tiempo.horas)
-            .padStart(2, "0");
-
-    minutesElement.textContent =
-        String(tiempo.minutos)
-            .padStart(2, "0");
-
-    secondsElement.textContent =
-        String(tiempo.segundos)
-            .padStart(2, "0");
+    }
 
 
-    actualizarFrase(
-        tiempo
-    );
+    if (monthsElement) {
+
+        monthsElement.textContent =
+            tiempo.meses;
+
+    }
+
+
+    if (daysElement) {
+
+        daysElement.textContent =
+            tiempo.dias;
+
+    }
+
+
+    if (hoursElement) {
+
+        hoursElement.textContent =
+            String(tiempo.horas)
+                .padStart(2, "0");
+
+    }
+
+
+    if (minutesElement) {
+
+        minutesElement.textContent =
+            String(tiempo.minutos)
+                .padStart(2, "0");
+
+    }
+
+
+    if (secondsElement) {
+
+        secondsElement.textContent =
+            String(tiempo.segundos)
+                .padStart(2, "0");
+
+    }
+
+
+    actualizarFrase(tiempo);
 
     actualizarProximoAniversario();
 
@@ -230,6 +261,7 @@ function actualizarContador() {
 
 actualizarContador();
 
+
 setInterval(
     actualizarContador,
     1000
@@ -237,13 +269,27 @@ setInterval(
 
 
 /* =====================================================
-   FRASES DINÁMICAS
+   FRASE DINÁMICA
 ===================================================== */
 
 function actualizarFrase(tiempo) {
 
     if (!timePhrase) {
         return;
+    }
+
+
+    if (
+        tiempo.años >= 3 &&
+        tiempo.meses === 0 &&
+        tiempo.dias <= 1
+    ) {
+
+        timePhrase.textContent =
+            "¡Tres años y todavía te elegiría una y mil veces! ❤️";
+
+        return;
+
     }
 
 
@@ -256,14 +302,16 @@ function actualizarFrase(tiempo) {
 
     }
 
+
     if (tiempo.años >= 2) {
 
         timePhrase.textContent =
-            "Más de dos años construyendo algo bonito juntos. ❤️";
+            "Más de dos años construyendo nuestra historia.";
 
         return;
 
     }
+
 
     if (tiempo.años >= 1) {
 
@@ -273,6 +321,7 @@ function actualizarFrase(tiempo) {
         return;
 
     }
+
 
     timePhrase.textContent =
         "Cada segundo contigo cuenta. ❤️";
@@ -286,7 +335,9 @@ function actualizarFrase(tiempo) {
 
 function actualizarProximoAniversario() {
 
-    const ahora = new Date();
+    const ahora =
+        new Date();
+
 
     let proximo =
         new Date(
@@ -379,10 +430,10 @@ function actualizarProximoAniversario() {
             );
 
 
-        if (diasRestantes === 1) {
+        if (diasRestantes <= 1) {
 
             progressText.textContent =
-                "¡Mañana celebramos otro capítulo! ❤️";
+                "❤️ Nuestro aniversario es mañana.";
 
         } else {
 
@@ -422,7 +473,7 @@ if (surpriseButton) {
                 "none";
 
 
-            lanzarCorazones(35);
+            lluviaDeCorazones();
 
 
             setTimeout(
@@ -444,7 +495,7 @@ if (surpriseButton) {
 
 
 /* =====================================================
-   CORAZONES NORMALES
+   CREAR CORAZÓN
 ===================================================== */
 
 function crearCorazon() {
@@ -475,7 +526,7 @@ function crearCorazon() {
 
     heart.style.fontSize =
         (
-            10 +
+            9 +
             Math.random() * 18
         ) +
         "px";
@@ -511,9 +562,13 @@ function crearCorazon() {
 }
 
 
+/* =====================================================
+   CORAZONES AUTOMÁTICOS
+===================================================== */
+
 setInterval(
     crearCorazon,
-    900
+    1000
 );
 
 
@@ -521,11 +576,11 @@ setInterval(
    LLUVIA DE CORAZONES
 ===================================================== */
 
-function lanzarCorazones(cantidad) {
+function lluviaDeCorazones() {
 
     for (
         let i = 0;
-        i < cantidad;
+        i < 45;
         i++
     ) {
 
@@ -535,7 +590,7 @@ function lanzarCorazones(cantidad) {
                 crearCorazon();
 
             },
-            i * 70
+            i * 60
         );
 
     }
@@ -547,44 +602,34 @@ function lanzarCorazones(cantidad) {
    ANIMACIONES AL HACER SCROLL
 ===================================================== */
 
-const elementosReveal =
-    document.querySelectorAll(
-        ".reveal"
-    );
+/*
+   IMPORTANTE:
+   Todas las secciones empiezan visibles.
+   Así en celulares nunca queda la página
+   completamente en blanco si el navegador
+   no ejecuta IntersectionObserver.
+*/
 
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-const observer =
-    new IntersectionObserver(
-        function (entries) {
-
-            entries.forEach(
-                function (entry) {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                    }
-
-                }
+        const elementos =
+            document.querySelectorAll(
+                ".reveal"
             );
 
-        },
-        {
-            threshold: 0.12
-        }
-    );
+
+        elementos.forEach(
+            function (elemento) {
+
+                elemento.classList.add(
+                    "visible"
+                );
+
+            }
 
 
-elementosReveal.forEach(
-    function (elemento) {
-
-        observer.observe(
-            elemento
         );
 
     }
@@ -592,7 +637,58 @@ elementosReveal.forEach(
 
 
 /* =====================================================
-   CORAZÓN INICIAL
+   ANIMACIÓN PROGRESIVA DESPUÉS
+===================================================== */
+
+if (
+    "IntersectionObserver"
+    in window
+) {
+
+    const observer =
+        new IntersectionObserver(
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.05
+            }
+        );
+
+
+    document
+        .querySelectorAll(".reveal")
+        .forEach(
+            function (elemento) {
+
+                observer.observe(
+                    elemento
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   CORAZONES INICIALES
 ===================================================== */
 
 for (
@@ -603,7 +699,7 @@ for (
 
     setTimeout(
         crearCorazon,
-        i * 400
+        i * 500
     );
 
 }
