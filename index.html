@@ -1,0 +1,273 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Un pequeño rincón hecho con amor ❤️">
+    <title>Un lugar especial ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- PANTALLA DE CONTRASEÑA -->
+    <div id="loginScreen" class="login-screen">
+
+        <div class="login-card">
+
+            <div class="lock">🔐</div>
+
+            <span class="mini">UN PEQUEÑO SECRETO</span>
+
+            <h1>Para alguien especial ❤️</h1>
+
+            <p>
+                Preparé algo que solamente tú puedes descubrir.
+            </p>
+
+            <p class="question">
+                ¿Recuerdas nuestro día? 🥹
+            </p>
+
+            <div class="password-box">
+
+                <input
+                    type="password"
+                    id="passwordInput"
+                    placeholder="Código secreto"
+                    autocomplete="off"
+                >
+
+                <button id="enterButton" onclick="entrar()">
+                    Entrar ❤️
+                </button>
+
+            </div>
+
+            <p id="errorMessage" class="error-message"></p>
+
+            <div class="tiny-heart">♡</div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="mainContent" class="hidden">
+
+        <div class="hearts"></div>
+
+        <main>
+
+            <!-- INICIO -->
+            <section class="hero">
+
+                <span class="mini">PARA EL AMOR DE MI VIDA</span>
+
+                <h1>Dany <span>♡</span></h1>
+
+                <p class="subtitle">
+                    Tres años contigo...
+                    <br>
+                    y todavía siento que fue ayer cuando empezó todo.
+                </p>
+
+                <button onclick="mostrarCarta()">
+                    Abrir mi corazón 💌
+                </button>
+
+            </section>
+
+
+            <!-- CARTA -->
+            <section id="carta" class="card hidden">
+
+                <div class="heart-icon">♥</div>
+
+                <h2>Para ti, Dany</h2>
+
+                <p>
+                    No sé exactamente en qué momento te convertiste
+                    en una parte tan importante de mi vida.
+                </p>
+
+                <p>
+                    Solo sé que desde que llegaste,
+                    mis días tienen algo diferente.
+                    Hay sonrisas que llevan tu nombre
+                    y recuerdos que siempre quisiera repetir.
+                </p>
+
+                <p>
+                    Hoy celebramos tres años,
+                    pero yo no quiero celebrar solamente
+                    el tiempo que llevamos juntos.
+                </p>
+
+                <p>
+                    Quiero celebrar cada risa,
+                    cada abrazo, cada conversación,
+                    cada momento difícil que superamos
+                    y cada pequeño instante que hizo
+                    que me enamorara un poquito más de ti.
+                </p>
+
+                <p class="firma">
+                    Te elegiría una y mil veces. ❤️
+                </p>
+
+            </section>
+
+
+            <!-- CONTADOR -->
+            <section class="counter-section">
+
+                <span class="mini">NUESTRA HISTORIA</span>
+
+                <h2>3 años contigo ❤️</h2>
+
+                <p class="counter-date">
+                    Desde el 01 de septiembre de 2023
+                </p>
+
+                <div class="counter">
+
+                    <div>
+                        <strong id="days">0</strong>
+                        <span>Días</span>
+                    </div>
+
+                    <div>
+                        <strong id="hours">0</strong>
+                        <span>Horas</span>
+                    </div>
+
+                    <div>
+                        <strong id="minutes">0</strong>
+                        <span>Minutos</span>
+                    </div>
+
+                    <div>
+                        <strong id="seconds">0</strong>
+                        <span>Segundos</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- POEMA -->
+            <section class="poem">
+
+                <div class="quote">“</div>
+
+                <h2>Si pudiera escribirte un poema...</h2>
+
+                <p>
+                    Te escribiría en cada estrella,<br>
+                    para que el cielo supiera tu nombre.
+                </p>
+
+                <p>
+                    Te escribiría en cada amanecer,<br>
+                    porque haces bonito hasta comenzar de nuevo.
+                </p>
+
+                <p>
+                    Te escribiría en cada canción,<br>
+                    porque algunas melodías simplemente<br>
+                    suenan como tú.
+                </p>
+
+                <p>
+                    Y si me quedaran pocas palabras,<br>
+                    solamente diría:
+                </p>
+
+                <h3>
+                    “Qué bonito coincidir contigo.”
+                </h3>
+
+            </section>
+
+
+            <!-- PROMESA -->
+            <section class="promise">
+
+                <span class="mini">UNA PROMESA</span>
+
+                <h2>No prometo una vida perfecta...</h2>
+
+                <p>
+                    Pero sí prometo seguir eligiéndote,
+                    incluso en los días difíciles.
+                </p>
+
+                <p>
+                    Prometo seguir buscando tu sonrisa,
+                    cuidar nuestros recuerdos
+                    y construir muchos más contigo.
+                </p>
+
+                <div class="infinity">∞</div>
+
+                <p class="small">
+                    Porque tres años son solo el comienzo.
+                </p>
+
+            </section>
+
+
+            <!-- FINAL -->
+            <section class="final">
+
+                <div class="big-heart">♥</div>
+
+                <h1>Feliz aniversario, Dany</h1>
+
+                <p>
+                    Gracias por estos 3 años.
+                </p>
+
+                <p>
+                    Gracias por ser tú.
+                </p>
+
+                <button onclick="sorpresa()">
+                    Tengo algo más que decirte... ❤️
+                </button>
+
+                <div id="mensajeFinal" class="hidden final-message">
+
+                    <h2>Te amo. ❤️</h2>
+
+                    <p>
+                        Y si pudiera volver al día en que te conocí,
+                        volvería a escogerte sin pensarlo.
+                    </p>
+
+                    <span>
+                        Por estos 3 años y por todos los que vienen. 🥹❤️
+                    </span>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <footer>
+            Hecho con amor, solamente para Dany ❤️
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```

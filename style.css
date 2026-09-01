@@ -1,0 +1,831 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #351526 0%,
+            #170b13 45%,
+            #090609 100%
+        );
+
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* ==========================================
+   PANTALLA DE CONTRASEÑA
+========================================== */
+
+.login-screen {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 55, 110, 0.22),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at top,
+            #351526,
+            #090609 70%
+        );
+
+    z-index: 9999;
+}
+
+.login-card {
+    width: min(100%, 430px);
+
+    padding: 45px 30px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 150, 180, 0.25);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.6),
+        0 0 60px rgba(255, 50, 110, 0.12);
+
+    animation: entrada 1s ease;
+}
+
+.lock {
+    font-size: 55px;
+
+    margin-bottom: 20px;
+
+    animation: flotar 2.5s ease-in-out infinite;
+}
+
+.login-card h1 {
+    font-size: 34px;
+
+    font-weight: normal;
+
+    margin: 12px 0 18px;
+
+    text-shadow:
+        0 0 20px rgba(255, 80, 130, 0.5);
+}
+
+.login-card > p {
+    color: #dfcbd3;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+.question {
+    margin-top: 15px;
+
+    color: #ff91ae !important;
+
+    font-style: italic;
+}
+
+.password-box {
+    margin-top: 25px;
+}
+
+.password-box input {
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border-radius: 50px;
+
+    border: 1px solid rgba(255, 150, 180, 0.25);
+
+    outline: none;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    color: white;
+
+    text-align: center;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.password-box input::placeholder {
+    color: #a98f98;
+}
+
+.password-box input:focus {
+    border-color: #ff719b;
+
+    box-shadow:
+        0 0 20px rgba(255, 60, 110, 0.2);
+}
+
+.password-box button {
+    width: 100%;
+
+    margin-top: 15px;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff477e,
+            #b91f55
+        );
+
+    color: white;
+
+    padding: 15px;
+
+    border-radius: 50px;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 35px rgba(255, 40, 100, 0.25);
+
+    transition: 0.3s;
+}
+
+.password-box button:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+.error-message {
+    min-height: 25px;
+
+    margin-top: 15px;
+
+    color: #ff789f !important;
+
+    font-size: 13px !important;
+}
+
+.tiny-heart {
+    margin-top: 20px;
+
+    color: #ff628f;
+
+    font-size: 30px;
+
+    animation: latido 1.3s infinite;
+}
+
+
+/* ==========================================
+   CONTENIDO
+========================================== */
+
+.hidden {
+    display: none !important;
+}
+
+#mainContent {
+    animation: aparecer 1.2s ease;
+}
+
+main {
+    position: relative;
+
+    z-index: 1;
+}
+
+section {
+    min-height: 100vh;
+
+    padding: 70px 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   CORAZONES
+========================================== */
+
+.hearts {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+
+    bottom: -30px;
+
+    color: rgba(255, 105, 150, 0.5);
+
+    font-size: 18px;
+
+    animation: subir linear forwards;
+}
+
+@keyframes subir {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero {
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 72, 125, 0.18),
+            transparent 55%
+        );
+}
+
+.mini {
+    color: #ff8eae;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(70px, 22vw, 120px);
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 15px rgba(255, 70, 120, 0.7),
+        0 0 45px rgba(255, 50, 100, 0.3);
+}
+
+.hero h1 span {
+    color: #ff5d8f;
+}
+
+.subtitle {
+    max-width: 350px;
+
+    color: #e7ccd6;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+button {
+    margin-top: 35px;
+
+    border: 1px solid rgba(255, 150, 180, 0.5);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff477e,
+            #b91f55
+        );
+
+    color: white;
+
+    padding: 16px 27px;
+
+    border-radius: 50px;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 35px rgba(255, 40, 100, 0.25);
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform:
+        translateY(-3px)
+        scale(1.03);
+}
+
+
+/* ==========================================
+   CARTA
+========================================== */
+
+.card {
+    width: min(100%, 520px);
+
+    min-height: auto;
+
+    margin: 0 auto;
+
+    padding: 35px 27px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border:
+        1px solid rgba(255, 160, 190, 0.2);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.3);
+
+    animation: aparecer 0.8s ease;
+}
+
+.heart-icon {
+    width: 55px;
+
+    height: 55px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 70, 120, 0.15);
+
+    color: #ff5b8c;
+
+    font-size: 27px;
+
+    margin-bottom: 20px;
+}
+
+.card h2,
+.poem h2,
+.promise h2,
+.counter-section h2 {
+    font-size: 29px;
+
+    font-weight: normal;
+
+    margin-bottom: 25px;
+}
+
+.card p {
+    color: #e8d4dc;
+
+    line-height: 1.9;
+
+    margin-bottom: 18px;
+
+    font-size: 15px;
+}
+
+.firma {
+    color: #ff86a8 !important;
+
+    font-style: italic;
+
+    font-size: 18px !important;
+}
+
+
+/* ==========================================
+   CONTADOR
+========================================== */
+
+.counter-section {
+    min-height: 70vh;
+}
+
+.counter-date {
+    color: #aa919a;
+
+    font-size: 13px;
+
+    margin-top: -15px;
+
+    margin-bottom: 25px;
+}
+
+.counter {
+    display: flex;
+
+    gap: 10px;
+
+    width: 100%;
+
+    max-width: 500px;
+}
+
+.counter div {
+    flex: 1;
+
+    padding: 20px 5px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    transition: 0.3s;
+}
+
+.counter div:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(255, 100, 145, 0.25);
+}
+
+.counter strong {
+    display: block;
+
+    color: #ff769d;
+
+    font-size: 28px;
+}
+
+.counter span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #cdbbc3;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================
+   POEMA
+========================================== */
+
+.poem {
+    background:
+        rgba(255, 255, 255, 0.025);
+}
+
+.quote {
+    color: #ff618e;
+
+    font-size: 80px;
+
+    height: 50px;
+}
+
+.poem p {
+    color: #ddc6cf;
+
+    line-height: 2;
+
+    font-size: 16px;
+
+    margin: 10px 0;
+}
+
+.poem h3 {
+    margin-top: 25px;
+
+    color: #ff91af;
+
+    font-size: 23px;
+
+    font-style: italic;
+
+    font-weight: normal;
+}
+
+
+/* ==========================================
+   PROMESA
+========================================== */
+
+.promise {
+    min-height: 80vh;
+}
+
+.promise p {
+    max-width: 340px;
+
+    color: #dbc5ce;
+
+    line-height: 1.9;
+
+    margin: 10px 0;
+}
+
+.infinity {
+    color: #ff618f;
+
+    font-size: 80px;
+
+    margin: 15px 0;
+
+    text-shadow:
+        0 0 30px rgba(255, 70, 120, 0.6);
+
+    animation: flotar 3s ease-in-out infinite;
+}
+
+.small {
+    font-style: italic;
+}
+
+
+/* ==========================================
+   FINAL
+========================================== */
+
+.final {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 55, 110, 0.18),
+            transparent 60%
+        );
+}
+
+.big-heart {
+    color: #ff4f83;
+
+    font-size: 100px;
+
+    animation: latido 1.3s infinite;
+
+    text-shadow:
+        0 0 35px rgba(255, 50, 100, 0.7);
+}
+
+.final h1 {
+    font-size: 34px;
+
+    font-weight: normal;
+
+    margin: 20px 0;
+}
+
+.final > p {
+    color: #ddc7cf;
+
+    margin: 6px;
+}
+
+.final-message {
+    margin-top: 35px;
+
+    padding: 25px;
+
+    max-width: 380px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 70, 120, 0.09);
+
+    border:
+        1px solid rgba(255, 120, 160, 0.2);
+
+    animation: aparecer 0.8s ease;
+}
+
+.final-message h2 {
+    color: #ff739b;
+
+    font-size: 32px;
+
+    margin-bottom: 15px;
+}
+
+.final-message p {
+    color: #ead8df;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
+}
+
+.final-message span {
+    color: #ff9db7;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   ANIMACIONES
+========================================== */
+
+@keyframes latido {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes entrada {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes flotar {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    padding: 25px;
+
+    color: #9f858e;
+
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   CELULAR
+========================================== */
+
+@media (max-width: 500px) {
+
+    section {
+        padding: 55px 18px;
+    }
+
+    .login-card {
+        padding: 35px 22px;
+    }
+
+    .login-card h1 {
+        font-size: 28px;
+    }
+
+    .hero h1 {
+        font-size: 70px;
+    }
+
+    .card {
+        padding: 30px 20px;
+    }
+
+    .counter {
+        gap: 6px;
+    }
+
+    .counter div {
+        padding: 16px 3px;
+    }
+
+    .counter strong {
+        font-size: 21px;
+    }
+
+    .counter span {
+        font-size: 9px;
+    }
+
+    .final h1 {
+        font-size: 29px;
+    }
+
+    .big-heart {
+        font-size: 85px;
+    }
+}
+
