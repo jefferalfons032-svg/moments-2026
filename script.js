@@ -1,6 +1,13 @@
 ```javascript
 /* =========================================
-   ❤️ CONTADOR DE NUESTRA HISTORIA
+   ❤️ NUESTRA HISTORIA
+   DANY + JEFFERSON
+   DESDE: 01/09/2023
+========================================= */
+
+
+/* =========================================
+   📅 FECHA DE INICIO
 ========================================= */
 
 const fechaInicio = new Date(
@@ -14,54 +21,100 @@ const fechaInicio = new Date(
 
 
 /* =========================================
-   CONTADOR
+   ⏰ CONTADOR COMO RELOJ REAL
 ========================================= */
 
 function actualizarContador() {
 
     const ahora = new Date();
 
+    /*
+       Calculamos primero los años completos
+    */
+
     let años =
         ahora.getFullYear() -
         fechaInicio.getFullYear();
 
-    let meses =
-        ahora.getMonth() -
-        fechaInicio.getMonth();
 
-    let fechaTemporal =
+    /*
+       Creamos una fecha que representa
+       exactamente esos años cumplidos.
+    */
+
+    let fechaAniversario =
         new Date(fechaInicio);
 
-    fechaTemporal.setFullYear(
+    fechaAniversario.setFullYear(
         fechaInicio.getFullYear() + años
     );
 
-    fechaTemporal.setMonth(
-        fechaInicio.getMonth() + meses
-    );
 
+    /*
+       Si todavía no llegó al aniversario
+       de este año, quitamos un año.
+    */
 
-    if (fechaTemporal > ahora) {
+    if (fechaAniversario > ahora) {
 
-        meses--;
+        años--;
 
-        fechaTemporal =
+        fechaAniversario =
             new Date(fechaInicio);
 
-        fechaTemporal.setFullYear(
+        fechaAniversario.setFullYear(
             fechaInicio.getFullYear() + años
-        );
-
-        fechaTemporal.setMonth(
-            fechaInicio.getMonth() + meses
         );
     }
 
 
-    const diferencia =
-        ahora.getTime() -
-        fechaTemporal.getTime();
+    /*
+       Ahora calculamos meses completos
+    */
 
+    let meses =
+        ahora.getMonth() -
+        fechaAniversario.getMonth();
+
+
+    if (
+        ahora.getDate() <
+        fechaAniversario.getDate()
+    ) {
+        meses--;
+    }
+
+
+    if (meses < 0) {
+        meses += 12;
+    }
+
+
+    /*
+       Fecha después de años + meses
+    */
+
+    let fechaMes =
+        new Date(fechaAniversario);
+
+    fechaMes.setMonth(
+        fechaMes.getMonth() + meses
+    );
+
+
+    /*
+       Diferencia exacta desde la última
+       fecha cumplida.
+    */
+
+    let diferencia =
+        ahora.getTime() -
+        fechaMes.getTime();
+
+
+    /*
+       Tiempo restante
+    */
 
     const dias =
         Math.floor(
@@ -91,59 +144,95 @@ function actualizarContador() {
         );
 
 
-    const years =
+    /*
+       Mostrar en pantalla
+    */
+
+    const elementoAños =
         document.getElementById("years");
 
-    const months =
+    const elementoMeses =
         document.getElementById("months");
 
-    const days =
+    const elementoDias =
         document.getElementById("days");
 
-    const hours =
+    const elementoHoras =
         document.getElementById("hours");
 
-    const minutes =
+    const elementoMinutos =
         document.getElementById("minutes");
 
-    const seconds =
+    const elementoSegundos =
         document.getElementById("seconds");
 
 
-    if (years)
-        years.textContent = años;
+    if (elementoAños) {
 
-    if (months)
-        months.textContent = meses;
+        elementoAños.textContent =
+            años;
 
-    if (days)
-        days.textContent = dias;
+    }
 
-    if (hours)
-        hours.textContent =
+
+    if (elementoMeses) {
+
+        elementoMeses.textContent =
+            meses;
+
+    }
+
+
+    if (elementoDias) {
+
+        elementoDias.textContent =
+            dias;
+
+    }
+
+
+    if (elementoHoras) {
+
+        elementoHoras.textContent =
             String(horas).padStart(2, "0");
 
-    if (minutes)
-        minutes.textContent =
+    }
+
+
+    if (elementoMinutos) {
+
+        elementoMinutos.textContent =
             String(minutos).padStart(2, "0");
 
-    if (seconds)
-        seconds.textContent =
+    }
+
+
+    if (elementoSegundos) {
+
+        elementoSegundos.textContent =
             String(segundos).padStart(2, "0");
+
+    }
 }
 
 
 /* =========================================
-   ❤️ FRASE
+   💕 FRASE
 ========================================= */
 
-const timePhrase =
-    document.getElementById("timePhrase");
+function actualizarFrase() {
 
-if (timePhrase) {
+    const frase =
+        document.getElementById(
+            "timePhrase"
+        );
 
-    timePhrase.textContent =
-        "Cada segundo contigo es un segundo que quiero guardar para siempre. ❤️";
+    if (frase) {
+
+        frase.textContent =
+            "Nuestro tiempo juntos sigue corriendo... y cada segundo contigo vale la pena. ❤️";
+
+    }
 }
 
 
@@ -151,90 +240,134 @@ if (timePhrase) {
    ↓ BOTÓN NUESTRA HISTORIA
 ========================================= */
 
+function irAHistoria() {
+
+    const destino =
+        document.querySelector(
+            ".counter-section"
+        );
+
+    if (destino) {
+
+        destino.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+}
+
+
 const startButton =
-    document.getElementById("startButton");
+    document.getElementById(
+        "startButton"
+    );
+
 
 if (startButton) {
 
-    startButton.addEventListener(
-        "click",
-        function () {
+    startButton.onclick =
+        irAHistoria;
 
-            const destino =
-                document.querySelector(
-                    ".counter-section"
-                );
-
-            if (destino) {
-
-                destino.scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            }
-
-        }
-    );
 }
 
 
 /* =========================================
-   🎁 LA SORPRESA
+   🎁 ABRIR SORPRESA
 ========================================= */
 
-const surpriseButton =
-    document.getElementById(
-        "surpriseButton"
+/*
+   Esta función es GLOBAL.
+
+   El botón HTML utiliza:
+
+   onclick="abrirSorpresa()"
+
+   Por eso no depende de addEventListener.
+*/
+
+function abrirSorpresa() {
+
+    const boton =
+        document.getElementById(
+            "surpriseButton"
+        );
+
+    const sorpresa =
+        document.getElementById(
+            "finalMessage"
+        );
+
+
+    if (!sorpresa) {
+
+        alert(
+            "Mi sorpresa se está preparando ❤️"
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Mostrar sorpresa
+    */
+
+    sorpresa.style.display =
+        "block";
+
+
+    /*
+       Ocultar botón
+    */
+
+    if (boton) {
+
+        boton.style.display =
+            "none";
+
+    }
+
+
+    /*
+       Animación
+    */
+
+    sorpresa.classList.remove(
+        "surprise-open"
     );
 
-const finalMessage =
-    document.getElementById(
-        "finalMessage"
+
+    void sorpresa.offsetWidth;
+
+
+    sorpresa.classList.add(
+        "surprise-open"
     );
 
 
-if (
-    surpriseButton &&
-    finalMessage
-) {
+    /*
+       Corazones
+    */
 
-    surpriseButton.addEventListener(
-        "click",
+    lluviaDeCorazones();
+
+
+    /*
+       Bajar hasta la sorpresa
+    */
+
+    setTimeout(
         function () {
 
-            /* mostrar carta */
+            sorpresa.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
 
-            finalMessage.classList.add(
-                "show"
-            );
-
-
-            /* esconder botón */
-
-            surpriseButton.style.display =
-                "none";
-
-
-            /* corazones */
-
-            lluviaDeCorazones();
-
-
-            /* bajar suavemente */
-
-            setTimeout(
-                function () {
-
-                    finalMessage.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
-
-                },
-                200
-            );
-
-        }
+        },
+        250
     );
 }
 
@@ -243,7 +376,7 @@ if (
    ❤️ CORAZONES
 ========================================= */
 
-const hearts =
+const contenedorCorazones =
     document.getElementById(
         "hearts"
     );
@@ -251,8 +384,9 @@ const hearts =
 
 function crearCorazon() {
 
-    if (!hearts)
+    if (!contenedorCorazones) {
         return;
+    }
 
 
     const corazon =
@@ -265,34 +399,31 @@ function crearCorazon() {
         "floating-heart";
 
 
-    corazon.textContent =
-        Math.random() > .5
+    corazon.innerHTML =
+        Math.random() > 0.5
             ? "♥"
             : "♡";
 
 
     corazon.style.left =
-        Math.random() * 100 +
-        "vw";
+        Math.random() * 100 + "vw";
 
 
     corazon.style.fontSize =
         (
             10 +
             Math.random() * 18
-        ) +
-        "px";
+        ) + "px";
 
 
     corazon.style.animationDuration =
         (
             5 +
-            Math.random() * 6
-        ) +
-        "s";
+            Math.random() * 5
+        ) + "s";
 
 
-    hearts.appendChild(
+    contenedorCorazones.appendChild(
         corazon
     );
 
@@ -303,7 +434,7 @@ function crearCorazon() {
             corazon.remove();
 
         },
-        13000
+        12000
     );
 }
 
@@ -316,7 +447,7 @@ function lluviaDeCorazones() {
 
     for (
         let i = 0;
-        i < 70;
+        i < 60;
         i++
     ) {
 
@@ -329,20 +460,31 @@ function lluviaDeCorazones() {
 }
 
 
-/* corazones normales */
+/* =========================================
+   ❤️ CORAZONES SUAVES
+========================================= */
 
 setInterval(
     crearCorazon,
-    1800
+    2000
 );
 
 
 /* =========================================
-   🚀 INICIAR
+   🚀 INICIO
 ========================================= */
 
 actualizarContador();
 
+actualizarFrase();
+
+
+/*
+   EXACTAMENTE CADA 1 SEGUNDO.
+
+   Esto hace que el contador funcione
+   como un reloj.
+*/
 
 setInterval(
     actualizarContador,
