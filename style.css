@@ -1788,4 +1788,712 @@ footer small {
         font-size: 44px;
     }
 }
+
+```css
+/* =========================================
+   ❤️ FINAL ROMÁNTICO
+========================================= */
+
+.final {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100svh;
+
+    padding:
+        120px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 75, 120, .09),
+            transparent 45%
+        );
+}
+
+
+/* decoración superior */
+
+.final-decoration {
+    display: flex;
+
+    gap: 25px;
+
+    margin-bottom: 25px;
+
+    color: #ff7199;
+
+    opacity: .55;
+
+    animation:
+        floatingDecoration
+        4s ease-in-out infinite;
+}
+
+
+.final-decoration span:nth-child(2) {
+    font-size: 24px;
+}
+
+
+@keyframes floatingDecoration {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* corazón */
+
+.final-heart {
+
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 25px;
+
+    border-radius: 50%;
+
+    color: #ff7199;
+
+    font-size: 42px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,113,153,.18),
+            rgba(255,113,153,.04)
+        );
+
+    border:
+        1px solid
+        rgba(255,113,153,.25);
+
+    box-shadow:
+        0 0 50px
+        rgba(255,76,120,.15);
+
+    animation:
+        heartbeatFinal
+        2s ease-in-out infinite;
+}
+
+
+@keyframes heartbeatFinal {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.08);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.06);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+}
+
+
+/* texto pequeño */
+
+.final-small {
+
+    margin: 0 !important;
+
+    color: #a98a95;
+
+    font-size: 15px;
+
+    font-style: italic;
+}
+
+
+/* título */
+
+.final h2 {
+
+    max-width: 850px;
+
+    margin:
+        20px auto;
+
+    font-size:
+        clamp(
+            48px,
+            9vw,
+            88px
+        );
+
+    font-weight: normal;
+
+    line-height: .95;
+
+    letter-spacing: -2px;
+}
+
+
+.final h2 span {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #ff7199;
+
+    font-style: italic;
+
+    text-shadow:
+        0 0 35px
+        rgba(255,113,153,.12);
+}
+
+
+/* descripción */
+
+.final-text {
+
+    max-width: 520px;
+
+    margin:
+        10px auto 30px !important;
+
+    color: #ad9099;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    font-style: normal !important;
+}
+
+
+/* =========================================
+   🎁 BOTÓN
+========================================= */
+
+#surpriseButton {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 54px;
+
+    padding:
+        0 27px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff7199,
+            #e84f7c
+        );
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 35px
+        rgba(232,79,124,.25);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+#surpriseButton span {
+
+    font-size: 13px;
+
+    transition:
+        transform .3s ease;
+}
+
+
+#surpriseButton:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.02);
+
+    box-shadow:
+        0 18px 45px
+        rgba(232,79,124,.35);
+}
+
+
+#surpriseButton:hover span:first-child {
+
+    transform:
+        scale(1.3)
+        rotate(-10deg);
+}
+
+
+#surpriseButton:hover span:last-child {
+
+    transform:
+        scale(1.3)
+        rotate(10deg);
+}
+
+
+#surpriseButton:active {
+
+    transform:
+        scale(.96);
+}
+
+
+/* =========================================
+   💌 CARTA DE LA SORPRESA
+========================================= */
+
+.surprise-card {
+
+    width: 100%;
+
+    max-width: 680px;
+
+    margin-top: 55px;
+
+    padding:
+        50px 40px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,113,153,.035)
+        );
+
+    border:
+        1px solid
+        rgba(255,113,153,.25);
+
+    box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.35);
+
+    animation:
+        surpriseAppear
+        .8s cubic-bezier(.17,.67,.35,1.2);
+
+}
+
+
+/* importante:
+   ocultamos la sorpresa desde el inicio */
+
+#finalMessage {
+
+    display: none;
+
+}
+
+
+/* cuando JS agregue esta clase */
+
+#finalMessage.show {
+
+    display: block;
+
+}
+
+
+@keyframes surpriseAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(50px)
+            scale(.92);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+}
+
+
+/* corazón de la carta */
+
+.surprise-top-heart {
+
+    width: 55px;
+    height: 55px;
+
+    margin:
+        0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,113,153,.10);
+
+    color: #ff7199;
+
+    font-size: 25px;
+
+    animation:
+        heartbeatFinal
+        2s infinite;
+}
+
+
+.surprise-label {
+
+    margin: 0 0 12px !important;
+
+    color: #ff7199 !important;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px !important;
+
+    letter-spacing: 3px;
+
+    line-height: 1.5 !important;
+}
+
+
+.surprise-card h3 {
+
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 45px;
+
+    font-weight: normal;
+
+    font-style: italic;
+}
+
+
+.surprise-line {
+
+    width: 60px;
+
+    height: 1px;
+
+    margin:
+        20px auto 30px;
+
+    background: #ff7199;
+}
+
+
+.surprise-card > p {
+
+    margin:
+        0 auto 20px;
+
+    max-width: 550px;
+
+    color: #cdb3bb;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+.surprise-card blockquote {
+
+    margin:
+        30px auto;
+
+    padding:
+        22px 20px;
+
+    border-top:
+        1px solid
+        rgba(255,113,153,.15);
+
+    border-bottom:
+        1px solid
+        rgba(255,113,153,.15);
+
+    color: #ffb5c7;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    font-style: italic;
+}
+
+
+/* =========================================
+   💕 TE AMO
+========================================= */
+
+.surprise-love {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    margin:
+        35px 0 25px;
+}
+
+
+.surprise-love span {
+
+    color: #ff7199;
+
+    font-size: 17px;
+}
+
+
+.surprise-love h4 {
+
+    margin: 0;
+
+    color: #ff7199;
+
+    font-size: 35px;
+
+    font-weight: normal;
+
+    font-style: italic;
+}
+
+
+.last-message {
+
+    margin-top: 35px !important;
+
+    margin-bottom: 8px !important;
+
+    color: #9f818c !important;
+
+    font-style: italic;
+}
+
+
+.infinity-final {
+
+    margin: 0;
+
+    color: #ff7199;
+
+    font-family: Georgia, serif;
+
+    font-size: 65px;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 30px
+        rgba(255,113,153,.2);
+}
+
+
+.future-message {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #f4dce2;
+
+    font-size: 17px;
+
+    font-weight: normal;
+
+    font-style: italic;
+}
+
+
+.signature-final {
+
+    margin-top: 35px !important;
+
+    color: #90717c !important;
+
+    font-style: italic;
+
+    line-height: 1.8 !important;
+}
+
+
+.signature-final strong {
+
+    color: #ff9db5;
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   📱 CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    .final {
+
+        min-height: 100svh;
+
+        padding:
+            90px 18px;
+    }
+
+
+    .final-heart {
+
+        width: 75px;
+        height: 75px;
+
+        font-size: 34px;
+    }
+
+
+    .final h2 {
+
+        font-size: 48px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .final-text {
+
+        font-size: 13px;
+    }
+
+
+    #surpriseButton {
+
+        width: 100%;
+
+        max-width: 320px;
+
+        padding:
+            0 18px;
+
+        font-size: 12px;
+    }
+
+
+    .surprise-card {
+
+        margin-top: 40px;
+
+        padding:
+            38px 21px;
+
+        border-radius: 20px;
+    }
+
+
+    .surprise-card h3 {
+
+        font-size: 40px;
+    }
+
+
+    .surprise-card > p {
+
+        font-size: 14px;
+
+        line-height: 1.75;
+    }
+
+
+    .surprise-card blockquote {
+
+        font-size: 16px;
+
+        padding:
+            18px 12px;
+    }
+
+
+    .surprise-love h4 {
+
+        font-size: 29px;
+    }
+
+
+    .infinity-final {
+
+        font-size: 55px;
+    }
+}
 ```
