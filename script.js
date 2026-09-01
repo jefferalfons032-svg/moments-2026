@@ -1,44 +1,23 @@
 ```javascript
 /* =========================================
-   ❤️ HISTORIA DE DANY Y JEFFERSON
-   INICIO: 01/09/2023
+   ❤️ CONTADOR DE NUESTRA HISTORIA
 ========================================= */
 
-const fechaInicio = new Date(2023, 8, 1, 0, 0, 0);
+const fechaInicio = new Date(
+    2023,
+    8,
+    1,
+    0,
+    0,
+    0
+);
 
 
 /* =========================================
-   ELEMENTOS
+   CONTADOR
 ========================================= */
 
-const years = document.getElementById("years");
-const months = document.getElementById("months");
-const days = document.getElementById("days");
-const hours = document.getElementById("hours");
-const minutes = document.getElementById("minutes");
-const seconds = document.getElementById("seconds");
-
-const timePhrase =
-    document.getElementById("timePhrase");
-
-const startButton =
-    document.getElementById("startButton");
-
-const surpriseButton =
-    document.getElementById("surpriseButton");
-
-const finalMessage =
-    document.getElementById("finalMessage");
-
-const hearts =
-    document.getElementById("hearts");
-
-
-/* =========================================
-   ❤️ CONTADOR EXACTO
-========================================= */
-
-function calcularTiempo() {
+function actualizarContador() {
 
     const ahora = new Date();
 
@@ -50,31 +29,30 @@ function calcularTiempo() {
         ahora.getMonth() -
         fechaInicio.getMonth();
 
-    let fechaBase =
+    let fechaTemporal =
         new Date(fechaInicio);
 
-
-    fechaBase.setFullYear(
+    fechaTemporal.setFullYear(
         fechaInicio.getFullYear() + años
     );
 
-    fechaBase.setMonth(
+    fechaTemporal.setMonth(
         fechaInicio.getMonth() + meses
     );
 
 
-    if (fechaBase > ahora) {
+    if (fechaTemporal > ahora) {
 
         meses--;
 
-        fechaBase =
+        fechaTemporal =
             new Date(fechaInicio);
 
-        fechaBase.setFullYear(
+        fechaTemporal.setFullYear(
             fechaInicio.getFullYear() + años
         );
 
-        fechaBase.setMonth(
+        fechaTemporal.setMonth(
             fechaInicio.getMonth() + meses
         );
     }
@@ -82,213 +60,99 @@ function calcularTiempo() {
 
     const diferencia =
         ahora.getTime() -
-        fechaBase.getTime();
+        fechaTemporal.getTime();
 
 
     const dias =
         Math.floor(
             diferencia /
-            (1000 * 60 * 60 * 24)
+            86400000
         );
 
 
     const horas =
         Math.floor(
-            (
-                diferencia %
-                (1000 * 60 * 60 * 24)
-            ) /
-            (1000 * 60 * 60)
+            (diferencia % 86400000) /
+            3600000
         );
 
 
     const minutos =
         Math.floor(
-            (
-                diferencia %
-                (1000 * 60 * 60)
-            ) /
-            (1000 * 60)
+            (diferencia % 3600000) /
+            60000
         );
 
 
     const segundos =
         Math.floor(
-            (
-                diferencia %
-                (1000 * 60)
-            ) /
+            (diferencia % 60000) /
             1000
         );
 
 
-    return {
-        años,
-        meses,
-        dias,
-        horas,
-        minutos,
-        segundos
-    };
+    const years =
+        document.getElementById("years");
+
+    const months =
+        document.getElementById("months");
+
+    const days =
+        document.getElementById("days");
+
+    const hours =
+        document.getElementById("hours");
+
+    const minutes =
+        document.getElementById("minutes");
+
+    const seconds =
+        document.getElementById("seconds");
+
+
+    if (years)
+        years.textContent = años;
+
+    if (months)
+        months.textContent = meses;
+
+    if (days)
+        days.textContent = dias;
+
+    if (hours)
+        hours.textContent =
+            String(horas).padStart(2, "0");
+
+    if (minutes)
+        minutes.textContent =
+            String(minutos).padStart(2, "0");
+
+    if (seconds)
+        seconds.textContent =
+            String(segundos).padStart(2, "0");
 }
 
 
 /* =========================================
-   ⏱️ ACTUALIZAR CONTADOR
+   ❤️ FRASE
 ========================================= */
 
-function actualizarContador() {
+const timePhrase =
+    document.getElementById("timePhrase");
 
-    const tiempo =
-        calcularTiempo();
+if (timePhrase) {
 
-
-    years.textContent =
-        tiempo.años;
-
-    months.textContent =
-        tiempo.meses;
-
-    days.textContent =
-        tiempo.dias;
-
-    hours.textContent =
-        String(tiempo.horas)
-            .padStart(2, "0");
-
-    minutes.textContent =
-        String(tiempo.minutos)
-            .padStart(2, "0");
-
-    seconds.textContent =
-        String(tiempo.segundos)
-            .padStart(2, "0");
-
-
-    /* Frase */
-
-    if (timePhrase) {
-
-        timePhrase.textContent =
-            "Cada segundo contigo se convierte en un recuerdo que quiero conservar para siempre. ❤️";
-
-    }
+    timePhrase.textContent =
+        "Cada segundo contigo es un segundo que quiero guardar para siempre. ❤️";
 }
 
 
 /* =========================================
-   📅 PRÓXIMO ANIVERSARIO
+   ↓ BOTÓN NUESTRA HISTORIA
 ========================================= */
 
-function actualizarProximoAniversario() {
-
-    const ahora = new Date();
-
-    let proximo =
-        new Date(
-            ahora.getFullYear(),
-            8,
-            1,
-            0,
-            0,
-            0
-        );
-
-
-    if (ahora >= proximo) {
-
-        proximo.setFullYear(
-            proximo.getFullYear() + 1
-        );
-    }
-
-
-    const diasRestantes =
-        Math.ceil(
-            (
-                proximo.getTime() -
-                ahora.getTime()
-            ) /
-            (1000 * 60 * 60 * 24)
-        );
-
-
-    const texto =
-        document.getElementById(
-            "progressText"
-        );
-
-
-    const fecha =
-        document.getElementById(
-            "nextDate"
-        );
-
-
-    const barra =
-        document.getElementById(
-            "progressBar"
-        );
-
-
-    if (fecha) {
-
-        fecha.textContent =
-            "01 · 09 · " +
-            proximo.getFullYear();
-
-    }
-
-
-    if (texto) {
-
-        texto.textContent =
-            "Faltan " +
-            diasRestantes +
-            " días para volver a celebrar nuestro amor. ❤️";
-
-    }
-
-
-    if (barra) {
-
-        const inicioPeriodo =
-            new Date(
-                proximo.getFullYear() - 1,
-                8,
-                1
-            );
-
-
-        const total =
-            proximo.getTime() -
-            inicioPeriodo.getTime();
-
-
-        const recorrido =
-            ahora.getTime() -
-            inicioPeriodo.getTime();
-
-
-        const porcentaje =
-            Math.min(
-                100,
-                Math.max(
-                    0,
-                    (recorrido / total) * 100
-                )
-            );
-
-
-        barra.style.width =
-            porcentaje + "%";
-    }
-}
-
-
-/* =========================================
-   💕 BOTÓN PRINCIPAL
-========================================= */
+const startButton =
+    document.getElementById("startButton");
 
 if (startButton) {
 
@@ -296,17 +160,15 @@ if (startButton) {
         "click",
         function () {
 
-            const contador =
+            const destino =
                 document.querySelector(
                     ".counter-section"
                 );
 
+            if (destino) {
 
-            if (contador) {
-
-                contador.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
+                destino.scrollIntoView({
+                    behavior: "smooth"
                 });
 
             }
@@ -317,31 +179,48 @@ if (startButton) {
 
 
 /* =========================================
-   🎁 SORPRESA
+   🎁 LA SORPRESA
 ========================================= */
 
-if (surpriseButton) {
+const surpriseButton =
+    document.getElementById(
+        "surpriseButton"
+    );
+
+const finalMessage =
+    document.getElementById(
+        "finalMessage"
+    );
+
+
+if (
+    surpriseButton &&
+    finalMessage
+) {
 
     surpriseButton.addEventListener(
         "click",
         function () {
 
-            if (!finalMessage) {
-                return;
-            }
+            /* mostrar carta */
 
-
-            finalMessage.classList.remove(
-                "hidden"
+            finalMessage.classList.add(
+                "show"
             );
 
+
+            /* esconder botón */
 
             surpriseButton.style.display =
                 "none";
 
 
+            /* corazones */
+
             lluviaDeCorazones();
 
+
+            /* bajar suavemente */
 
             setTimeout(
                 function () {
@@ -352,7 +231,7 @@ if (surpriseButton) {
                     });
 
                 },
-                300
+                200
             );
 
         }
@@ -364,15 +243,22 @@ if (surpriseButton) {
    ❤️ CORAZONES
 ========================================= */
 
+const hearts =
+    document.getElementById(
+        "hearts"
+    );
+
+
 function crearCorazon() {
 
-    if (!hearts) {
+    if (!hearts)
         return;
-    }
 
 
     const corazon =
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
 
     corazon.className =
@@ -380,7 +266,7 @@ function crearCorazon() {
 
 
     corazon.textContent =
-        Math.random() > 0.5
+        Math.random() > .5
             ? "♥"
             : "♡";
 
@@ -391,14 +277,18 @@ function crearCorazon() {
 
 
     corazon.style.fontSize =
-        10 +
-        Math.random() * 18 +
+        (
+            10 +
+            Math.random() * 18
+        ) +
         "px";
 
 
     corazon.style.animationDuration =
-        5 +
-        Math.random() * 7 +
+        (
+            5 +
+            Math.random() * 6
+        ) +
         "s";
 
 
@@ -413,7 +303,7 @@ function crearCorazon() {
             corazon.remove();
 
         },
-        14000
+        13000
     );
 }
 
@@ -426,46 +316,36 @@ function lluviaDeCorazones() {
 
     for (
         let i = 0;
-        i < 55;
+        i < 70;
         i++
     ) {
 
         setTimeout(
             crearCorazon,
-            i * 70
+            i * 60
         );
 
     }
 }
 
 
-/* =========================================
-   CORAZONES AUTOMÁTICOS
-========================================= */
+/* corazones normales */
 
 setInterval(
     crearCorazon,
-    1700
+    1800
 );
 
 
 /* =========================================
-   🚀 INICIO
+   🚀 INICIAR
 ========================================= */
 
 actualizarContador();
-
-actualizarProximoAniversario();
 
 
 setInterval(
     actualizarContador,
     1000
-);
-
-
-setInterval(
-    actualizarProximoAniversario,
-    60000
 );
 ```
