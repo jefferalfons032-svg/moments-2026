@@ -1,7 +1,7 @@
 ```javascript
-// ==========================================
-// FECHA DE INICIO
-// ==========================================
+/* =====================================================
+   FECHA DE INICIO
+===================================================== */
 
 const fechaInicio = new Date(
     2023,
@@ -13,73 +13,217 @@ const fechaInicio = new Date(
 );
 
 
-// ==========================================
-// BOTÓN INICIO
-// ==========================================
+/* =====================================================
+   ELEMENTOS
+===================================================== */
+
+const yearsElement =
+    document.getElementById("years");
+
+const monthsElement =
+    document.getElementById("months");
+
+const daysElement =
+    document.getElementById("days");
+
+const hoursElement =
+    document.getElementById("hours");
+
+const minutesElement =
+    document.getElementById("minutes");
+
+const secondsElement =
+    document.getElementById("seconds");
+
+const timePhrase =
+    document.getElementById("timePhrase");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const progressText =
+    document.getElementById("progressText");
+
+const nextDate =
+    document.getElementById("nextDate");
+
+const heartsContainer =
+    document.getElementById("hearts");
 
 const startButton =
     document.getElementById("startButton");
 
-startButton.addEventListener("click", function () {
+const surpriseButton =
+    document.getElementById("surpriseButton");
 
-    window.scrollTo({
-        top: window.innerHeight,
-        behavior: "smooth"
-    });
-
-});
+const finalMessage =
+    document.getElementById("finalMessage");
 
 
-// ==========================================
-// CONTADOR
-// ==========================================
+/* =====================================================
+   BOTÓN PORTADA
+===================================================== */
 
-function actualizarContador() {
+if (startButton) {
+
+    startButton.addEventListener(
+        "click",
+        function () {
+
+            const timeSection =
+                document.querySelector(".time-section");
+
+            if (timeSection) {
+
+                timeSection.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CALCULAR TIEMPO EXACTO
+===================================================== */
+
+function calcularTiempo() {
 
     const ahora = new Date();
 
-    const diferencia =
-        Math.max(
-            0,
-            ahora - fechaInicio
+    let años =
+        ahora.getFullYear() -
+        fechaInicio.getFullYear();
+
+    let meses =
+        ahora.getMonth() -
+        fechaInicio.getMonth();
+
+    let fechaTemporal =
+        new Date(fechaInicio);
+
+    fechaTemporal.setFullYear(
+        fechaInicio.getFullYear() + años
+    );
+
+    fechaTemporal.setMonth(
+        fechaInicio.getMonth() + meses
+    );
+
+
+    if (fechaTemporal > ahora) {
+
+        meses--;
+
+        fechaTemporal =
+            new Date(fechaInicio);
+
+        fechaTemporal.setFullYear(
+            fechaInicio.getFullYear() + años
         );
 
-    const totalSegundos =
-        Math.floor(
-            diferencia / 1000
+        fechaTemporal.setMonth(
+            fechaInicio.getMonth() + meses
         );
+
+    }
+
+
+    const diferencia =
+        ahora.getTime() -
+        fechaTemporal.getTime();
 
 
     const dias =
         Math.floor(
-            totalSegundos / 86400
+            diferencia /
+            (1000 * 60 * 60 * 24)
         );
+
 
     const horas =
         Math.floor(
-            (totalSegundos % 86400) / 3600
+            (
+                diferencia %
+                (1000 * 60 * 60 * 24)
+            ) /
+            (1000 * 60 * 60)
         );
+
 
     const minutos =
         Math.floor(
-            (totalSegundos % 3600) / 60
+            (
+                diferencia %
+                (1000 * 60 * 60)
+            ) /
+            (1000 * 60)
         );
 
+
     const segundos =
-        totalSegundos % 60;
+        Math.floor(
+            (
+                diferencia %
+                (1000 * 60)
+            ) /
+            1000
+        );
 
 
-    document.getElementById("days")
-        .textContent = dias;
+    return {
+        años,
+        meses,
+        dias,
+        horas,
+        minutos,
+        segundos
+    };
 
-    document.getElementById("hours")
-        .textContent = horas;
+}
 
-    document.getElementById("minutes")
-        .textContent = minutos;
 
-    document.getElementById("seconds")
-        .textContent = segundos;
+/* =====================================================
+   ACTUALIZAR CONTADOR
+===================================================== */
+
+function actualizarContador() {
+
+    const tiempo =
+        calcularTiempo();
+
+
+    yearsElement.textContent =
+        tiempo.años;
+
+    monthsElement.textContent =
+        tiempo.meses;
+
+    daysElement.textContent =
+        tiempo.dias;
+
+    hoursElement.textContent =
+        String(tiempo.horas)
+            .padStart(2, "0");
+
+    minutesElement.textContent =
+        String(tiempo.minutos)
+            .padStart(2, "0");
+
+    secondsElement.textContent =
+        String(tiempo.segundos)
+            .padStart(2, "0");
+
+
+    actualizarFrase(
+        tiempo
+    );
+
+    actualizarProximoAniversario();
 
 }
 
@@ -92,68 +236,262 @@ setInterval(
 );
 
 
-// ==========================================
-// SORPRESA
-// ==========================================
+/* =====================================================
+   FRASES DINÁMICAS
+===================================================== */
 
-const surpriseButton =
-    document.getElementById("surpriseButton");
+function actualizarFrase(tiempo) {
 
-const finalMessage =
-    document.getElementById("finalMessage");
+    if (!timePhrase) {
+        return;
+    }
 
 
-surpriseButton.addEventListener(
-    "click",
-    function () {
+    if (tiempo.años >= 3) {
 
-        finalMessage.classList.remove("hidden");
+        timePhrase.textContent =
+            "Tres años después, sigues siendo mi lugar favorito. ❤️";
 
-        surpriseButton.style.display =
-            "none";
-
-        setTimeout(function () {
-
-            finalMessage.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-
-        }, 200);
+        return;
 
     }
-);
+
+    if (tiempo.años >= 2) {
+
+        timePhrase.textContent =
+            "Más de dos años construyendo algo bonito juntos. ❤️";
+
+        return;
+
+    }
+
+    if (tiempo.años >= 1) {
+
+        timePhrase.textContent =
+            "Más de un año de recuerdos que jamás cambiaría.";
+
+        return;
+
+    }
+
+    timePhrase.textContent =
+        "Cada segundo contigo cuenta. ❤️";
+
+}
 
 
-// ==========================================
-// CORAZONES
-// ==========================================
+/* =====================================================
+   PRÓXIMO ANIVERSARIO
+===================================================== */
 
-const heartsContainer =
-    document.getElementById("hearts");
+function actualizarProximoAniversario() {
 
+    const ahora = new Date();
+
+    let proximo =
+        new Date(
+            ahora.getFullYear(),
+            8,
+            1,
+            0,
+            0,
+            0
+        );
+
+
+    if (ahora >= proximo) {
+
+        proximo.setFullYear(
+            proximo.getFullYear() + 1
+        );
+
+    }
+
+
+    const añoAnterior =
+        proximo.getFullYear() - 1;
+
+
+    const inicioPeriodo =
+        new Date(
+            añoAnterior,
+            8,
+            1,
+            0,
+            0,
+            0
+        );
+
+
+    const totalPeriodo =
+        proximo.getTime() -
+        inicioPeriodo.getTime();
+
+
+    const transcurrido =
+        ahora.getTime() -
+        inicioPeriodo.getTime();
+
+
+    let progreso =
+        (
+            transcurrido /
+            totalPeriodo
+        ) * 100;
+
+
+    progreso =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                progreso
+            )
+        );
+
+
+    if (progressBar) {
+
+        progressBar.style.width =
+            progreso + "%";
+
+    }
+
+
+    if (nextDate) {
+
+        nextDate.textContent =
+            "01 · 09 · " +
+            proximo.getFullYear();
+
+    }
+
+
+    if (progressText) {
+
+        const diasRestantes =
+            Math.ceil(
+                (
+                    proximo.getTime() -
+                    ahora.getTime()
+                ) /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        if (diasRestantes === 1) {
+
+            progressText.textContent =
+                "¡Mañana celebramos otro capítulo! ❤️";
+
+        } else {
+
+            progressText.textContent =
+                "Faltan " +
+                diasRestantes +
+                " días para nuestro próximo aniversario. ❤️";
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   BOTÓN SORPRESA
+===================================================== */
+
+if (surpriseButton) {
+
+    surpriseButton.addEventListener(
+        "click",
+        function () {
+
+            if (!finalMessage) {
+                return;
+            }
+
+
+            finalMessage.classList.remove(
+                "hidden"
+            );
+
+
+            surpriseButton.style.display =
+                "none";
+
+
+            lanzarCorazones(35);
+
+
+            setTimeout(
+                function () {
+
+                    finalMessage.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                },
+                300
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CORAZONES NORMALES
+===================================================== */
 
 function crearCorazon() {
+
+    if (!heartsContainer) {
+        return;
+    }
+
 
     const heart =
         document.createElement("span");
 
+
     heart.className =
         "floating-heart";
 
-    heart.innerHTML = "♥";
+
+    heart.textContent =
+        Math.random() > .5
+            ? "♥"
+            : "♡";
+
 
     heart.style.left =
-        Math.random() * 100 + "vw";
+        Math.random() * 100 +
+        "vw";
 
-    heart.style.animationDuration =
-        (5 + Math.random() * 6) + "s";
 
     heart.style.fontSize =
-        (10 + Math.random() * 18) + "px";
+        (
+            10 +
+            Math.random() * 18
+        ) +
+        "px";
+
+
+    heart.style.animationDuration =
+        (
+            6 +
+            Math.random() * 7
+        ) +
+        "s";
+
 
     heart.style.opacity =
-        0.2 + Math.random() * 0.5;
+        .15 +
+        Math.random() * .45;
 
 
     heartsContainer.appendChild(
@@ -161,57 +499,112 @@ function crearCorazon() {
     );
 
 
-    setTimeout(function () {
+    setTimeout(
+        function () {
 
-        heart.remove();
+            heart.remove();
 
-    }, 11000);
+        },
+        14000
+    );
 
 }
 
 
 setInterval(
     crearCorazon,
-    700
+    900
 );
 
 
-// ==========================================
-// ANIMACIÓN AL HACER SCROLL
-// ==========================================
+/* =====================================================
+   LLUVIA DE CORAZONES
+===================================================== */
 
-const elementos =
+function lanzarCorazones(cantidad) {
+
+    for (
+        let i = 0;
+        i < cantidad;
+        i++
+    ) {
+
+        setTimeout(
+            function () {
+
+                crearCorazon();
+
+            },
+            i * 70
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   ANIMACIONES AL HACER SCROLL
+===================================================== */
+
+const elementosReveal =
     document.querySelectorAll(
-        ".section"
+        ".reveal"
     );
 
 
 const observer =
     new IntersectionObserver(
-        function(entries) {
+        function (entries) {
 
-            entries.forEach(function(entry) {
+            entries.forEach(
+                function (entry) {
 
-                if (entry.isIntersecting) {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                    }
 
                 }
-
-            });
+            );
 
         },
         {
-            threshold: 0.15
+            threshold: 0.12
         }
     );
 
 
-elementos.forEach(function(elemento) {
+elementosReveal.forEach(
+    function (elemento) {
 
-    observer.observe(elemento);
+        observer.observe(
+            elemento
+        );
 
-});
+    }
+);
+
+
+/* =====================================================
+   CORAZÓN INICIAL
+===================================================== */
+
+for (
+    let i = 0;
+    i < 5;
+    i++
+) {
+
+    setTimeout(
+        crearCorazon,
+        i * 400
+    );
+
+}
 ```
