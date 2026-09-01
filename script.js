@@ -1,261 +1,143 @@
 ```javascript
-// ==========================================
-// CONFIGURACIÓN
-// ==========================================
+const PASSWORD = "01092023";
 
-// 🔐 CAMBIA AQUÍ LA CONTRASEÑA
-const PASSWORD = "jeffydany";
-
-// ❤️ FECHA EN QUE COMENZÓ LA RELACIÓN
-// Año, mes, día
-// IMPORTANTE: enero = 0, septiembre = 8
 const fechaInicio = new Date(2023, 8, 1, 0, 0, 0);
 
-
-// ==========================================
-// ENTRAR CON CONTRASEÑA
-// ==========================================
+const loginScreen = document.getElementById("loginScreen");
+const mainContent = document.getElementById("mainContent");
+const passwordInput = document.getElementById("passwordInput");
+const errorMessage = document.getElementById("errorMessage");
 
 function entrar() {
+    const clave = passwordInput.value.trim();
 
-    const input = document.getElementById("passwordInput");
-    const error = document.getElementById("errorMessage");
+    if (clave === PASSWORD) {
+        loginScreen.classList.add("hidden");
+        mainContent.classList.remove("hidden");
 
-    const password = input.value.trim();
+        errorMessage.textContent = "";
 
-    if (password === PASSWORD) {
-
-        // Ocultar pantalla de contraseña
-        document.getElementById("loginScreen").style.display = "none";
-
-        // Mostrar página
-        document.getElementById("mainContent").classList.remove("hidden");
-
-        // Iniciar corazones
+        actualizarContador();
         iniciarCorazones();
 
-        // Actualizar contador
-        actualizarContador();
-
-        // Llevar al inicio
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
-
     } else {
+        errorMessage.textContent = "Código incorrecto ❤️ Intenta nuevamente.";
 
-        error.textContent =
-            "Ese no es nuestro secreto... 🥺❤️";
+        passwordInput.value = "";
+        passwordInput.focus();
 
-        input.value = "";
-
-        input.focus();
-
-        // Animación de error
-        input.style.transform = "translateX(5px)";
+        passwordInput.classList.remove("shake");
 
         setTimeout(() => {
-            input.style.transform = "translateX(-5px)";
-        }, 80);
+            passwordInput.classList.add("shake");
+        }, 10);
 
         setTimeout(() => {
-            input.style.transform = "translateX(0)";
-        }, 160);
+            passwordInput.classList.remove("shake");
+        }, 500);
     }
 }
 
-
-// ==========================================
-// ENTER EN EL CAMPO DE CONTRASEÑA
-// ==========================================
-
-document
-    .getElementById("passwordInput")
-    .addEventListener("keydown", function(event) {
-
-        if (event.key === "Enter") {
-            entrar();
-        }
-
-    });
-
-
-// ==========================================
-// ABRIR CARTA
-// ==========================================
+passwordInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        entrar();
+    }
+});
 
 function mostrarCarta() {
-
     const carta = document.getElementById("carta");
 
     carta.classList.remove("hidden");
 
     setTimeout(() => {
-
         carta.scrollIntoView({
             behavior: "smooth",
             block: "center"
         });
-
     }, 100);
 }
 
-
-// ==========================================
-// SORPRESA FINAL
-// ==========================================
-
 function sorpresa() {
-
-    const mensaje =
-        document.getElementById("mensajeFinal");
+    const mensaje = document.getElementById("mensajeFinal");
 
     mensaje.classList.remove("hidden");
 
     setTimeout(() => {
-
         mensaje.scrollIntoView({
             behavior: "smooth",
             block: "center"
         });
-
     }, 100);
 }
 
-
-// ==========================================
-// CONTADOR
-// ==========================================
-
 function actualizarContador() {
-
     const ahora = new Date();
 
-    let diferencia =
-        ahora.getTime() -
-        fechaInicio.getTime();
+    let diferencia = ahora - fechaInicio;
 
     if (diferencia < 0) {
         diferencia = 0;
     }
 
-    const segundosTotales =
-        Math.floor(diferencia / 1000);
+    const segundosTotales = Math.floor(diferencia / 1000);
 
-    const dias =
-        Math.floor(segundosTotales / 86400);
+    const dias = Math.floor(segundosTotales / 86400);
+    const horas = Math.floor((segundosTotales % 86400) / 3600);
+    const minutos = Math.floor((segundosTotales % 3600) / 60);
+    const segundos = segundosTotales % 60;
 
-    const horas =
-        Math.floor(
-            (segundosTotales % 86400) / 3600
-        );
+    const diasElemento = document.getElementById("dias");
+    const horasElemento = document.getElementById("horas");
+    const minutosElemento = document.getElementById("minutos");
+    const segundosElemento = document.getElementById("segundos");
 
-    const minutos =
-        Math.floor(
-            (segundosTotales % 3600) / 60
-        );
+    if (diasElemento) {
+        diasElemento.textContent = dias;
+    }
 
-    const segundos =
-        segundosTotales % 60;
+    if (horasElemento) {
+        horasElemento.textContent = horas;
+    }
 
+    if (minutosElemento) {
+        minutosElemento.textContent = minutos;
+    }
 
-    document.getElementById("days")
-        .textContent = dias.toLocaleString("es-CO");
-
-    document.getElementById("hours")
-        .textContent = horas;
-
-    document.getElementById("minutes")
-        .textContent = minutos;
-
-    document.getElementById("seconds")
-        .textContent = segundos;
+    if (segundosElemento) {
+        segundosElemento.textContent = segundos;
+    }
 }
-
-
-// ==========================================
-// ACTUALIZAR CONTADOR CADA SEGUNDO
-// ==========================================
 
 setInterval(actualizarContador, 1000);
 
-
-// ==========================================
-// CORAZONES
-// ==========================================
-
-let intervaloCorazones = null;
-
-function crearCorazon() {
-
-    const contenedor =
-        document.querySelector(".hearts");
-
-    if (!contenedor) return;
-
-    const corazon =
-        document.createElement("div");
-
-    corazon.classList.add("heart");
-
-    corazon.innerHTML = "♥";
-
-    // Posición horizontal
-    corazon.style.left =
-        Math.random() * 100 + "%";
-
-    // Tamaño
-    const tamanio =
-        Math.random() * 18 + 12;
-
-    corazon.style.fontSize =
-        tamanio + "px";
-
-    // Velocidad
-    const duracion =
-        Math.random() * 5 + 5;
-
-    corazon.style.animationDuration =
-        duracion + "s";
-
-    // Transparencia
-    corazon.style.opacity =
-        Math.random() * 0.5 + 0.3;
-
-    contenedor.appendChild(corazon);
-
-
-    // Eliminar cuando termine
-    setTimeout(() => {
-
-        corazon.remove();
-
-    }, duracion * 1000);
-}
-
-
-// ==========================================
-// INICIAR CORAZONES
-// ==========================================
+let corazonesIniciados = false;
 
 function iniciarCorazones() {
+    if (corazonesIniciados) return;
 
-    // Crear algunos inmediatamente
-    for (let i = 0; i < 8; i++) {
+    corazonesIniciados = true;
 
-        setTimeout(() => {
-            crearCorazon();
-        }, i * 300);
+    setInterval(crearCorazon, 900);
+}
 
-    }
+function crearCorazon() {
+    const corazon = document.createElement("div");
 
-    // Evitar iniciar el intervalo dos veces
-    if (intervaloCorazones === null) {
+    corazon.className = "corazon-flotante";
+    corazon.innerHTML = "♥";
 
-        intervaloCorazones =
-            setInterval(crearCorazon, 500);
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.animationDuration = (4 + Math.random() * 4) + "s";
+    corazon.style.fontSize = (12 + Math.random() * 20) + "px";
 
-    }
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 8000);
 }
 ```
