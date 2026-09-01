@@ -9,20 +9,33 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
+
 
 body {
     width: 100%;
     min-height: 100vh;
 
-    background: #16070d;
+    overflow-x: hidden;
+
+    background:
+        #16070d;
+
     color: #fff5f7;
 
-    font-family: Georgia, "Times New Roman", serif;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
 
-    overflow-x: hidden;
+
+button {
+    font: inherit;
 }
 
 
@@ -31,26 +44,28 @@ body {
 ========================================= */
 
 body::before {
+
     content: "";
 
     position: fixed;
+
     inset: 0;
 
-    z-index: -2;
+    pointer-events: none;
+
+    z-index: -1;
 
     background:
         radial-gradient(
-            circle at 15% 15%,
-            rgba(255, 78, 125, .20),
-            transparent 35%
+            circle at 10% 10%,
+            rgba(255, 77, 125, .12),
+            transparent 30%
         ),
         radial-gradient(
-            circle at 85% 80%,
-            rgba(180, 35, 80, .18),
-            transparent 40%
+            circle at 90% 80%,
+            rgba(190, 40, 90, .10),
+            transparent 35%
         );
-
-    pointer-events: none;
 }
 
 
@@ -59,30 +74,39 @@ body::before {
 ========================================= */
 
 #hearts {
+
     position: fixed;
 
     inset: 0;
 
-    overflow: hidden;
-
     pointer-events: none;
 
-    z-index: 20;
+    overflow: hidden;
+
+    z-index: 50;
 }
 
+
 .floating-heart {
+
     position: absolute;
 
     bottom: -40px;
 
     color: #ff7199;
 
-    animation: floatHeart linear forwards;
+    opacity: 0;
+
+    animation:
+        floatHeart
+        linear
+        forwards;
 }
+
 
 @keyframes floatHeart {
 
-    from {
+    0% {
         transform:
             translateY(0)
             rotate(0deg);
@@ -91,10 +115,11 @@ body::before {
     }
 
     15% {
-        opacity: .7;
+        opacity: .65;
     }
 
-    to {
+    100% {
+
         transform:
             translateY(-115vh)
             rotate(360deg);
@@ -105,91 +130,111 @@ body::before {
 
 
 /* =========================================
-   HERO
+   PORTADA
 ========================================= */
 
 .hero {
 
+    position: relative;
+
     width: 100%;
 
-    min-height: 100vh;
     min-height: 100svh;
 
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
-    padding: 30px 20px;
+    padding:
+        35px 20px;
 
     text-align: center;
 
-    position: relative;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 77, 125, .09),
+            transparent 48%
+        );
 }
 
-.hero-card {
+
+.hero-content {
 
     width: 100%;
 
-    max-width: 800px;
+    max-width: 850px;
 }
+
 
 .date {
 
     display: inline-block;
 
-    padding: 9px 18px;
+    padding:
+        9px 18px;
 
     border:
         1px solid
-        rgba(255,255,255,.15);
+        rgba(255,255,255,.13);
 
-    border-radius: 50px;
+    border-radius: 100px;
+
+    color: #f3c4d1;
 
     font-family: Arial, sans-serif;
 
-    font-size: 11px;
+    font-size: 10px;
 
-    letter-spacing: 4px;
-
-    color: #f7c6d3;
+    letter-spacing: 3px;
 
     background:
-        rgba(255,255,255,.03);
+        rgba(255,255,255,.025);
 }
 
-.heart {
 
-    width: 85px;
-    height: 85px;
+.main-heart {
 
-    margin: 35px auto 20px;
+    width: 88px;
+    height: 88px;
+
+    margin:
+        30px auto 22px;
 
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
     border-radius: 50%;
 
     color: #ff7199;
 
+    font-size: 39px;
+
     background:
-        rgba(255,85,130,.10);
+        rgba(255,113,153,.09);
 
     border:
         1px solid
-        rgba(255,113,153,.2);
+        rgba(255,113,153,.22);
 
-    font-size: 38px;
+    box-shadow:
+        0 0 60px
+        rgba(255,113,153,.12);
 
-    animation: heartbeat 2s infinite;
+    animation:
+        heartbeat
+        2s infinite;
 }
+
 
 @keyframes heartbeat {
 
-    0%,
-    100% {
+    0%, 100% {
         transform: scale(1);
     }
 
@@ -198,66 +243,78 @@ body::before {
     }
 }
 
-.overline {
+
+.eyebrow {
+
+    color: #9f818c;
 
     font-family: Arial, sans-serif;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 4px;
 
-    color: #a98792;
-
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
+
 
 .hero h1 {
 
-    font-size:
-        clamp(70px, 16vw, 145px);
+    color: white;
 
-    line-height: .85;
+    font-size:
+        clamp(75px, 17vw, 150px);
 
     font-weight: normal;
 
-    color: white;
+    line-height: .85;
+
+    letter-spacing: -5px;
 }
 
-.line {
 
-    width: 70px;
+.divider {
+
+    width: 65px;
 
     height: 1px;
 
-    background: #ff7199;
+    margin:
+        30px auto;
 
-    margin: 30px auto;
+    background: #ff7199;
 }
+
 
 .hero h2 {
 
     font-size:
-        clamp(30px, 7vw, 55px);
-
-    line-height: 1.05;
+        clamp(31px, 7vw, 58px);
 
     font-weight: normal;
+
+    line-height: 1;
 }
+
 
 .hero h2 span {
 
     display: block;
+
+    margin-top: 8px;
 
     color: #ff7199;
 
     font-style: italic;
 }
 
-.intro {
+
+.hero-text {
 
     max-width: 550px;
 
-    margin: 25px auto 30px;
+    margin:
+        25px auto 30px;
 
     color: #bda2aa;
 
@@ -265,49 +322,90 @@ body::before {
 
     font-size: 14px;
 
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
-button {
+
+/* =========================================
+   BOTÓN GENERAL
+========================================= */
+
+.primary-button {
+
+    padding:
+        15px 23px;
 
     border: none;
 
-    cursor: pointer;
+    border-radius: 100px;
+
+    background:
+        #ff5f8f;
+
+    color: white;
 
     font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    cursor: pointer;
 
     transition:
         transform .25s ease,
         box-shadow .25s ease;
 }
 
-#startButton {
 
-    padding:
-        15px
-        22px;
+.primary-button:hover {
 
-    border-radius: 50px;
+    transform:
+        translateY(-4px);
 
-    background: #ff5f8f;
-
-    color: white;
-
-    font-weight: bold;
-
-    font-size: 13px;
+    box-shadow:
+        0 15px 35px
+        rgba(255,95,143,.25);
 }
 
-#startButton span {
 
-    margin-left: 12px;
+.primary-button span {
 
-    font-size: 17px;
+    margin-left: 10px;
+
+    font-size: 16px;
 }
 
-#startButton:active {
 
-    transform: scale(.96);
+.scroll-hint {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #70525e;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+}
+
+
+.scroll-hint span {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #ff7199;
+
+    font-size: 15px;
 }
 
 
@@ -324,111 +422,25 @@ button {
     margin: auto;
 
     padding:
-        90px 25px;
-}
-
-.section-number {
-
-    margin-bottom: 30px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    color: #ff7199;
-}
-
-.section h2 {
-
-    font-size:
-        clamp(40px, 8vw, 70px);
-
-    font-weight: normal;
-
-    line-height: 1.05;
-}
-
-.section h2 span {
-
-    display: block;
-
-    color: #ff7199;
-
-    font-style: italic;
-}
-
-.subtitle {
-
-    margin-top: 18px;
-
-    color: #9f818c;
-
-    font-family: Arial, sans-serif;
-
-    line-height: 1.6;
+        110px 25px;
 }
 
 
-```css
-/* =========================================
-   ❤️ CONTADOR PREMIUM
-========================================= */
-
-.counter-section {
-    text-align: center;
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-
-/* pequeño brillo detrás */
-
-.counter-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 350px;
-    height: 350px;
-
-    left: 50%;
-    top: 100px;
-
-    transform: translateX(-50%);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255, 83, 130, .13),
-            transparent 70%
-        );
-
-    pointer-events: none;
-}
-
-
-.counter-section .section-number {
-
-    position: relative;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-
-    color: #ff7199;
+.section-label {
 
     margin-bottom: 25px;
+
+    color: #ff7199;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
 }
 
 
-.counter-section h2 {
-
-    position: relative;
+.section-title {
 
     font-size:
         clamp(42px, 8vw, 72px);
@@ -437,11 +449,11 @@ button {
 
     line-height: 1;
 
-    margin-bottom: 18px;
+    letter-spacing: -2px;
 }
 
 
-.counter-section h2 span {
+.section-title span {
 
     display: block;
 
@@ -451,74 +463,76 @@ button {
 }
 
 
-.counter-section .subtitle {
+.section-description {
 
-    position: relative;
+    max-width: 570px;
 
-    max-width: 550px;
-
-    margin:
-        0 auto;
+    margin-top: 18px;
 
     color: #a98a95;
 
+    font-family: Arial, sans-serif;
+
     font-size: 14px;
+
+    line-height: 1.7;
 }
 
 
 /* =========================================
-   FECHA
+   CONTADOR
 ========================================= */
+
+.counter-section {
+
+    text-align: center;
+
+    padding-top: 120px;
+}
+
+
+.counter-section .section-description {
+
+    margin-left: auto;
+
+    margin-right: auto;
+}
+
 
 .start-date {
 
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
+    display: inline-block;
 
     margin:
-        30px
-        auto
-        45px;
+        30px auto 45px;
 
     padding:
         10px 18px;
-
-    border-radius: 50px;
 
     border:
         1px solid
         rgba(255,113,153,.18);
 
-    background:
-        rgba(255,113,153,.05);
+    border-radius: 100px;
 
     color: #ffabc0;
+
+    background:
+        rgba(255,113,153,.04);
 
     font-family: Arial, sans-serif;
 
     font-size: 11px;
-
-    letter-spacing: .5px;
 }
 
 
-/* =========================================
-   CAJAS DEL CONTADOR
-========================================= */
-
 .counter {
 
-    position: relative;
+    width: 100%;
 
-    max-width: 900px;
+    max-width: 920px;
 
-    margin:
-        0 auto;
+    margin: auto;
 
     display: grid;
 
@@ -529,14 +543,11 @@ button {
 }
 
 
-.counter-box {
+.counter-card {
 
     position: relative;
 
-    min-height: 130px;
-
-    padding:
-        25px 10px;
+    min-height: 135px;
 
     display: flex;
 
@@ -546,11 +557,13 @@ button {
 
     align-items: center;
 
-    border-radius: 20px;
+    padding: 20px 8px;
 
     border:
         1px solid
         rgba(255,255,255,.08);
+
+    border-radius: 20px;
 
     background:
         linear-gradient(
@@ -563,56 +576,25 @@ button {
         0 15px 40px
         rgba(0,0,0,.15);
 
-    overflow: hidden;
-
     transition:
         transform .3s ease,
-        border-color .3s ease,
-        background .3s ease;
+        border-color .3s ease;
 }
 
 
-.counter-box::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 70px;
-    height: 70px;
-
-    top: -35px;
-    right: -35px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,113,153,.12);
-}
-
-
-.counter-box:hover {
+.counter-card:hover {
 
     transform:
-        translateY(-7px);
+        translateY(-6px);
 
     border-color:
-        rgba(255,113,153,.35);
-
-    background:
-        rgba(255,113,153,.06);
+        rgba(255,113,153,.3);
 }
 
 
-.counter-box strong {
+.counter-card strong {
 
-    position: relative;
-
-    display: block;
-
-    font-family:
-        Georgia,
-        serif;
+    color: white;
 
     font-size:
         clamp(30px, 4vw, 48px);
@@ -621,107 +603,125 @@ button {
 
     line-height: 1;
 
-    color: #fff;
-
-    text-shadow:
-        0 0 25px
-        rgba(255,113,153,.15);
-
-    transition:
-        transform .2s ease;
+    font-variant-numeric:
+        tabular-nums;
 }
 
 
-.counter-box small {
-
-    position: relative;
-
-    display: block;
+.counter-card span {
 
     margin-top: 12px;
+
+    color: #856773;
 
     font-family: Arial, sans-serif;
 
     font-size: 8px;
 
     letter-spacing: 2px;
-
-    color: #90717c;
 }
 
 
-/* =========================================
-   MENSAJE DEL CONTADOR
-========================================= */
+.seconds-card strong {
+
+    color: #ff7199;
+
+    text-shadow:
+        0 0 25px
+        rgba(255,113,153,.2);
+}
+
+
+/* indicador */
+
+.live-indicator {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 30px;
+
+    color: #82636f;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.live-indicator span {
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #ff7199;
+
+    box-shadow:
+        0 0 12px
+        rgba(255,113,153,.8);
+
+    animation:
+        liveDot
+        1.5s infinite;
+}
+
+
+@keyframes liveDot {
+
+    50% {
+        opacity: .25;
+        transform: scale(.65);
+    }
+}
+
 
 .time-message {
-
-    position: relative;
 
     max-width: 650px;
 
     margin:
-        40px auto
-        0;
+        35px auto 0;
 
     padding:
-        22px 25px;
+        20px;
 
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
 
-    gap: 15px;
+    align-items: center;
 
-    border-radius: 18px;
+    gap: 15px;
 
     border:
         1px solid
         rgba(255,113,153,.12);
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,113,153,.07),
-            rgba(255,255,255,.025)
-        );
+    border-radius: 18px;
 
-    box-shadow:
-        0 15px 45px
-        rgba(0,0,0,.12);
+    background:
+        rgba(255,255,255,.025);
 }
 
 
-.time-message span {
-
-    flex-shrink: 0;
-
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,113,153,.10);
+.time-message div {
 
     color: #ff7199;
 
-    font-size: 20px;
+    font-size: 25px;
 }
 
 
 .time-message p {
 
-    margin: 0;
-
-    color: #dfc4cc;
+    color: #d9bdc6;
 
     font-size: 14px;
 
@@ -730,162 +730,43 @@ button {
 
 
 /* =========================================
-   ANIMACIÓN DE LOS SEGUNDOS
-========================================= */
-
-#seconds {
-
-    color: #ff7199;
-
-    text-shadow:
-        0 0 25px
-        rgba(255,113,153,.25);
-}
-
-
-/* =========================================
-   CELULAR
-========================================= */
-
-@media (max-width: 700px) {
-
-    .counter {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 10px;
-
-        max-width: 430px;
-    }
-
-
-    .counter-box {
-
-        min-height: 105px;
-
-        padding:
-            20px 8px;
-
-        border-radius: 17px;
-    }
-
-
-    .counter-box strong {
-
-        font-size: 34px;
-    }
-
-
-    .counter-box small {
-
-        margin-top: 8px;
-
-        font-size: 7px;
-
-        letter-spacing: 1.5px;
-    }
-
-
-    .time-message {
-
-        margin-top: 30px;
-
-        padding:
-            18px;
-
-        flex-direction: column;
-
-        text-align: center;
-    }
-
-
-    .time-message p {
-
-        font-size: 13px;
-    }
-}
-
-
-@media (max-width: 360px) {
-
-    .counter {
-
-        gap: 7px;
-    }
-
-
-    .counter-box {
-
-        min-height: 95px;
-    }
-
-
-    .counter-box strong {
-
-        font-size: 29px;
-    }
-}
-```
-
-
-/* =========================================
    CARTA
 ========================================= */
 
 .letter-section {
 
-    padding-top: 80px;
+    padding-top: 70px;
 }
 
-.letter-title {
-
-    margin-bottom: 40px;
-}
-
-.letter-title p {
-
-    color: #ff7199;
-
-    font-size: 20px;
-
-    font-style: italic;
-}
-
-.letter-title h2 {
-
-    margin-top: 5px;
-}
 
 .letter {
 
-    width: 100%;
-
     max-width: 800px;
 
-    margin: auto;
+    margin:
+        45px auto 0;
 
     padding:
         45px 40px;
 
-    background: #fff9f6;
+    background:
+        #fff9f6;
 
-    color: #45242e;
+    color: #482630;
+
+    border-radius: 4px;
 
     box-shadow:
-        0 25px 70px
+        0 30px 80px
         rgba(0,0,0,.35);
-
-    border-radius: 3px;
 }
 
-.letter-header {
+
+.letter-top {
 
     display: flex;
 
     justify-content: space-between;
-
-    gap: 10px;
 
     padding-bottom: 18px;
 
@@ -893,34 +774,38 @@ button {
         1px solid
         #ead8dd;
 
+    color: #a17c87;
+
     font-family: Arial, sans-serif;
 
     font-size: 8px;
 
     letter-spacing: 2px;
-
-    color: #a17c87;
 }
+
 
 .letter-heart {
 
-    text-align: center;
+    margin:
+        25px 0;
 
     color: #df527b;
 
-    font-size: 28px;
+    text-align: center;
 
-    margin: 25px 0;
+    font-size: 28px;
 }
+
 
 .letter h3 {
 
     margin-bottom: 20px;
 
-    font-size: 21px;
+    font-size: 22px;
 
     font-weight: normal;
 }
+
 
 .letter p {
 
@@ -931,15 +816,14 @@ button {
     line-height: 1.8;
 }
 
+
 .letter blockquote {
 
     margin:
-        30px
-        0;
+        30px 0;
 
     padding:
-        18px
-        20px;
+        18px 20px;
 
     border-left:
         2px solid
@@ -952,12 +836,14 @@ button {
     line-height: 1.7;
 }
 
-.letter .love {
+
+.letter-love {
 
     color: #df527b;
 
     font-weight: bold;
 }
+
 
 .signature {
 
@@ -970,15 +856,16 @@ button {
     font-style: italic;
 }
 
+
 .signature strong {
 
     display: block;
 
     margin-top: 5px;
 
-    font-size: 25px;
-
     color: #45242e;
+
+    font-size: 25px;
 }
 
 
@@ -986,12 +873,10 @@ button {
    FRASE
 ========================================= */
 
-.quote {
-
-    width: 100%;
+.quote-section {
 
     padding:
-        120px 25px;
+        130px 25px;
 
     text-align: center;
 
@@ -999,7 +884,8 @@ button {
         rgba(255,255,255,.015);
 }
 
-.big-heart {
+
+.quote-heart {
 
     margin-bottom: 25px;
 
@@ -1008,11 +894,8 @@ button {
     font-size: 45px;
 }
 
-.quote > p {
 
-    max-width: 700px;
-
-    margin: auto;
+.quote-section > p {
 
     color: #c6a9b2;
 
@@ -1022,21 +905,24 @@ button {
     line-height: 1.4;
 }
 
-.quote h2 {
 
-    max-width: 800px;
+.quote-section h2 {
 
-    margin: 20px auto 0;
+    max-width: 850px;
+
+    margin:
+        20px auto 0;
 
     font-size:
-        clamp(40px, 8vw, 70px);
+        clamp(40px, 8vw, 72px);
 
     font-weight: normal;
 
-    line-height: 1.05;
+    line-height: 1;
 }
 
-.quote h2 span {
+
+.quote-section h2 span {
 
     display: block;
 
@@ -1050,36 +936,47 @@ button {
    RECUERDOS
 ========================================= */
 
-.memories h2 {
+.memories-section {
 
-    margin-bottom: 45px;
+    padding-bottom: 90px;
 }
 
+
 .memory-grid {
+
+    margin-top: 45px;
 
     display: grid;
 
     grid-template-columns:
         2fr 1fr;
 
+    grid-template-rows:
+        1fr 1fr;
+
     gap: 14px;
 }
 
+
 .memory {
+
+    position: relative;
 
     min-height: 220px;
 
     padding: 30px;
 
+    overflow: hidden;
+
     display: flex;
 
     align-items: flex-end;
 
-    position: relative;
+    border:
+        1px solid
+        rgba(255,255,255,.07);
 
-    overflow: hidden;
-
-    border-radius: 18px;
+    border-radius: 20px;
 
     background:
         radial-gradient(
@@ -1089,12 +986,19 @@ button {
         ),
         #32121e;
 
-    border:
-        1px solid
-        rgba(255,255,255,.07);
+    transition:
+        transform .3s ease;
 }
 
-.memory.first {
+
+.memory:hover {
+
+    transform:
+        translateY(-5px);
+}
+
+
+.memory-large {
 
     grid-row:
         span 2;
@@ -1102,37 +1006,57 @@ button {
     min-height: 455px;
 }
 
-.memory small {
+
+.memory-number {
+
+    position: absolute;
+
+    top: 25px;
+    right: 25px;
+
+    color: rgba(255,255,255,.12);
+
+    font-size: 45px;
+}
+
+
+.memory-content small {
+
+    color: #ff9db5;
 
     font-family: Arial, sans-serif;
 
-    font-size: 9px;
+    font-size: 8px;
 
     letter-spacing: 3px;
-
-    color: #ff9db5;
 }
 
-.memory h3 {
+
+.memory-content h3 {
+
+    max-width: 400px;
 
     margin-top: 10px;
+
+    color: white;
 
     font-size: 28px;
 
     font-weight: normal;
 
-    line-height: 1.15;
+    line-height: 1.1;
 }
 
-.memory p {
+
+.memory-content p {
 
     margin-top: 12px;
 
+    color: #987783;
+
     font-family: Arial, sans-serif;
 
-    font-size: 11px;
-
-    color: #987783;
+    font-size: 10px;
 }
 
 
@@ -1140,7 +1064,7 @@ button {
    POEMA
 ========================================= */
 
-.poem {
+.poem-section {
 
     padding:
         120px 25px;
@@ -1148,7 +1072,8 @@ button {
     text-align: center;
 }
 
-.poem > p {
+
+.poem-section > p {
 
     color: #ff7199;
 
@@ -1157,9 +1082,10 @@ button {
     font-style: italic;
 }
 
-.poem h2 {
 
-    margin-top: 10px;
+.poem-section h2 {
+
+    margin-top: 8px;
 
     font-size:
         clamp(40px, 8vw, 60px);
@@ -1167,26 +1093,29 @@ button {
     font-weight: normal;
 }
 
-.poem-text {
 
-    max-width: 600px;
+.poem {
+
+    max-width: 650px;
 
     margin:
         45px auto;
 }
 
-.poem-text p {
 
-    margin: 14px 0;
+.poem p {
+
+    margin: 12px 0;
 
     color: #bda1aa;
 
-    font-size: 21px;
+    font-size: 20px;
 
     line-height: 1.6;
 }
 
-.poem-text strong {
+
+.poem strong {
 
     display: block;
 
@@ -1194,14 +1123,15 @@ button {
 
     color: #ff7199;
 
-    font-size: 26px;
+    font-size: 25px;
 
     font-style: italic;
 
     font-weight: normal;
 }
 
-.poem > small {
+
+.poem-section > small {
 
     color: #80606c;
 
@@ -1210,33 +1140,27 @@ button {
 
 
 /* =========================================
-   PROMESA
+   PROMESAS
 ========================================= */
 
-.promise {
+.promise-section {
 
     text-align: center;
 
-    padding-bottom: 120px;
+    padding-bottom: 130px;
 }
 
-.promise > h2 {
 
-    max-width: 750px;
-
-    margin: auto;
-}
-
-.promise-list {
+.promises {
 
     max-width: 700px;
 
     margin:
-        50px auto
-        30px;
+        50px auto 30px;
 }
 
-.promise-list div {
+
+.promise {
 
     display: grid;
 
@@ -1257,7 +1181,8 @@ button {
     text-align: left;
 }
 
-.promise-list span {
+
+.promise > span {
 
     color: #ff7199;
 
@@ -1266,12 +1191,16 @@ button {
     font-size: 10px;
 }
 
-.promise-list p {
+
+.promise p {
 
     color: #d0b6bf;
+
+    font-size: 14px;
 }
 
-.promise-list b {
+
+.promise b {
 
     color: #ff7199;
 
@@ -1280,13 +1209,24 @@ button {
     text-align: right;
 }
 
+
 .infinity {
 
-    margin: 35px 0 5px;
+    margin-top: 35px;
 
     color: #ff7199;
 
-    font-size: 55px;
+    font-size: 65px;
+
+    line-height: 1;
+}
+
+
+.forever {
+
+    color: #8f707b;
+
+    font-style: italic;
 }
 
 
@@ -1294,510 +1234,7 @@ button {
    FINAL
 ========================================= */
 
-.final {
-
-    width: 100%;
-
-    min-height: 90vh;
-
-    padding:
-        110px 25px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-}
-
-.final-heart {
-
-    color: #ff7199;
-
-    font-size: 55px;
-
-    animation: heartbeat 2s infinite;
-}
-
-.final > p {
-
-    margin-top: 20px;
-
-    color: #a98a95;
-
-    font-style: italic;
-}
-
-.final h2 {
-
-    margin-top: 20px;
-
-    font-size:
-        clamp(45px, 10vw, 85px);
-
-    font-weight: normal;
-
-    line-height: .95;
-}
-
-.final h2 span {
-
-    display: block;
-
-    color: #ff7199;
-
-    font-style: italic;
-}
-
-.final-text {
-
-    margin:
-        25px
-        0
-        30px !important;
-
-    font-family: Arial, sans-serif;
-
-    font-style: normal !important;
-}
-
-#surpriseButton {
-
-    padding:
-        16px 24px;
-
-    border-radius: 50px;
-
-    background: #ff5f8f;
-
-    color: white;
-
-    font-weight: bold;
-}
-
-#finalMessage {
-
-    width: 100%;
-
-    max-width: 600px;
-
-    margin-top: 40px;
-
-    padding:
-        40px 25px;
-
-    border:
-        1px solid
-        rgba(255,113,153,.25);
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,.04);
-}
-
-#finalMessage > div {
-
-    color: #ff7199;
-
-    font-size: 35px;
-}
-
-#finalMessage h3 {
-
-    margin: 10px 0 20px;
-
-    color: #ff7199;
-
-    font-size: 55px;
-
-    font-weight: normal;
-}
-
-#finalMessage p {
-
-    margin: 15px 0;
-
-    color: #c9adb6;
-
-    line-height: 1.7;
-}
-
-#finalMessage strong {
-
-    display: block;
-
-    margin: 25px 0;
-
-    color: #ffe1e7;
-
-    line-height: 1.5;
-}
-
-.hidden {
-
-    display: none !important;
-}
-
-
-/* =========================================
-   FOOTER
-========================================= */
-
-footer {
-
-    width: 100%;
-
-    padding:
-        50px 20px;
-
-    text-align: center;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.06);
-
-    font-family: Arial, sans-serif;
-
-    color: #765964;
-}
-
-footer div {
-
-    color: #ff7199;
-
-    font-size: 25px;
-
-    margin-bottom: 10px;
-}
-
-footer small {
-
-    display: block;
-
-    margin-top: 10px;
-
-    color: #513943;
-}
-
-
-/* =========================================
-   TABLET
-========================================= */
-
-@media (max-width: 850px) {
-
-    .counter {
-
-        grid-template-columns:
-            repeat(3, 1fr);
-    }
-
-    .memory-grid {
-
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-    .memory.first {
-
-        grid-column:
-            span 2;
-
-        grid-row: auto;
-
-        min-height: 300px;
-    }
-}
-
-
-/* =========================================
-   CELULAR
-========================================= */
-
-@media (max-width: 600px) {
-
-    .hero {
-
-        min-height: 100svh;
-
-        padding:
-            25px 18px;
-    }
-
-    .hero-card {
-
-        padding-top: 10px;
-    }
-
-    .date {
-
-        font-size: 9px;
-
-        letter-spacing: 2px;
-
-        padding:
-            8px 14px;
-    }
-
-    .heart {
-
-        width: 70px;
-        height: 70px;
-
-        margin:
-            25px auto 18px;
-
-        font-size: 30px;
-    }
-
-    .overline {
-
-        font-size: 8px;
-
-        letter-spacing: 2px;
-    }
-
-    .hero h1 {
-
-        font-size: 70px;
-    }
-
-    .hero h2 {
-
-        font-size: 31px;
-    }
-
-    .intro {
-
-        font-size: 13px;
-
-        padding: 0 8px;
-    }
-
-    .section {
-
-        padding:
-            75px 18px;
-    }
-
-    .section h2 {
-
-        font-size: 43px;
-    }
-
-    .counter {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 9px;
-    }
-
-    .counter-box {
-
-        padding:
-            22px 8px;
-    }
-
-    .counter-box strong {
-
-        font-size: 32px;
-    }
-
-    .counter-box small {
-
-        font-size: 7px;
-
-        letter-spacing: 1px;
-    }
-
-    .time-message {
-
-        flex-direction: column;
-
-        padding:
-            20px 15px;
-    }
-
-    .time-message p {
-
-        font-size: 14px;
-    }
-
-    .letter {
-
-        padding:
-            28px 20px;
-    }
-
-    .letter-header {
-
-        font-size: 7px;
-    }
-
-    .letter p {
-
-        font-size: 15px;
-
-        line-height: 1.75;
-    }
-
-    .letter blockquote {
-
-        font-size: 14px;
-    }
-
-    .quote {
-
-        padding:
-            90px 20px;
-    }
-
-    .quote h2 {
-
-        font-size: 43px;
-    }
-
-    .quote > p {
-
-        font-size: 22px;
-    }
-
-    .memory-grid {
-
-        grid-template-columns: 1fr;
-
-        gap: 12px;
-    }
-
-    .memory.first {
-
-        grid-column: auto;
-
-        min-height: 300px;
-    }
-
-    .memory {
-
-        min-height: 210px;
-    }
-
-    .poem {
-
-        padding:
-            90px 20px;
-    }
-
-    .poem h2 {
-
-        font-size: 42px;
-    }
-
-    .poem-text p {
-
-        font-size: 18px;
-    }
-
-    .poem-text strong {
-
-        font-size: 23px;
-    }
-
-    .promise {
-
-        padding:
-            75px 18px
-            100px;
-    }
-
-    .promise > h2 {
-
-        font-size: 40px;
-    }
-
-    .promise-list div {
-
-        grid-template-columns:
-            28px 1fr 20px;
-    }
-
-    .promise-list p {
-
-        font-size: 14px;
-    }
-
-    .final {
-
-        min-height: 100svh;
-
-        padding:
-            90px 20px;
-    }
-
-    .final h2 {
-
-        font-size: 50px;
-    }
-
-    #finalMessage {
-
-        padding:
-            35px 20px;
-    }
-
-    #finalMessage h3 {
-
-        font-size: 48px;
-    }
-}
-
-
-/* =========================================
-   CELULARES MUY PEQUEÑOS
-========================================= */
-
-@media (max-width: 360px) {
-
-    .hero h1 {
-
-        font-size: 60px;
-    }
-
-    .hero h2 {
-
-        font-size: 27px;
-    }
-
-    .counter-box strong {
-
-        font-size: 28px;
-    }
-
-    .section h2 {
-
-        font-size: 38px;
-    }
-
-    .final h2 {
-
-        font-size: 44px;
-    }
-}
-
-```css
-/* =========================================
-   ❤️ FINAL ROMÁNTICO
-========================================= */
-
-.final {
-    position: relative;
-
-    width: 100%;
+.final-section {
 
     min-height: 100svh;
 
@@ -1819,49 +1256,35 @@ footer small {
     background:
         radial-gradient(
             circle at center,
-            rgba(255, 75, 120, .09),
+            rgba(255,75,120,.09),
             transparent 45%
         );
 }
 
 
-/* decoración superior */
-
 .final-decoration {
-    display: flex;
 
-    gap: 25px;
-
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 
     color: #ff7199;
 
-    opacity: .55;
+    opacity: .6;
+
+    font-size: 18px;
 
     animation:
-        floatingDecoration
+        decorationFloat
         4s ease-in-out infinite;
 }
 
 
-.final-decoration span:nth-child(2) {
-    font-size: 24px;
-}
-
-
-@keyframes floatingDecoration {
-
-    0%, 100% {
-        transform: translateY(0);
-    }
+@keyframes decorationFloat {
 
     50% {
-        transform: translateY(-8px);
+        transform: translateY(-7px);
     }
 }
 
-
-/* corazón */
 
 .final-heart {
 
@@ -1873,8 +1296,6 @@ footer small {
     align-items: center;
     justify-content: center;
 
-    margin-bottom: 25px;
-
     border-radius: 50%;
 
     color: #ff7199;
@@ -1882,55 +1303,25 @@ footer small {
     font-size: 42px;
 
     background:
-        radial-gradient(
-            circle,
-            rgba(255,113,153,.18),
-            rgba(255,113,153,.04)
-        );
+        rgba(255,113,153,.09);
 
     border:
         1px solid
-        rgba(255,113,153,.25);
+        rgba(255,113,153,.23);
 
     box-shadow:
-        0 0 50px
-        rgba(255,76,120,.15);
+        0 0 60px
+        rgba(255,113,153,.13);
 
     animation:
-        heartbeatFinal
-        2s ease-in-out infinite;
+        heartbeat
+        2s infinite;
 }
 
-
-@keyframes heartbeatFinal {
-
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    15% {
-        transform: scale(1.08);
-    }
-
-    30% {
-        transform: scale(1);
-    }
-
-    45% {
-        transform: scale(1.06);
-    }
-
-    60% {
-        transform: scale(1);
-    }
-}
-
-
-/* texto pequeño */
 
 .final-small {
 
-    margin: 0 !important;
+    margin-top: 25px;
 
     color: #a98a95;
 
@@ -1940,9 +1331,7 @@ footer small {
 }
 
 
-/* título */
-
-.final h2 {
+.final-section h2 {
 
     max-width: 850px;
 
@@ -1950,11 +1339,7 @@ footer small {
         20px auto;
 
     font-size:
-        clamp(
-            48px,
-            9vw,
-            88px
-        );
+        clamp(48px, 9vw, 88px);
 
     font-weight: normal;
 
@@ -1964,30 +1349,22 @@ footer small {
 }
 
 
-.final h2 span {
+.final-section h2 span {
 
     display: block;
-
-    margin-top: 8px;
 
     color: #ff7199;
 
     font-style: italic;
-
-    text-shadow:
-        0 0 35px
-        rgba(255,113,153,.12);
 }
 
 
-/* descripción */
+.final-description {
 
-.final-text {
-
-    max-width: 520px;
+    max-width: 530px;
 
     margin:
-        10px auto 30px !important;
+        0 auto 30px;
 
     color: #ad9099;
 
@@ -1996,626 +1373,29 @@ footer small {
     font-size: 14px;
 
     line-height: 1.7;
-
-    font-style: normal !important;
 }
 
 
 /* =========================================
-   🎁 BOTÓN
+   BOTÓN SORPRESA
 ========================================= */
 
-#surpriseButton {
+.surprise-button {
 
     position: relative;
 
-    display: inline-flex;
+    min-height: 56px;
+
+    padding:
+        0 27px;
+
+    display: flex;
 
     align-items: center;
 
     justify-content: center;
 
     gap: 10px;
-
-    min-height: 54px;
-
-    padding:
-        0 27px;
-
-    border: none;
-
-    border-radius: 50px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff7199,
-            #e84f7c
-        );
-
-    color: white;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 12px 35px
-        rgba(232,79,124,.25);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-}
-
-
-#surpriseButton span {
-
-    font-size: 13px;
-
-    transition:
-        transform .3s ease;
-}
-
-
-#surpriseButton:hover {
-
-    transform:
-        translateY(-4px)
-        scale(1.02);
-
-    box-shadow:
-        0 18px 45px
-        rgba(232,79,124,.35);
-}
-
-
-#surpriseButton:hover span:first-child {
-
-    transform:
-        scale(1.3)
-        rotate(-10deg);
-}
-
-
-#surpriseButton:hover span:last-child {
-
-    transform:
-        scale(1.3)
-        rotate(10deg);
-}
-
-
-#surpriseButton:active {
-
-    transform:
-        scale(.96);
-}
-
-
-/* =========================================
-   💌 CARTA DE LA SORPRESA
-========================================= */
-
-.surprise-card {
-
-    width: 100%;
-
-    max-width: 680px;
-
-    margin-top: 55px;
-
-    padding:
-        50px 40px;
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.07),
-            rgba(255,113,153,.035)
-        );
-
-    border:
-        1px solid
-        rgba(255,113,153,.25);
-
-    box-shadow:
-        0 30px 90px
-        rgba(0,0,0,.35);
-
-    animation:
-        surpriseAppear
-        .8s cubic-bezier(.17,.67,.35,1.2);
-
-}
-
-
-/* importante:
-   ocultamos la sorpresa desde el inicio */
-
-#finalMessage {
-
-    display: none;
-
-}
-
-
-/* cuando JS agregue esta clase */
-
-#finalMessage.show {
-
-    display: block;
-
-}
-
-
-@keyframes surpriseAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(50px)
-            scale(.92);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-}
-
-
-/* corazón de la carta */
-
-.surprise-top-heart {
-
-    width: 55px;
-    height: 55px;
-
-    margin:
-        0 auto 20px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,113,153,.10);
-
-    color: #ff7199;
-
-    font-size: 25px;
-
-    animation:
-        heartbeatFinal
-        2s infinite;
-}
-
-
-.surprise-label {
-
-    margin: 0 0 12px !important;
-
-    color: #ff7199 !important;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px !important;
-
-    letter-spacing: 3px;
-
-    line-height: 1.5 !important;
-}
-
-
-.surprise-card h3 {
-
-    margin: 0;
-
-    color: #fff;
-
-    font-size: 45px;
-
-    font-weight: normal;
-
-    font-style: italic;
-}
-
-
-.surprise-line {
-
-    width: 60px;
-
-    height: 1px;
-
-    margin:
-        20px auto 30px;
-
-    background: #ff7199;
-}
-
-
-.surprise-card > p {
-
-    margin:
-        0 auto 20px;
-
-    max-width: 550px;
-
-    color: #cdb3bb;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-}
-
-
-.surprise-card blockquote {
-
-    margin:
-        30px auto;
-
-    padding:
-        22px 20px;
-
-    border-top:
-        1px solid
-        rgba(255,113,153,.15);
-
-    border-bottom:
-        1px solid
-        rgba(255,113,153,.15);
-
-    color: #ffb5c7;
-
-    font-size: 18px;
-
-    line-height: 1.7;
-
-    font-style: italic;
-}
-
-
-/* =========================================
-   💕 TE AMO
-========================================= */
-
-.surprise-love {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 18px;
-
-    margin:
-        35px 0 25px;
-}
-
-
-.surprise-love span {
-
-    color: #ff7199;
-
-    font-size: 17px;
-}
-
-
-.surprise-love h4 {
-
-    margin: 0;
-
-    color: #ff7199;
-
-    font-size: 35px;
-
-    font-weight: normal;
-
-    font-style: italic;
-}
-
-
-.last-message {
-
-    margin-top: 35px !important;
-
-    margin-bottom: 8px !important;
-
-    color: #9f818c !important;
-
-    font-style: italic;
-}
-
-
-.infinity-final {
-
-    margin: 0;
-
-    color: #ff7199;
-
-    font-family: Georgia, serif;
-
-    font-size: 65px;
-
-    line-height: 1;
-
-    text-shadow:
-        0 0 30px
-        rgba(255,113,153,.2);
-}
-
-
-.future-message {
-
-    display: block;
-
-    margin-top: 5px;
-
-    color: #f4dce2;
-
-    font-size: 17px;
-
-    font-weight: normal;
-
-    font-style: italic;
-}
-
-
-.signature-final {
-
-    margin-top: 35px !important;
-
-    color: #90717c !important;
-
-    font-style: italic;
-
-    line-height: 1.8 !important;
-}
-
-
-.signature-final strong {
-
-    color: #ff9db5;
-
-    font-size: 20px;
-}
-
-
-/* =========================================
-   📱 CELULAR
-========================================= */
-
-@media (max-width: 600px) {
-
-    .final {
-
-        min-height: 100svh;
-
-        padding:
-            90px 18px;
-    }
-
-
-    .final-heart {
-
-        width: 75px;
-        height: 75px;
-
-        font-size: 34px;
-    }
-
-
-    .final h2 {
-
-        font-size: 48px;
-
-        letter-spacing: -1px;
-    }
-
-
-    .final-text {
-
-        font-size: 13px;
-    }
-
-
-    #surpriseButton {
-
-        width: 100%;
-
-        max-width: 320px;
-
-        padding:
-            0 18px;
-
-        font-size: 12px;
-    }
-
-
-    .surprise-card {
-
-        margin-top: 40px;
-
-        padding:
-            38px 21px;
-
-        border-radius: 20px;
-    }
-
-
-    .surprise-card h3 {
-
-        font-size: 40px;
-    }
-
-
-    .surprise-card > p {
-
-        font-size: 14px;
-
-        line-height: 1.75;
-    }
-
-
-    .surprise-card blockquote {
-
-        font-size: 16px;
-
-        padding:
-            18px 12px;
-    }
-
-
-    .surprise-love h4 {
-
-        font-size: 29px;
-    }
-
-
-    .infinity-final {
-
-        font-size: 55px;
-    }
-}
-
-```css
-/* =========================================
-   🎁 ANIMACIÓN DE LA SORPRESA
-========================================= */
-
-.surprise-card.surprise-open {
-
-    animation:
-        surpriseIn
-        .9s cubic-bezier(.16,1,.3,1)
-        forwards;
-
-}
-
-
-@keyframes surpriseIn {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-            translateY(60px)
-            scale(.88);
-
-    }
-
-    60% {
-
-        opacity: 1;
-
-        transform:
-            translateY(-8px)
-            scale(1.02);
-
-    }
-
-    100% {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-}
-
-
-/* =========================================
-   ❤️ CORAZÓN DE SORPRESA
-========================================= */
-
-.surprise-heart {
-
-    width: 65px;
-    height: 65px;
-
-    margin:
-        0 auto 20px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    color: #ff7199;
-
-    font-size: 27px;
-
-    background:
-        rgba(255,113,153,.10);
-
-    border:
-        1px solid
-        rgba(255,113,153,.25);
-
-    animation:
-        surpriseHeart
-        2s infinite;
-}
-
-
-@keyframes surpriseHeart {
-
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.12);
-    }
-}
-
-
-/* =========================================
-   BOTÓN MÁS BONITO
-========================================= */
-
-#surpriseButton {
-
-    position: relative;
-
-    overflow: hidden;
-
-    min-height: 56px;
-
-    padding:
-        0 28px;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 12px;
 
     border: none;
 
@@ -2643,54 +1423,12 @@ footer small {
         rgba(255,83,125,.25);
 
     transition:
-        transform .3s ease,
-        box-shadow .3s ease;
+        transform .25s ease,
+        box-shadow .25s ease;
 }
 
 
-#surpriseButton::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: -100%;
-
-    width: 60%;
-
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.25),
-            transparent
-        );
-
-    transform: skewX(-20deg);
-
-    animation:
-        buttonShine
-        3s infinite;
-}
-
-
-@keyframes buttonShine {
-
-    0% {
-        left: -100%;
-    }
-
-    45%,
-    100% {
-        left: 140%;
-    }
-}
-
-
-#surpriseButton:hover {
+.surprise-button:hover {
 
     transform:
         translateY(-5px);
@@ -2701,38 +1439,35 @@ footer small {
 }
 
 
-#surpriseButton:active {
+.surprise-button:active {
 
     transform:
         scale(.94);
 }
 
 
-#surpriseButton span {
-
-    position: relative;
-
-    font-size: 14px;
-}
-
-
 /* =========================================
-   💌 CARTA
+   SORPRESA
 ========================================= */
 
-.surprise-card {
+.surprise {
+
+    display: none;
 
     width: 100%;
 
     max-width: 680px;
 
-    margin:
-        55px auto 0;
+    margin-top: 50px;
 
     padding:
         50px 40px;
 
     border-radius: 25px;
+
+    border:
+        1px solid
+        rgba(255,113,153,.25);
 
     background:
         linear-gradient(
@@ -2741,33 +1476,89 @@ footer small {
             rgba(255,113,153,.035)
         );
 
-    border:
-        1px solid
-        rgba(255,113,153,.25);
-
     box-shadow:
         0 30px 100px
-        rgba(0,0,0,.35);
+        rgba(0,0,0,.4);
+}
 
-    text-align: center;
+
+.surprise.open {
+
+    display: block;
+
+    animation:
+        surpriseAppear
+        .8s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+}
+
+
+@keyframes surpriseAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(60px)
+            scale(.9);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+.surprise-heart {
+
+    width: 65px;
+    height: 65px;
+
+    margin:
+        0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #ff7199;
+
+    background:
+        rgba(255,113,153,.1);
+
+    font-size: 28px;
+
+    animation:
+        heartbeat
+        2s infinite;
 }
 
 
 .surprise-label {
 
-    color: #ff7199 !important;
+    margin-bottom: 12px;
+
+    color: #ff7199;
 
     font-family: Arial, sans-serif;
 
-    font-size: 9px !important;
+    font-size: 9px;
 
     letter-spacing: 3px;
-
-    margin-bottom: 12px !important;
 }
 
 
-.surprise-card h3 {
+.surprise h3 {
 
     color: white;
 
@@ -2792,34 +1583,33 @@ footer small {
 }
 
 
-.surprise-card p {
+.surprise > p {
+
+    margin-bottom: 20px;
 
     color: #cdb3bb;
 
     font-size: 15px;
 
     line-height: 1.8;
-
-    margin:
-        0 auto 20px;
 }
 
 
-.surprise-card blockquote {
+.surprise blockquote {
 
     margin:
         35px 0;
 
     padding:
-        22px;
+        22px 15px;
 
     border-top:
         1px solid
-        rgba(255,113,153,.2);
+        rgba(255,113,153,.18);
 
     border-bottom:
         1px solid
-        rgba(255,113,153,.2);
+        rgba(255,113,153,.18);
 
     color: #ffb4c7;
 
@@ -2858,9 +1648,9 @@ footer small {
 }
 
 
-.future {
+.future-text {
 
-    margin-top: 35px !important;
+    margin-top: 35px;
 
     color: #9f818c !important;
 
@@ -2868,10 +1658,7 @@ footer small {
 }
 
 
-.infinity {
-
-    margin:
-        0 0 5px;
+.final-infinity {
 
     color: #ff7199;
 
@@ -2883,6 +1670,10 @@ footer small {
 
 .future-love {
 
+    display: block;
+
+    margin-top: 5px;
+
     color: #f5dce3;
 
     font-size: 17px;
@@ -2891,9 +1682,9 @@ footer small {
 }
 
 
-.signature {
+.final-signature {
 
-    margin-top: 35px !important;
+    margin-top: 35px;
 
     color: #92727d !important;
 
@@ -2901,7 +1692,7 @@ footer small {
 }
 
 
-.signature strong {
+.final-signature strong {
 
     color: #ff9db5;
 
@@ -2910,31 +1701,341 @@ footer small {
 
 
 /* =========================================
-   📱 CELULAR
+   FOOTER
+========================================= */
+
+footer {
+
+    padding:
+        55px 20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.06);
+
+    text-align: center;
+
+    color: #765964;
+
+    font-family: Arial, sans-serif;
+}
+
+
+footer div {
+
+    margin-bottom: 10px;
+
+    color: #ff7199;
+
+    font-size: 25px;
+}
+
+
+footer p {
+
+    font-size: 12px;
+}
+
+
+footer small {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: #513943;
+
+    font-size: 9px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+    .counter {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+
+    .memory-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .memory-large {
+
+        grid-column:
+            span 2;
+
+        grid-row:
+            auto;
+
+        min-height: 300px;
+    }
+}
+
+
+/* =========================================
+   CELULAR
 ========================================= */
 
 @media (max-width: 600px) {
 
-    #surpriseButton {
+    .hero {
+
+        padding:
+            25px 18px;
+    }
+
+
+    .main-heart {
+
+        width: 72px;
+        height: 72px;
+
+        margin:
+            24px auto 18px;
+
+        font-size: 31px;
+    }
+
+
+    .eyebrow {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .hero h1 {
+
+        font-size: 70px;
+
+        letter-spacing: -3px;
+    }
+
+
+    .hero h2 {
+
+        font-size: 31px;
+    }
+
+
+    .hero-text {
+
+        font-size: 13px;
+    }
+
+
+    .section {
+
+        padding:
+            80px 18px;
+    }
+
+
+    .section-title {
+
+        font-size: 43px;
+    }
+
+
+    .counter {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 9px;
+    }
+
+
+    .counter-card {
+
+        min-height: 110px;
+
+        border-radius: 17px;
+    }
+
+
+    .counter-card strong {
+
+        font-size: 33px;
+    }
+
+
+    .counter-card span {
+
+        margin-top: 8px;
+
+        font-size: 7px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .time-message {
+
+        flex-direction: column;
+
+        padding: 18px;
+    }
+
+
+    .time-message p {
+
+        font-size: 13px;
+    }
+
+
+    .letter {
+
+        padding:
+            30px 20px;
+    }
+
+
+    .letter p {
+
+        font-size: 15px;
+
+        line-height: 1.75;
+    }
+
+
+    .letter blockquote {
+
+        font-size: 14px;
+    }
+
+
+    .quote-section {
+
+        padding:
+            90px 20px;
+    }
+
+
+    .quote-section h2 {
+
+        font-size: 43px;
+    }
+
+
+    .quote-section > p {
+
+        font-size: 21px;
+    }
+
+
+    .memory-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .memory-large {
+
+        grid-column: auto;
+
+        min-height: 300px;
+    }
+
+
+    .memory {
+
+        min-height: 220px;
+    }
+
+
+    .poem-section {
+
+        padding:
+            90px 20px;
+    }
+
+
+    .poem-section h2 {
+
+        font-size: 42px;
+    }
+
+
+    .poem p {
+
+        font-size: 18px;
+    }
+
+
+    .poem strong {
+
+        font-size: 22px;
+    }
+
+
+    .promise {
+
+        padding:
+            18px 0;
+    }
+
+
+    .promise-section {
+
+        padding-bottom: 100px;
+    }
+
+
+    .final-section {
+
+        padding:
+            90px 18px;
+    }
+
+
+    .final-heart {
+
+        width: 75px;
+        height: 75px;
+
+        font-size: 34px;
+    }
+
+
+    .final-section h2 {
+
+        font-size: 49px;
+    }
+
+
+    .final-description {
+
+        font-size: 13px;
+    }
+
+
+    .surprise-button {
 
         width: 100%;
 
         max-width: 330px;
 
-        min-height: 54px;
-
         padding:
             0 15px;
 
         font-size: 12px;
-
-        gap: 8px;
     }
 
 
-    .surprise-card {
-
-        margin-top: 40px;
+    .surprise {
 
         padding:
             38px 20px;
@@ -2943,13 +2044,13 @@ footer small {
     }
 
 
-    .surprise-card h3 {
+    .surprise h3 {
 
         font-size: 42px;
     }
 
 
-    .surprise-card p {
+    .surprise > p {
 
         font-size: 14px;
 
@@ -2957,12 +2058,9 @@ footer small {
     }
 
 
-    .surprise-card blockquote {
+    .surprise blockquote {
 
         font-size: 16px;
-
-        padding:
-            18px 10px;
     }
 
 
@@ -2971,6 +2069,41 @@ footer small {
         font-size: 29px;
     }
 }
-```
 
+
+/* =========================================
+   CELULARES MUY PEQUEÑOS
+========================================= */
+
+@media (max-width: 360px) {
+
+    .hero h1 {
+
+        font-size: 60px;
+    }
+
+
+    .hero h2 {
+
+        font-size: 27px;
+    }
+
+
+    .section-title {
+
+        font-size: 38px;
+    }
+
+
+    .counter-card strong {
+
+        font-size: 29px;
+    }
+
+
+    .final-section h2 {
+
+        font-size: 43px;
+    }
+}
 ```
